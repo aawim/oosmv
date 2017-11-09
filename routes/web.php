@@ -12,12 +12,25 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('wellhome');
 });
 
 Auth::routes();
+
+
 Route::prefix('manage')->group(function(){
     Route::get('/home', 'HomeController@dash')->name('index');
     Route::resource('/category', 'CategoryController');
- 
+    Route::resource('/subcat', 'SubcatController');
+    Route::resource('/brand', 'BrandController');
 });
+
+/*
+// Route::group(array('before' => 'auth'), function(){
+//     Route::get('/home', 'HomeController@dash')->name('index');
+//     Route::resource('/category', 'CategoryController');
+//     Route::resource('/subcat', 'SubcatController');
+//     Route::resource('/brand', 'BrandController');
+    
+// });
+*/

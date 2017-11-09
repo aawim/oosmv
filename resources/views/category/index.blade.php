@@ -1,105 +1,85 @@
 @extends('layouts.layout')
 @section('content')
-
-<div class="col-md-6 col-xs-12">
-<div class="x_panel">
-  <div class="x_title">
-    <h2>Category <small>Manges all category related tasks</small></h2>
-     <div class="clearfix"></div>
+<div class="right_col" role="main">
+<!-- top tiles -->
+<div class="row tile_count">
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top"><i class="fa fa-user"></i> Total Number of Categories</span>
+    <div class="count"> {{ $d->count() }} </div>
+    <span class="count_bottom"><i class="green">4% </i> From last Week</span>
   </div>
-  <div class="x_content">
-    <br />
- 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-    
-<form class="form-horizontal" action="{{route('category.store')}}" method="POST" enctype="multipart/form-data">
-    {{ csrf_field() }}
-
-      <div class="form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12">Category Name</label>
-        <div class="col-md-9 col-sm-9 col-xs-12">
-          <input type="text" name="name" class="form-control" placeholder="Category Name">
-        </div>
-      </div>
-
-
-
-      <div class="form-group">
-         
-        <label class="control-label col-md-3 col-sm-3 col-xs-12">Icon</label>
-        <div class="col-xs-9">
-            <input type="file" class="form-control" id="icon" name="icon" required value="{{ old('icon') }}">
-        </div>
-    </div>
-
-      <div class="ln_solid"></div>
-      <div class="form-group">
-        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-          <button type="button" class="btn btn-primary">Cancel</button>
-          <button type="reset" class="btn btn-primary">Reset</button>
-          <button type="submit" class="btn btn-success">Submit</button>
-        </div>
-      </div>
-    </form>
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
+    <div class="count">123.50</div>
+    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+  </div>
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
+    <div class="count green">2,500</div>
+    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+  </div>
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
+    <div class="count">4,567</div>
+    <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+  </div>
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
+    <div class="count">2,315</div>
+    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+  </div>
+  <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
+    <div class="count">7,325</div>
+    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
   </div>
 </div>
-</div>
+<!-- /top tiles -->
 
 
+<br />
 
+<div class="row">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<row>
-<div class="col-md-6 col-xs-12">
-<div class="x_panel">
-  <div class="x_title">
-    <h2>Categories in the system</h2>
-     <div class="clearfix"></div>
-  </div>
  
- 
- 
-  <div class="x_content">
+              <div class=" col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Category |<small>Categories are in the system.</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                    
+                    <!-- <li><a class=" " href=""><i class="btn btn-round btn-success">Create New Category</i></a> -->
+                    <a href="{{route('category.create')}}"><button type="submit" class="btn btn-success">Add New Category</button></a>
+                    <a href="{{route('subcat.index')}}"><button type="submit" class="btn btn-success">Add New Sub Category</button></a>
+                  </li>
+              
+                      
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
     
+                    <table id="datatable" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                          <th>Icon</th>
+                          <th>Is Active</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
 
- <div class="table-responsive">          
-  <table class="table">
-    <thead>
-      <tr>
-                                                <th>#</th>
-                                                <th class="col-md-4">Name</th>
-                                                <th class="col-md-4">Icon</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-                                            @foreach ($d as $count => $i)
+
+                      <tbody>
+
+
+
+
+
+
+
+                      @foreach ($d as $count => $i)
                                             <tr>
                                                 <th>{{$count+1}}</th>
                                                 <td>{{$i->name}}</td>
@@ -125,16 +105,12 @@
                                                 <td>
                                                 
                                                   <a href="{{route('category.edit', $i->id) }}">Edit</a> 
-                                              
-                                               
-                                                  
+                                                                       
                                                   <a href="#" data-toggle="modal" data-target="#deleteModal{{$count}}"
                                                     data-delete-id="{{$i->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">Delete</a>
                                                  
                                                 </td>
-                                                <td>
-                                     
-                                                </td>
+                                              
                                             </tr>
 
 
@@ -197,21 +173,41 @@
 
 
 
-                                       
-    </tbody>
-  </table>
- 
-   
-  </div>
 
+
+                        <!-- <tr>
+                          <td>1</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                        <td>
+
+                        <div class="btn-group  btn-group-sm pull-right">
+                        <button class="btn btn-default" type="button">View</button>
+                        <button class="btn btn-default" type="button">Edit</button>
+                        <button class="btn btn-default" type="button">Delete</button>
+                      </div>
+
+                        </td>
+                        </tr> -->
+                        
+                  
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+             
+
+
+
+
+
+      
+
+    </div>
   </div>
 </div>
 </div>
-</row>
-
-
-
-
-
-
 @endsection
