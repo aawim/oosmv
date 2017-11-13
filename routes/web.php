@@ -23,6 +23,7 @@ Route::prefix('manage')->group(function(){
     Route::resource('/category', 'CategoryController');
     Route::resource('/subcat', 'SubcatController');
     Route::resource('/brand', 'BrandController');
+    Route::resource('/product', 'ProductController');
 });
 
 /*

@@ -4,8 +4,8 @@
 <!-- top tiles -->
 <div class="row tile_count">
   <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-    <span class="count_top"><i class="fa fa-user"></i> Total Number of Categories</span>
-    <div class="count"> {{ $scat->count() }} </div>
+    <span class="count_top"><i class="fa fa-user"></i> Total Number of Products</span>
+    <div class="count"> {{ $d->count() }} </div>
     <span class="count_bottom"><i class="green">4% </i> From last Week</span>
   </div>
   <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -36,21 +36,18 @@
 </div>
 <!-- /top tiles -->
 
-
 <br />
-
 <div class="row">
-
  
-              <div class=" col-md-6 col-sm-6 col-xs-12">
+              <div class=" col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Sub Category |<small>Sub categories are in the system.</small></h2>
+                    <h2>Product |<small>Products are in the system.</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
                     <!-- <li><a class=" " href=""><i class="btn btn-round btn-success">Create New Category</i></a> -->
-                    <a href="{{route('subcat.create')}}"><button type="submit" class="btn btn-success">Add New</button></a>
-                    <a href="{{route('subcat.index')}}"><button type="submit" class="btn btn-success">View Sub Category</button></a>
+                    <a href="{{route('product.create')}}"><button type="submit" class="btn btn-success">Add New Product</button></a>
+                    
                   </li>
               
                       
@@ -64,7 +61,14 @@
                         <tr>
                           <th>#</th>
                           <th>Name</th>
-                        
+                          <th>Category</th>
+                          <th>Brand</th>
+                          <th>Size</th>
+                          <th>Price</th>
+                          <th>DPrice</th>
+                          <th>Image</th>
+                          <th>Qty</th>
+                          <th>Store</th>
                           <th>Is Active</th>
                           <th>Action</th>
                         </tr>
@@ -77,27 +81,35 @@
 
 
 
+                      @foreach ($d as $count => $i)
 
-
-                      @foreach ($scat as $count => $i)
-                                            <tr>
-                                                <th>{{$count+1}}</th>
-                                                <td>{{$i->name}}</td>
                        
+                                            <tr>
+                                                <th>{{$count+1}} </th>
+                                                <td>{{$i->name}} </td>
+                                                <td>{{$i->cat_id}} </td>
+                                                <td>{{$i->brand_id}} </td>
+                                                <td>{{$i->size}} </td>
+                                                <td>{{$i->price}} </td>
+                                                <td>{{$i->dprice}} </td>
+                                                <td>{{$i->image}} </td>
+                                                <td>{{$i->qty}} </td>
+                                                <td>{{$i->store_id}} </td>
+                                                
                                                 <td>
                                                 @if($i->is_active == 1)
                                                   Active
                                                   @else
                                                   Not Active
-                                                  @endif
-                                                </td>
-
+                                                  @endif        
+                                            
+                                            </td>
                                                 <td>
                                                 
-                                                  <a href="{{route('subcat.edit', $i->id) }}">Edit</a> 
-                                                                       
-                                                  <a href="#" data-toggle="modal" data-target="#deleteModal{{$count}}"
-                                                    data-delete-id="{{$i->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">Delete</a>
+                                                <a href="{{route('product.edit', $i->id) }}">Edit</a> 
+                                                
+                              <a href="#" data-toggle="modal" data-target="#deleteModal{{$count}}"
+                                data-delete-id="{{$i->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">Delete</a>
                                                  
                                                 </td>
                                               
@@ -113,50 +125,42 @@
 
 <!-- Modal -->
 <div id="deleteModal{{$count}}" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
+  <!-- Modal content-->
+  <div class="modal-content">
 
-      <form class="form-horizontal" action="{{route('category.destroy',$i->id)}} " method="POST">
-  
-      {{method_field('DELETE')}}  {!! csrf_field() !!} 
+    <form class="form-horizontal" action="{{route('product.destroy',$i->id)}} " method="POST">
 
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          
-          <h4 class="modal-title">Delete</h4>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure you want to permanently delete this item ?</p>
-          <input type="text" id="delete-id" name="id" value="0" hidden />
-        </div>
-        <div class="modal-footer">
-          <span id="delete-dialog-link">
-            <button type="submit"  class="btn btn-danger">Confirm</button>
-          </span>
-          
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        </div>
+    {{method_field('DELETE')}}  {!! csrf_field() !!} 
 
-      </form>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+        <h4 class="modal-title">Delete</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to permanently delete this item ?</p>
+        <input type="text" id="delete-id" name="id" value="0" hidden />
+      </div>
+      <div class="modal-footer">
+        <span id="delete-dialog-link">
+          <button type="submit"  class="btn btn-danger">Confirm</button>
+        </span>
+        
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
 
-    </div>
+    </form>
 
   </div>
+
+</div>
 </div>
 
 
 
-                                            @endforeach
-
-
-
-
-
-
-
-
+@endforeach                             
 
 
  

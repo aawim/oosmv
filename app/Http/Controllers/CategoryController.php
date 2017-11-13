@@ -29,15 +29,23 @@ class CategoryController extends Controller
 
         $this->validate($request,[
             'name'=>'required|max:255 ',
-            'icon' => 'image|mimes:png',
+           /* 'icon' => 'image|mimes:png', */
              ]);
 
         $d = new Category();
         $d->name = $request->name;
-        $imgName = $request->file('icon')->getClientOriginalName();
-        $request->file('icon')->move(public_path('imagesx'), $imgName);
-        $product  = 'imagesx/'.$imgName;
-        $d->icon = $product;
+
+        if ($request->hasFile('icon')) {
+            
+            $imgName = $request->file('icon')->getClientOriginalName();
+            $request->file('icon')->move(public_path('imagesx'), $imgName);
+            $product  = 'imagesx/'.$imgName;
+            $d->icon = $product;
+    
+            }else{
+                $current_image = $d->icon;
+                    }
+       
         $d->save();
         return redirect()->route('category.index');
 

@@ -105,7 +105,7 @@
                                                 <td>
                                                 
                                                   <a href="{{route('brand.edit', $i->id) }}">Edit</a> 
-                                                                       
+                                                                    
                                                   <a href="#" data-toggle="modal" data-target="#deleteModal{{$count}}"
                                                     data-delete-id="{{$i->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">Delete</a>
                                                  
