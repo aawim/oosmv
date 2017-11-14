@@ -16,14 +16,14 @@ class ProductController extends Controller
         $this->results = ["Document", "Electronic format" ];
         $this->brands = Brand::orderBy('name')->get();
         $this->categories = Category::orderBy('name')->get();
-        $this->d = Product::orderBy('name')->get();
+        $this->products = Product::orderBy('name')->get();
        
     }
 
     public function index()
     {
         return view('product.index', 
-        [   'd' => $this->d ] );
+        [   'products' => $this->products ] );
     }
 
     public function create()
@@ -59,13 +59,7 @@ class ProductController extends Controller
         $d->qty = $request->qty;
         $d->store_id = $request->store;
         $d->is_active = 0;
-
-
-        /* $imgName = $request->file('icon')->getClientOriginalName();
-        // $request->file('icon')->move(public_path('imagesx'), $imgName);
-        // $product  = 'imagesx/'.$imgName;
-        // $d->image = $product; 
-        */
+ 
 
         if ($request->hasFile('icon')) {
             
@@ -77,12 +71,7 @@ class ProductController extends Controller
             }else{
                 $d->image = "None";
                     }
-
-
-
         $d->save();
-
-      
         return redirect()->route('product.create');
     }
     
@@ -93,12 +82,58 @@ class ProductController extends Controller
  
     public function edit($id)
     {
-        return "Product Edit";
+        $d = Product::findOrFail($id);
+        return view('product.edit', ['d' => $d, 'categories' => $this->categories,'brands' => $this->brands]);
     }
  
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required|max:255 ',
+            'cate'=>'required',
+            'scat'=>'required',
+            ]);
+
+      
+        $d = Product::findOrFail($id);
+        $d->name = $request->name;
+        $d->cat_id = $request->cate;
+        $d->scat_id =$request->scat;
+        $d->brand_id =$request->brand;
+        $d->size =$request->size;
+        $d->price =$request->price;
+        $d->dprice =$request->dprice;
+        $d->qty = $request->qty;
+        $d->store_id = $request->store;
+        $d->is_active = $request->is_active;
+ 
+
+        if ($request->hasFile('image_file')) {
+            
+            $imgName = $request->file('image_file')->getClientOriginalName();
+            $request->file('image_file')->move(public_path('imagesx'), $imgName);
+            $product  = 'imagesx/'.$imgName;
+            
+            $d->image = $product;
+
+
+
+
+            }else{
+                $d->image = $d->image;
+                    }
+
+
+
+
+
+
+
+
+
+                    
+        $d->save();
+        return redirect()->route('product.index');
     }
 
     

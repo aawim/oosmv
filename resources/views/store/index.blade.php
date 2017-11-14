@@ -6,15 +6,7 @@
   
 
 
- <script>
-$('a[data-toggle="tooltip"]').tooltip({
-    animated: 'fade',
-    placement: 'bottom',
-    html: true
-});
-
  
-</script>
 
 
 
@@ -24,7 +16,7 @@ $('a[data-toggle="tooltip"]').tooltip({
 <div class="row tile_count">
   <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
     <span class="count_top"><i class="fa fa-user"></i> Total Number of Products</span>
-    <div class="count"> {{ $products->count() }} </div>
+    <div class="count"> {{ $stores->count() }} </div>
     <span class="count_bottom"><i class="green">4% </i> From last Week</span>
   </div>
   <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -61,11 +53,11 @@ $('a[data-toggle="tooltip"]').tooltip({
               <div class=" col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Product |<small>Products are in the system.</small></h2>
+                    <h2>Stores |<small>Stores are in the system.</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
                     <!-- <li><a class=" " href=""><i class="btn btn-round btn-success">Create New Category</i></a> -->
-                    <a href="{{route('product.create')}}"><button type="submit" class="btn btn-success">Add New Product</button></a>
+                    <a href="{{route('store.create')}}"><button type="submit" class="btn btn-success">Add New Store</button></a>
                     
                   </li>
               
@@ -80,14 +72,13 @@ $('a[data-toggle="tooltip"]').tooltip({
                         <tr>
                           <th>#</th>
                           <th>Name</th>
-                          <th>Category</th>
-                          <th>Brand</th>
-                          <th>Size</th>
-                          <th>Price</th>
-                          <th>DPrice</th>
-                          <th>Image</th>
-                          <th>Qty</th>
-                          <th>Store</th>
+                          <th>Logo</th>
+                          <th>Type</th>
+                          <th>Location</th>
+                          <th>Contact</th>
+                          <th>Email</th>
+                          <th>User</th>
+                      
                           <th>Is Active</th>
                           <th>Action</th>
                         </tr>
@@ -100,47 +91,17 @@ $('a[data-toggle="tooltip"]').tooltip({
 
 
                     
-                      @foreach ($products as $count => $product)
+                      @foreach ($stores as $count => $store)
 
                        
                                             <tr>
                                                 <th>{{$count+1}} </th>
-                                                <td>{{$product->name}} </td>
-                                                <td> 
+                                                <td>{{$store->name}} </td>
 
-
-                                                @if($product->category()->first()!= null)
-                                                  
-                                                {{$product->category()->first()->name }} 
-
-                                                @else 
-
-                                                -
-
-                                                @endif
-
-
-                                                </td>
-                                                <td>
-
-                                                @if($product->brand()->first()!= null)
-                                                  
-                                                {{$product->brand()->first()->name }} 
-
-                                                @else 
-
-                                                -
-
-                                                @endif
-                                              
-                                              </td>
-                                                <td>{{$product->size}} </td>
-                                                <td>{{$product->price}} </td>
-                                                <td>{{$product->dprice}} </td>
                                                 <td>
                                                     
                                                
-                                                <a href="{{url('/').'/'.$product->image}}" target="_blank" >Image
+                                                <a href="{{url('/').'/'.$store->logo}}" target="_blank" >Image
                                                  
                                       
                                                 </a>                                            
@@ -150,11 +111,15 @@ $('a[data-toggle="tooltip"]').tooltip({
                                             
                                             
                                             </td>
-                                                <td>{{$product->qty}} </td>
-                                                <td>{{$product->store_id}} </td>
+                                                <td>{{$store->type}} </td>
+                                                <td>{{$store->location}} </td>
+                                                <td>{{$store->contact}} </td>
+                                                <td>{{$store->email}} </td>
+                                                <td>{{$store->user_id}} </td>
+                                           
                                                 
                                                 <td>
-                                                @if($product->is_active == 1)
+                                                @if($store->is_active == 1)
                                                   Active
                                                   @else
                                                   Not Active
@@ -163,10 +128,10 @@ $('a[data-toggle="tooltip"]').tooltip({
                                             </td>
                                                 <td>
                                                 
-                                                <a href="{{route('product.edit', $product->id) }}">Edit</a> 
+                                                <a href="{{route('store.edit', $store->id) }}">Edit</a> 
                                                 
                               <a href="#" data-toggle="modal" data-target="#deleteModal{{$count}}"
-                                data-delete-id="{{$product->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">Delete</a>
+                                data-delete-id="{{$store->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">Delete</a>
                                                  
                                                 </td>
                                               
@@ -187,7 +152,7 @@ $('a[data-toggle="tooltip"]').tooltip({
   <!-- Modal content-->
   <div class="modal-content">
 
-    <form class="form-horizontal" action="{{route('product.destroy',$product->id)}} " method="POST">
+    <form class="form-horizontal" action="{{route('store.destroy',$store->id)}} " method="POST">
 
     {{method_field('DELETE')}}  {!! csrf_field() !!} 
 

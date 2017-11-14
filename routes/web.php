@@ -24,6 +24,7 @@ Route::prefix('manage')->group(function(){
     Route::resource('/subcat', 'SubcatController');
     Route::resource('/brand', 'BrandController');
     Route::resource('/product', 'ProductController');
+    Route::resource('/store', 'StoreController');
 });
 
 /*
