@@ -21,6 +21,13 @@ class Product extends Model
 
 
 
+    public function store()
+    {
+        return $this->belongsTo(Store::class, 'store_id');
+    }
+
+
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'cat_id');

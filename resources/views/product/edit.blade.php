@@ -136,12 +136,7 @@
                     </div>
 
 
-                    <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Store</label>
-                      <div class="col-md-9 col-sm-9 col-xs-12">
-                      <input type="text" class="form-control" name="store" id="store"   required value="{{ old('store') ? old('store') : $d->store_id}}">
-                      </div>
-                    </div>
+                
 
                     <div class="form-group">
                        

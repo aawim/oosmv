@@ -39,7 +39,7 @@
                       {{ csrf_field() }}
               
                     <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Category Name</label>
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Product Name</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                       <input type="text" class="form-control" name="name" id="name"   required value="{{ old('name') }}">
                       </div>
@@ -138,12 +138,7 @@
                     </div>
 
 
-                    <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Store</label>
-                      <div class="col-md-9 col-sm-9 col-xs-12">
-                      <input type="text" class="form-control" name="store" id="store"   required value="{{ old('store') }}">
-                      </div>
-                    </div>
+                   
 
                     <div class="form-group">
                        

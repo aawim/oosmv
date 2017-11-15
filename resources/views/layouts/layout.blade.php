@@ -35,7 +35,7 @@
   </head>
 
   <body class="nav-md">
-
+  {!! Toastr::message() !!}
   @if(isset(Auth::user()->name))
     <div class="container body">
       <div class="main_container">

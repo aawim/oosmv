@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Brand;
 use App\Category;
 use App\Product;
+use Auth;
+use App\Store;
+use Toastr;
 class ProductController extends Controller
 {
     private  $categories, $brands, $d;
@@ -39,6 +42,25 @@ class ProductController extends Controller
          
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -57,23 +79,64 @@ class ProductController extends Controller
         $d->price =$request->price;
         $d->dprice =$request->dprice;
         $d->qty = $request->qty;
-        $d->store_id = $request->store;
-        $d->is_active = 0;
+        $d->store()->associate(Store::where('user_id', '=', Auth::user()->id)->first());
+        //$d->store_id = Store::where('user_id', '=', Auth::user()->id)->get();
+        
+         $d->is_active = 0;
  
-
         if ($request->hasFile('icon')) {
-            
             $imgName = $request->file('icon')->getClientOriginalName();
             $request->file('icon')->move(public_path('imagesx'), $imgName);
             $product  = 'imagesx/'.$imgName;
-            
             $d->image = $product;
             }else{
                 $d->image = "None";
                     }
-        $d->save();
-        return redirect()->route('product.create');
+           $store_id = Store::where('user_id', '=', Auth::user()->id)->first();
+        if($store_id == NULL){
+            Toastr::warning('Product cannot be created, Create a store first', 'OOSMV', ["positionClass" => "toast-top-right"]);
+            return redirect()->route('product.create');
+        }else{
+           
+            $d->save();
+            Toastr::success('New product added successfully!', 'OOSMV', ["positionClass" => "toast-top-right"]);
+            return redirect()->route('product.create');
+        }
+      
     }
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     public function show($id)
     {
@@ -104,7 +167,7 @@ class ProductController extends Controller
         $d->price =$request->price;
         $d->dprice =$request->dprice;
         $d->qty = $request->qty;
-        $d->store_id = $request->store;
+        $d->store_id = $d->store_id;
         $d->is_active = $request->is_active;
  
 
@@ -116,23 +179,12 @@ class ProductController extends Controller
             
             $d->image = $product;
 
-
-
-
             }else{
                 $d->image = $d->image;
                     }
-
-
-
-
-
-
-
-
-
-                    
+ 
         $d->save();
+        Toastr::success('A product updated successfully.', 'SSOMV', ["positionClass" => "toast-top-right"]);
         return redirect()->route('product.index');
     }
 
