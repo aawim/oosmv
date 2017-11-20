@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('wellhome');
 });
 
+
+Route::resource('/item', 'ItemDetailController');
+
+
+
+
 Auth::routes();
 
 
@@ -26,6 +32,16 @@ Route::prefix('manage')->group(function(){
     Route::resource('/product', 'ProductController');
     Route::resource('/store', 'StoreController');
 });
+
+
+
+Route::prefix('client')->group(function(){
+    Route::resource('/category', 'CategoryController');
+});
+
+
+
+
 
 /*
 // Route::group(array('before' => 'auth'), function(){
