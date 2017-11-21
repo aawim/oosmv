@@ -8,10 +8,11 @@ use App\Subcategory;
 class SubcatController extends Controller
 {
     
-
+    
     private $cat, $scat;
     public function __construct()
     {
+        $this->middleware('auth');
         //$this-> cat = category::all();
         $this-> scat = Subcategory::all();
         $this-> cat = Category::get(); 

@@ -42,24 +42,24 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
   <!-- Fonts END -->
 
   <!-- Global styles START -->          
-  <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{url('/').'/assets/plugins/font-awesome/css/font-awesome.min.css'}}" rel="stylesheet">
+  <link href="{{url('/').'/assets/plugins/bootstrap/css/bootstrap.min.css'}}" rel="stylesheet">
   <!-- Global styles END --> 
    
   <!-- Page level plugin styles START -->
-  <link href="assets/pages/css/animate.css" rel="stylesheet">
-  <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-  <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+  <link href="{{url('/').'/assets/pages/css/animate.css'}}" rel="stylesheet">
+  <link href="{{url('/').'/assets/plugins/fancybox/source/jquery.fancybox.css'}}" rel="stylesheet">
+  <link href="{{url('/').'/assets/plugins/owl.carousel/assets/owl.carousel.css'}}" rel="stylesheet">
   <!-- Page level plugin styles END -->
 
   <!-- Theme styles START -->
-  <link href="assets/pages/css/components.css" rel="stylesheet">
-  <link href="assets/pages/css/slider.css" rel="stylesheet">
-  <link href="assets/pages/css/style-shop.css" rel="stylesheet" type="text/css">
-  <link href="assets/corporate/css/style.css" rel="stylesheet">
-  <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
-  <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
-  <link href="assets/corporate/css/custom.css" rel="stylesheet">
+  <link href="{{url('/').'/assets/pages/css/components.css'}}" rel="stylesheet">
+  <link href="{{url('/').'/assets/pages/css/slider.css'}}" rel="stylesheet">
+  <link href="{{url('/').'/assets/pages/css/style-shop.css'}}" rel="stylesheet" type="text/css">
+  <link href="{{url('/').'/assets/corporate/css/style.css'}}" rel="stylesheet">
+  <link href="{{url('/').'/assets/corporate/css/style-responsive.css'}}" rel="stylesheet">
+  <link href="{{url('/').'/assets/corporate/css/themes/red.css'}}" rel="stylesheet" id="style-color">
+  <link href="{{url('/').'/assets/corporate/css/custom.css'}}" rel="stylesheet">
   <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -91,10 +91,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <div class="container">
             <div class="row">
 
-
-
                 <!-- BEGIN TOP BAR LEFT PART -->
-                @include('includes.topleftbar')
+            @include('includes.topleftbar')
                 <!-- END TOP BAR LEFT PART -->
 
 
@@ -104,10 +102,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             </div>
 
 
-
-
-
-
         </div>        
     </div>
     <!-- END TOP BAR -->
@@ -115,19 +109,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- BEGIN HEADER -->
     <div class="header">
       <div class="container">
-        <a class="site-logo" href="shop-index.html"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
-
+        <a class="site-logo" href="{{ url('/') }}"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
        
         <!-- BEGIN CART -->
         @include('includes.cart')
           <!--END CART -->
-     
-
-
-
-
-
+    
         <!-- BEGIN NAVIGATION -->
         @include('includes.topmanu')
         <!-- END NAVIGATION -->
@@ -263,112 +251,124 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <!-- BEGIN SALE PRODUCT -->
           <div class="col-md-12 sale-product">
             <h2>New Arrivals</h2>
+
+            
             <div class="owl-carousel owl-carousel5">
+            
+            @foreach ($products as $count => $product)
               <div>
+              <form class="form-horizontal" action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
+                      {{ csrf_field() }}
                 <div class="product-item">
                   <div class="pi-img-wrapper">
-                    <img src="assets/pages/img/products/model1.jpg" class="img-responsive" alt="Berry Lace Dress">
+                    <img src="{{url('/').'/'.$product->image}}" class="img-responsive" alt="{{$product->name}}" >
                     <div>
-                      <a href="assets/pages/img/products/model1.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                      <a href="{{url('/').'/'.$product->image}}" class="btn btn-default fancybox-button">Zoom</a>
+                      <a href="#product-pop-up{{$count}}" class="btn btn-default fancybox-fast-view">View</a>
                     </div>
                   </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <h3><a href="shop-item.html">{{$product->name}}</a></h3>
+                  <div class="pi-price">MVR {{$product->price}}</div>
+                  <!-- <a href="{{route('cart.store')}}" class="btn btn-primary pull-right" >Add to cart</a> -->
+                  <input type="hidden" class="form-control" name="id" id="id"   value="{{$product->id}}">
+                  <button type="submit" class="btn btn-primary pull-right">Add to cart</button>
+
                   <div class="sticker sticker-sale"></div>
                 </div>
+                </form>
               </div>
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="assets/pages/img/products/model2.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="assets/pages/img/products/model2.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
+
+
+
+  <!-- BEGIN fast view of a product -->
+  <div id="product-pop-up{{$count}}" style="display: none; width: 700px;">
+            <div class="product-page product-pop-up">
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-3">
+                  <div class="product-main-image">
+                    <img src="{{url('/').'/'.$product->image}}" alt="Cool green dress with red bell" class="img-responsive">
                   </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress2</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <div class="product-other-images">
+                    <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="assets/pages/img/products/model3.jpg"></a>
+                    <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model4.jpg"></a>
+                    <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model5.jpg"></a>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="assets/pages/img/products/model6.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="assets/pages/img/products/model6.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                <div class="col-md-6 col-sm-6 col-xs-9">
+                  <h2>Cool green dress with red bell </h2>
+                  <div class="price-availability-block clearfix">
+                    <div class="price">
+                      <strong><span>$</span>{{$product->price}}</strong>
+                      <em>$<span>62.00</span></em>
+                    </div>
+                    <div class="availability">
+                      Availability: <strong>In Stock</strong>
                     </div>
                   </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress2</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <div class="description">
+                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat Nostrud duis molestie at dolore.</p>
+                  </div>
+                  <div class="product-page-options">
+                    <div class="pull-left">
+                      <label class="control-label">Size:</label>
+                      <select class="form-control input-sm">
+                        <option>L</option>
+                        <option>M</option>
+                        <option>XL</option>
+                      </select>
+                    </div>
+                    <div class="pull-left">
+                      <label class="control-label">Color:</label>
+                      <select class="form-control input-sm">
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>Black</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="product-page-cart">
+                    <div class="product-quantity">
+                        <input id="product-quantity" type="text" value="1" readonly name="product-quantity" class="form-control input-sm">
+                    </div>
+                    <!-- <button class="btn btn-primary" type="submit" onClick="{{route('store.create')}}">Add to cart</button> -->
+                    <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
+
+                    <a href="{{route('item.show', $product->id)}}" class="btn btn-default">More details</a>
+                  </div>
                 </div>
+
+                <div class="sticker sticker-sale"></div>
               </div>
-              <div>
-                  <div class="product-item">
-                    <div class="pi-img-wrapper">
-                      <img src="assets/pages/img/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress">
-                      <div>
-                        <a href="assets/pages/img/products/model4.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                      </div>
-                    </div>
-                    <h3><a href="javascript:;">Berry Lace Dress4</a></h3>
-                    <div class="pi-price">$29.00</div>
-                    <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                    <div class="sticker sticker-new"></div>
-                  </div>
-              </div>
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="assets/pages/img/products/model5.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="assets/pages/img/products/model5.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress5</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                </div>
-              </div>
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="assets/pages/img/products/model3.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="assets/pages/img/products/model3.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress3</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                </div>
-              </div>
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="assets/pages/img/products/model7.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="assets/pages/img/products/model7.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress3</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
-                </div>
-              </div>
+            </div>
+    </div>
+    <!-- END fast view of a product -->
+              @endforeach  
+              
+              
+            
+
+
+              
             </div>
           </div>
           <!-- END SALE PRODUCT -->
         </div>
         <!-- END SALE PRODUCT & NEW ARRIVALS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40 ">
@@ -433,7 +433,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                   <div class="sticker sticker-new"></div>
                 </div>
               </div>
@@ -448,7 +448,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress2</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -462,7 +462,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress3</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -476,7 +476,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress4</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                   <div class="sticker sticker-sale"></div>
                 </div>
               </div>
@@ -491,7 +491,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress5</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -505,7 +505,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress6</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
             </div>
@@ -531,7 +531,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -545,7 +545,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -559,7 +559,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -573,7 +573,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -587,7 +587,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <!-- <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a> -->
+
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -601,7 +603,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <!-- <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a> -->
+                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
             </div>
@@ -804,71 +807,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- END FOOTER -->
 
 
-
-
-
-
-
-    <!-- BEGIN fast view of a product -->
-    <div id="product-pop-up" style="display: none; width: 700px;">
-            <div class="product-page product-pop-up">
-              <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-3">
-                  <div class="product-main-image">
-                    <img src="assets/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
-                  </div>
-                  <div class="product-other-images">
-                    <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="assets/pages/img/products/model3.jpg"></a>
-                    <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model4.jpg"></a>
-                    <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model5.jpg"></a>
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-9">
-                  <h2>Cool green dress with red bell</h2>
-                  <div class="price-availability-block clearfix">
-                    <div class="price">
-                      <strong><span>$</span>47.00</strong>
-                      <em>$<span>62.00</span></em>
-                    </div>
-                    <div class="availability">
-                      Availability: <strong>In Stock</strong>
-                    </div>
-                  </div>
-                  <div class="description">
-                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat Nostrud duis molestie at dolore.</p>
-                  </div>
-                  <div class="product-page-options">
-                    <div class="pull-left">
-                      <label class="control-label">Size:</label>
-                      <select class="form-control input-sm">
-                        <option>L</option>
-                        <option>M</option>
-                        <option>XL</option>
-                      </select>
-                    </div>
-                    <div class="pull-left">
-                      <label class="control-label">Color:</label>
-                      <select class="form-control input-sm">
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>Black</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="product-page-cart">
-                    <div class="product-quantity">
-                        <input id="product-quantity" type="text" value="1" readonly name="product-quantity" class="form-control input-sm">
-                    </div>
-                    <button class="btn btn-primary" type="submit">Add to cart</button>
-                    <a href="{{route('item.index')}}" class="btn btn-default">More details</a>
-                  </div>
-                </div>
-
-                <div class="sticker sticker-sale"></div>
-              </div>
-            </div>
-    </div>
-    <!-- END fast view of a product -->
+    
+ 
 
 
 
@@ -893,23 +833,23 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- Load javascripts at bottom, this will reduce page load time -->
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.min.js"></script>  
+    <script src="{{url('/').'/assets/plugins/respond.min.js'}}"></script>  
     <![endif]-->
-    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
-    <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="{{url('/').'/assets/plugins/jquery.min.js'}}" type="text/javascript"></script>
+    <script src="{{url('/').'/assets/plugins/jquery-migrate.min.js'}}" type="text/javascript"></script>
+    <script src="{{url('/').'/assets/plugins/bootstrap/js/bootstrap.min.js'}}" type="text/javascript"></script>      
+    <script src="{{url('/').'/assets/corporate/scripts/back-to-top.js'}}" type="text/javascript"></script>
+    <script src="{{url('/').'/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js'}}" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
 
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-    <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
-    <script src='assets/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
-    <script src="assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
+    <script src="{{url('/').'/assets/plugins/fancybox/source/jquery.fancybox.pack.js'}}" type="text/javascript"></script><!-- pop up -->
+    <script src="{{url('/').'/assets/plugins/owl.carousel/owl.carousel.min.js'}}" type="text/javascript"></script><!-- slider for products -->
+    <script src="{{url('/').'/assets/plugins/zoom/jquery.zoom.min.js'}}" type="text/javascript"></script><!-- product zoom -->
+    <script src="{{url('/').'/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js'}}" type="text/javascript"></script><!-- Quantity -->
 
-    <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
-    <script src="assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+    <script src="{{url('/').'/assets/corporate/scripts/layout.js'}}" type="text/javascript"></script>
+    <script src="{{url('/').'/assets/pages/scripts/bs-carousel.js'}}" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
             Layout.init();    

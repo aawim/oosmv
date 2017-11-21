@@ -10,20 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('wellhome');
-});
-
-
-Route::resource('/item', 'ItemDetailController');
+Route::get('/', 'HomeController@index');
+// Route::get('/', function () {
+//      //return view('wellhome');
+//      //return "asasas";
+// });
 
 
 
-
+//  Route::get('/', 'HomeController@index');
+Route::resource('/item', 'ProductDetailController');
 Auth::routes();
-
-
 Route::prefix('manage')->group(function(){
     Route::get('/home', 'HomeController@dash')->name('index');
     Route::resource('/category', 'CategoryController');
@@ -31,6 +28,7 @@ Route::prefix('manage')->group(function(){
     Route::resource('/brand', 'BrandController');
     Route::resource('/product', 'ProductController');
     Route::resource('/store', 'StoreController');
+    Route::resource('/cart', 'CartController');
 });
 
 

@@ -11,7 +11,7 @@ use App\Store;
 use Toastr;
 class ProductController extends Controller
 {
-    private  $categories, $brands, $d;
+    private  $categories, $brands, $products;
     
     public function __construct()
     {

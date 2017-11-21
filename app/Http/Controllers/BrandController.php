@@ -7,6 +7,13 @@ use App\Brand;
 class BrandController extends Controller
 {
   
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
        $d =  Brand::all();  
