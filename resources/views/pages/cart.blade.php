@@ -66,23 +66,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 <!-- Body BEGIN -->
 <body class="ecommerce">
-    <!-- BEGIN STYLE CUSTOMIZER -->
-    <div class="color-panel hidden-sm">
-      <div class="color-mode-icons icon-color"></div>
-      <div class="color-mode-icons icon-color-close"></div>
-      <div class="color-mode">
-        <p>THEME COLOR</p>
-        <ul class="inline">
-          <li class="color-red current color-default" data-style="red"></li>
-          <li class="color-blue" data-style="blue"></li>
-          <li class="color-green" data-style="green"></li>
-          <li class="color-orange" data-style="orange"></li>
-          <li class="color-gray" data-style="gray"></li>
-          <li class="color-turquoise" data-style="turquoise"></li>
-        </ul>
-      </div>
-    </div>
-    <!-- END BEGIN STYLE CUSTOMIZER --> 
+ 
 
     <!-- BEGIN TOP BAR -->
     <div class="pre-header">
@@ -136,64 +120,22 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
         <!-- BEGIN CART -->
         <div class="top-cart-block">
+
+
           <div class="top-cart-info">
-            <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
+            <a href="javascript:void(0);" class="top-cart-info-count"> {{$products->count()}} items</a>
             <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
           </div>
+
+
           <i class="fa fa-shopping-cart"></i>
                         
           <div class="top-cart-content-wrapper">
             <div class="top-cart-content">
               <ul class="scroller" style="height: 250px;">
-                <li>
-                  <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/cart-img.jpg'}}" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/cart-img.jpg'}}" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/cart-img.jpg'}}" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/cart-img.jpg'}}" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/cart-img.jpg'}}" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/cart-img.jpg'}}" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
-                <li>
-                  <a href="shop-item.html"><img src="{{url('/').'/pages/img/cart-img.jpg'}}" alt="Rolex Classic Watch" width="37" height="34"></a>
-                  <span class="cart-content-count">x 1</span>
-                  <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                  <em>$1230</em>
-                  <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                </li>
+         
+         
+          
                 <li>
                   <a href="shop-item.html"><img src="{{url('/').'/pages/img/cart-img.jpg'}}" alt="Rolex Classic Watch" width="37" height="34"></a>
                   <span class="cart-content-count">x 1</span>
@@ -427,6 +369,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <th class="goods-page-price">Unit price</th>
                     <th class="goods-page-total" colspan="2">Total</th>
                   </tr>
+
+                  @foreach ($products as $count => $store)
+
+
                   <tr>
                     <td class="goods-page-image">
                       <a href="javascript:;"><img src="{{url('/').'/assets/pages/img/products/model3.jpg'}}" alt="Berry Lace Dress"></a>
@@ -440,9 +386,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       javc2133
                     </td>
                     <td class="goods-page-quantity">
-                      <div class="product-quantity">
-                          <input id="product-quantity" type="text" value="1" readonly class="form-control input-sm">
-                      </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" name="qty" id="qty"    value=" "> 
+</div>
                     </td>
                     <td class="goods-page-price">
                       <strong><span>$</span>47.00</strong>
@@ -454,33 +400,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       <a class="del-goods" href="javascript:;">&nbsp;</a>
                     </td>
                   </tr>
-                  <tr>
-                    <td class="goods-page-image">
-                      <a href="javascript:;"><img src="{{url('/').'/assets/pages/img/products/model4.jpg'}}" alt="Berry Lace Dress"></a>
-                    </td>
-                    <td class="goods-page-description">
-                      <h3><a href="javascript:;">Cool green dress with red bell</a></h3>
-                      <p><strong>Item 1</strong> - Color: Green; Size: S</p>
-                      <em>More info is here</em>
-                    </td>
-                    <td class="goods-page-ref-no">
-                      javc2133
-                    </td>
-                    <td class="goods-page-quantity">
-                      <div class="product-quantity">
-                          <input id="product-quantity2" type="text" value="1" readonly class="form-control input-sm">
-                      </div>
-                    </td>
-                    <td class="goods-page-price">
-                      <strong><span>$</span>47.00</strong>
-                    </td>
-                    <td class="goods-page-total">
-                      <strong><span>$</span>47.00</strong>
-                    </td>
-                    <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
-                    </td>
-                  </tr>
+
+
+                  @endforeach     
+         
+
+
+
                 </table>
                 </div>
 
@@ -494,6 +420,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       <em>Shipping cost</em>
                       <strong class="price"><span>$</span>3.00</strong>
                     </li>
+
+                    <li>
+                      <em>GST </em>
+                      <strong class="price"><span>$</span>3.00</strong>
+                    </li>
                     <li class="shopping-total-price">
                       <em>Total</em>
                       <strong class="price"><span>$</span>50.00</strong>
@@ -501,8 +432,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </ul>
                 </div>
               </div>
-              <button class="btn btn-default" type="submit">Continue shopping <i class="fa fa-shopping-cart"></i></button>
-              <button class="btn btn-primary" type="submit">Checkout <i class="fa fa-check"></i></button>
+              <!-- <button class="btn btn-default" type="submit">Continue shopping <i class="fa fa-shopping-cart"></i></button> -->
+
+
+
+              <a href="{{url('/')}}" class="btn btn-default" >Continue shopping </a>
+              <button class="btn btn-primary" type="submit">Send for verification <i class="fa fa-check"></i></button>
             </div>
           </div>
           <!-- END CONTENT -->

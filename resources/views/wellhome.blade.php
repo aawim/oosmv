@@ -270,7 +270,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   <h3><a href="shop-item.html">{{$product->name}}</a></h3>
                   <div class="pi-price">MVR {{$product->price}}</div>
                   <!-- <a href="{{route('cart.store')}}" class="btn btn-primary pull-right" >Add to cart</a> -->
-                  <input type="hidden" class="form-control" name="id" id="id"   value="{{$product->id}}">
+                  <input type="hidden" class="form-control" name="product_id" id="product_id"   value="{{$product->id}}">
                   <button type="submit" class="btn btn-primary pull-right">Add to cart</button>
 
                   <div class="sticker sticker-sale"></div>
@@ -278,6 +278,23 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 </form>
               </div>
 
+
+ 
+              @endforeach  
+              
+              
+            
+
+
+              
+            </div>
+          </div>
+          <!-- END SALE PRODUCT -->
+        </div>
+        <!-- END SALE PRODUCT & NEW ARRIVALS -->
+
+
+        @foreach ($products as $count => $product)
 
 
   <!-- BEGIN fast view of a product -->
@@ -327,9 +344,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </div>
                   </div>
                   <div class="product-page-cart">
-                    <div class="product-quantity">
-                        <input id="product-quantity" type="text" value="1" readonly name="product-quantity" class="form-control input-sm">
-                    </div>
+                  <div class="product-quantity">
+                  <input id="qty" name="qty" type="text" value="1" readonly class="form-control input-sm">
+              </div>
                     <!-- <button class="btn btn-primary" type="submit" onClick="{{route('store.create')}}">Add to cart</button> -->
                     <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
 
@@ -341,25 +358,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
               </div>
             </div>
     </div>
+
+
+     
     <!-- END fast view of a product -->
-              @endforeach  
-              
-              
-            
 
 
-              
-            </div>
-          </div>
-          <!-- END SALE PRODUCT -->
-        </div>
-        <!-- END SALE PRODUCT & NEW ARRIVALS -->
-
-
-
-
-
-
+    @endforeach  
 
 
 

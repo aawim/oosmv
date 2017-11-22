@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->products = Product::orderBy('name')->get();
+        $this->products = Product::where('is_active','1')->orderBy('name')->get();
     }
      public function index()
     {

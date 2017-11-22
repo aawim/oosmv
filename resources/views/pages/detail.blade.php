@@ -188,14 +188,23 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           </div>
           <!-- END SIDEBAR -->
 
+
+
+
+
+
+
           <!-- BEGIN CONTENT -->
           <div class="col-md-9 col-sm-7">
             <div class="product-page">
               <div class="row">
                 <div class="col-md-6 col-sm-6">
-                  <div class="product-main-image">
 
-                   
+            
+               <form class="form-horizontal" action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
+                      {{ csrf_field() }}
+                      <input type="hidden" class="form-control" name="product_id" id="product_id"   value="{{$product->id}}">
+                  <div class="product-main-image">
                     <img src="{{url('/').'/'.$product->image}}" alt="Cool green dress with red bell" class="img-responsive" data-BigImgsrc="{{url('/').'/'.$product->image}}">
                   </div>
                   <div class="product-other-images">
@@ -205,19 +214,18 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                  <h1>Cool green dress with red bell</h1>
+                  <h1>{{ $product->name}}</h1>
                   <div class="price-availability-block clearfix">
                     <div class="price">
-                      <strong><span>$</span>47.00</strong>
+                      <strong><span>$</span>{{ $product->price}}</strong>
                       <em>$<span>62.00</span></em>
                     </div>
                     <div class="availability">
-                      Availability: <strong>In Stock</strong>
+                        Availability: <strong>{{ $product->availability}}</strong>
                     </div>
                   </div>
                   <div class="description">
-                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat 
-Nostrud duis molestie at dolore.</p>
+                    <p>{{ $product->description}}</p>
                   </div>
                   <div class="product-page-options">
                     <div class="pull-left">
@@ -237,15 +245,28 @@ Nostrud duis molestie at dolore.</p>
                       </select>
                     </div>
                   </div>
+                   
                   <div class="product-page-cart">
-                    <div class="product-quantity">
-                        <input id="product-quantity" type="text" value="1" readonly class="form-control input-sm">
-                    </div>
-                    <!-- <button class="btn btn-primary"  type="submit">Add to cart</button> -->
-                    <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
+                   
+                        <!-- <input id="qty" name="qty"  type="text" value="1"   class="form-control input-sm"> -->
 
+                        <div class="col-sm-3">
+                        <input type="text" class="form-control" name="qty" id="qty"   required value="{{ old('qty') }}">
+</div>
                     
+                    
+                     <button class="btn btn-primary"  type="submit">Add to cart</button>
+                    <!-- <a href="{{route('cart.store')}}" class="btn btn-primary" >Add to cart</a> -->
                   </div>
+                  </form>
+
+
+              
+
+
+
+
+
                   <div class="review">
                     <input type="range" value="4" step="0.25" id="backing4">
                     <div class="rateit" data-rateit-backingfld="#backing4" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
@@ -351,6 +372,15 @@ Nostrud duis molestie at dolore.</p>
                   </div>
                 </div>
 
+
+
+
+
+
+
+
+
+
                 <div class="sticker sticker-sale"></div>
               </div>
             </div>
@@ -358,6 +388,28 @@ Nostrud duis molestie at dolore.</p>
           <!-- END CONTENT -->
         </div>
         <!-- END SIDEBAR & CONTENT -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- BEGIN SIMILAR PRODUCTS -->
         <div class="row margin-bottom-40">

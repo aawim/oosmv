@@ -19,6 +19,7 @@ class ProductController extends Controller
         $this->results = ["Document", "Electronic format" ];
         $this->brands = Brand::orderBy('name')->get();
         $this->categories = Category::orderBy('name')->get();
+        
         $this->products = Product::orderBy('name')->get();
        
     }

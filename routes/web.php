@@ -28,13 +28,14 @@ Route::prefix('manage')->group(function(){
     Route::resource('/brand', 'BrandController');
     Route::resource('/product', 'ProductController');
     Route::resource('/store', 'StoreController');
-    Route::resource('/cart', 'CartController');
+   
 });
 
 
 
 Route::prefix('client')->group(function(){
     Route::resource('/category', 'CategoryController');
+    Route::resource('/cart', 'CartController');
 });
 
 

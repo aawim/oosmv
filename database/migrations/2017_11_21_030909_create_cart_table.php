@@ -13,6 +13,7 @@ class CreateCartTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('product_id');
+            $table->integer('qty');
             $table->string('is_active');
             $table->rememberToken();
             $table->timestamps();

@@ -15,12 +15,16 @@ class CreateProductTable extends Migration
             $table->integer('scat_id');
             $table->string('brand_id');
             $table->string('size');
+            $table->string('formfactor');
+            $table->string('color');
             $table->double('price');
             $table->double('dprice');
             $table->string('image');
             $table->integer('qty');
-            $table->integer('store_id');
+            $table->integer('qty');
+            $table->text('description');
             $table->integer('is_active');
+            $table->string('availability');
             $table->timestamps();
         });
     }
