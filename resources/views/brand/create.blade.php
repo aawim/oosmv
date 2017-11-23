@@ -35,10 +35,20 @@
                       </div>
                       @endif
                   
+                      
+                      
+                      
+                      
                       <form class="form-horizontal" action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
+
+<select multiple="multiple" name="news[]" id="news" style="width: 250px;">
+  <option value="individual">individual</option>
+  <option value="business">business</option>
+
+</select>
               
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Brand Name</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                       <input type="text" class="form-control" name="name" id="name"   required value="{{ old('name') }}">
@@ -46,14 +56,14 @@
                     </div>
               
               
-              
+              -->
                     <div class="form-group">
                        
                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Icon</label>
                       <div class="col-xs-9">
                           <input type="file" class="form-control" id="icon" name="icon" required value="{{ old('icon') }}">
                       </div>
-                  </div>
+                  </div> 
               
               
               
@@ -79,6 +89,13 @@
               
               
                   </form>
+
+
+
+
+
+
+
                 </div>
                 </div>
              
