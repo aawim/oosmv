@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Cart;
+use Auth;
 class ProductDetailController extends Controller
 {
     
@@ -12,11 +14,7 @@ class ProductDetailController extends Controller
         return view('pages.detail');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function create()
     {
         
@@ -31,11 +29,9 @@ class ProductDetailController extends Controller
     
     public function show($id)
     {
-                       
-        
-
-        $product = Product::findOrFail($id);
-        return view('pages.detail',['product'=>$product]);
+ 
+        $product =Product::find($id);
+        return view('pages.detail',['product'=>$product ]);
     }
 
     

@@ -13,20 +13,16 @@ class CartController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->cartitems = Cart::orderBy('product_id')->get();
-         
+        $this->products = Product::orderBy('name')->get();
     }
 
     public function index()
     {
-         $storeid = Store::where('user_id', Auth::user()->id)->where('is_active',1)->first();
-         if($storeid == null){
-            return "Nothing found";
-         }else{
-            $products = Product::where('store_id', $storeid->id)->where('is_active',1)->first();
-         }
-         return view('pages.cart',['products'=>$products]);
+     $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
+     return view('pages.cart',['cartitems' => $cartitems ] );
     }
+
+
 
     public function create()
     {
@@ -43,9 +39,20 @@ class CartController extends Controller
 
         $d = new Cart();
         $d->user_id = Auth::user()->id;
+        $d->store_id = $request->store_id;
         $d->product_id = $request->product_id;
+       
+       
+       if($request->qty== null){
+        $d->qty = 1;
+       }else{
         $d->qty = $request->qty;
-        $d->is_active = 0;
+       }
+        
+       
+       
+       
+        $d->is_active = 1;
         $d->save();
 
         //return view('pages.cart');
@@ -74,6 +81,8 @@ class CartController extends Controller
   
     public function destroy($id)
     {
-        //
+        $d = Cart::findOrFail($id);
+        $d->delete();
+        return redirect()->route('cart.index');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Cart;
+use Auth;
 class HomeController extends Controller
 {
  
@@ -11,12 +13,17 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->products = Product::where('is_active','1')->orderBy('name')->get();
+        //$this->middleware('auth');
+       // $this->products = Product::where('is_active','1')->orderBy('name')->get();
+     
+         
     }
      public function index()
     {
-           return view('wellhome',['products' => $this->products ]);
+        //$products = Product::where('user_id',Auth::user()->id)->orderBy('product_id')->where('is_active',1)->get();
+          
+        $products = Product::where('is_active','1')->orderBy('name')->get();
+        return view('wellhome',['products' => $products ]);
          // return "Home";
     }
 

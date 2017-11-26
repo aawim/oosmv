@@ -123,7 +123,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 
           <div class="top-cart-info">
-            <a href="javascript:void(0);" class="top-cart-info-count"> {{$products->count()}} items</a>
+            <a href="javascript:void(0);" class="top-cart-info-count"> </a>
             <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
           </div>
 
@@ -370,16 +370,27 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <th class="goods-page-total" colspan="2">Total</th>
                   </tr>
 
-                  @foreach ($products as $count => $store)
 
 
+
+
+                  
+                  @foreach ($cartitems as $count => $cart_item)
                   <tr>
                     <td class="goods-page-image">
-                      <a href="javascript:;"><img src="{{url('/').'/assets/pages/img/products/model3.jpg'}}" alt="Berry Lace Dress"></a>
+                      <a href="javascript:;"><img src="{{url('/').'/'.$cart_item->product()->first()->image}}" alt="Berry Lace Dress"></a>
                     </td>
                     <td class="goods-page-description">
                       <h3><a href="javascript:;">Cool green dress with red bell</a></h3>
-                      <p><strong>Item 1</strong> - Color: Green; Size: S</p>
+                      <p><strong>Item {{$count+1}}</strong> - <strong>Color:</strong> 
+                      
+                      @if($cart_item->product()->first()->color === null)
+                      {{"N/A"}}
+                      @else
+                      {{$cart_item->product()->first()->color}}
+                      @endif
+                      
+                      <strong> Size:</strong> {{$cart_item->product()->first()->size}}</p>
                       <em>More info is here</em>
                     </td>
                     <td class="goods-page-ref-no">
@@ -387,19 +398,63 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </td>
                     <td class="goods-page-quantity">
                     <div class="col-sm-3">
-                    <input type="text" class="form-control" name="qty" id="qty"    value=" "> 
+                     {{$cart_item->qty}}
 </div>
                     </td>
                     <td class="goods-page-price">
-                      <strong><span>$</span>47.00</strong>
+                      <strong><span>$</span>{{$cart_item->product()->first()->price}}</strong>
                     </td>
                     <td class="goods-page-total">
-                      <strong><span>$</span>47.00</strong>
+                      <strong><span>$</span>{{$subtot = $cart_item->product()->first()->price * $cart_item->qty}}</strong>
                     </td>
                     <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
+                      <!-- <a class="del-goods" href="javascript:;">&nbsp;</a> -->
+
+
+                      <a href="#" class="del-goods" data-toggle="modal" data-target="#deleteModal{{$count}}"
+                                data-delete-id="{{$cart_item->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">&nbsp;</a>
+
+
+                      
                     </td>
                   </tr>
+
+                 
+<!-- Modal -->
+<div id="deleteModal{{$count}}" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+
+    <form class="form-horizontal" action="{{route('cart.destroy',$cart_item->id)}} " method="POST">
+
+    {{method_field('DELETE')}}  {!! csrf_field() !!} 
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+        <h4 class="modal-title">Delete</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to permanently delete this item ?</p>
+        <input type="text" id="delete-id" name="id" value="0" hidden />
+      </div>
+      <div class="modal-footer">
+        <span id="delete-dialog-link">
+          <button type="submit"  class="btn btn-danger">Confirm</button>
+        </span>
+        
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+</div>
+
 
 
                   @endforeach     
@@ -427,7 +482,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </li>
                     <li class="shopping-total-price">
                       <em>Total</em>
-                      <strong class="price"><span>$</span>50.00</strong>
+                      <strong class="price"><span>$</span>
+                      
+                   jlkjl
+                      </strong>
                     </li>
                   </ul>
                 </div>

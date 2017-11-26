@@ -214,18 +214,18 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                  <h1>{{ $product->name}}</h1>
+                  <h1>  </h1>
                   <div class="price-availability-block clearfix">
                     <div class="price">
-                      <strong><span>$</span>{{ $product->price}}</strong>
+                      <strong><span>$</span> {{ $product->price }} </strong>
                       <em>$<span>62.00</span></em>
                     </div>
                     <div class="availability">
-                        Availability: <strong>{{ $product->availability}}</strong>
+                        Availability: <strong> </strong>
                     </div>
                   </div>
                   <div class="description">
-                    <p>{{ $product->description}}</p>
+                    <p> </p>
                   </div>
                   <div class="product-page-options">
                     <div class="pull-left">

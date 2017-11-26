@@ -2,7 +2,11 @@
         @auth
         <div class="top-cart-block">
           <div class="top-cart-info">
-            <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
+            <a href="{{route('cart.index')}}" class="top-cart-info-count">
+        
+            {{Auth::user()->cart_items()->get()->count()}}
+
+          </a>
             <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
           </div>
           <i class="fa fa-shopping-cart"></i>

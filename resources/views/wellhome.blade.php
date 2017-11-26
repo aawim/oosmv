@@ -255,6 +255,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             
             <div class="owl-carousel owl-carousel5">
             
+
+
+
+
             @foreach ($products as $count => $product)
               <div>
               <form class="form-horizontal" action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
@@ -270,6 +274,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   <h3><a href="shop-item.html">{{$product->name}}</a></h3>
                   <div class="pi-price">MVR {{$product->price}}</div>
                   <!-- <a href="{{route('cart.store')}}" class="btn btn-primary pull-right" >Add to cart</a> -->
+                  <input type="hidden" class="form-control" name="store_id" id="store_id"   value="{{$product->store_id}}">
                   <input type="hidden" class="form-control" name="product_id" id="product_id"   value="{{$product->id}}">
                   <button type="submit" class="btn btn-primary pull-right">Add to cart</button>
 
