@@ -72,6 +72,7 @@
                         <tr>
                           <th>#</th>
                           <th>Name</th>
+                          <th>Products</th>
                           <th>Logo</th>
                           <th>Type</th>
                           <th>Location</th>
@@ -97,6 +98,7 @@
                                             <tr>
                                                 <th>{{$count+1}} </th>
                                                 <td>{{$store->name}} </td>
+                                                <td>{{$store->products->count() }} </td>
 
                                                 <td>
                                                     

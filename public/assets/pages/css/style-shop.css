@@ -364,6 +364,13 @@ Header and header elements
 	left: auto;
 	right: 0;
 }
+
+.sticker-out {
+	background: url(../../pages/img/outofstock.png) no-repeat;
+ 
+}
+
+
 .pi-img-wrapper {
 	position: relative;
 }

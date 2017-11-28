@@ -276,9 +276,23 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   <!-- <a href="{{route('cart.store')}}" class="btn btn-primary pull-right" >Add to cart</a> -->
                   <input type="hidden" class="form-control" name="store_id" id="store_id"   value="{{$product->store_id}}">
                   <input type="hidden" class="form-control" name="product_id" id="product_id"   value="{{$product->id}}">
-                  <button type="submit" class="btn btn-primary pull-right">Add to cart</button>
+                  @if ($product->availability === 0)
+                     <button class="btn btn-primary pull-right" disabled  type="submit">Add to cart</button>
+                     <div class="sticker sticker-out"></div>
 
-                  <div class="sticker sticker-sale"></div>
+@else
+
+<button class="btn btn-primary pull-right"   type="submit">Add to cart</button>
+<div class="sticker sticker-new"></div>
+@endif
+
+
+                 
+
+
+
+
+
                 </div>
                 </form>
               </div>
@@ -324,8 +338,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       <em>$<span>62.00</span></em>
                     </div>
                     <div class="availability">
-                      Availability: <strong>In Stock</strong>
-                    </div>
+                    Availability: <strong> @if ($product->availability === 0)
+                                              Out of stock 
+                                          @else
+                                          In Stock
+                                          @endif
+                                       
+                                          
+                                          </strong>
+                </div>
                   </div>
                   <div class="description">
                     <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat Nostrud duis molestie at dolore.</p>
@@ -353,7 +374,31 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   <input id="qty" name="qty" type="text" value="1" readonly class="form-control input-sm">
               </div>
                     <!-- <button class="btn btn-primary" type="submit" onClick="{{route('store.create')}}">Add to cart</button> -->
-                    <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
+                  
+                  
+                    @if ($product->availability === 0)
+                    <a href="{{route('cart.index')}}" disabled class="btn btn-primary" >Add to cart</a>
+                    
+
+                      @else
+
+                        <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
+
+                      @endif
+                                        
+                  
+                  
+                  
+                  
+                    
+
+
+
+
+
+
+
+
 
                     <a href="{{route('item.show', $product->id)}}" class="btn btn-default">More details</a>
                   </div>

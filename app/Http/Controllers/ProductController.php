@@ -80,6 +80,7 @@ class ProductController extends Controller
         $d->price =$request->price;
         $d->dprice =$request->dprice;
         $d->qty = $request->qty;
+        $d->availability = 0;
         $d->store()->associate(Store::where('user_id', '=', Auth::user()->id)->first());
         //$d->store_id = Store::where('user_id', '=', Auth::user()->id)->get();
         
@@ -170,7 +171,7 @@ class ProductController extends Controller
         $d->qty = $request->qty;
         $d->store_id = $d->store_id;
         $d->is_active = $request->is_active;
- 
+        $d->availability = $request->availability;
 
         if ($request->hasFile('image_file')) {
             

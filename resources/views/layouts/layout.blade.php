@@ -95,7 +95,12 @@
                     </ul>
                   </li>
 
-
+                  <li><a><i class="fa fa-edit"></i> Views <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{route('store.index')}}">Stores</a></li>
+                       
+                    </ul>
+                  </li>
 
 
 

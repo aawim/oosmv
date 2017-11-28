@@ -221,7 +221,14 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       <em>$<span>62.00</span></em>
                     </div>
                     <div class="availability">
-                        Availability: <strong> </strong>
+                        Availability: <strong> @if ($product->availability === 0)
+                                                  Out of stock 
+                                              @else
+                                              In Stock
+                                              @endif
+                                           
+                                              
+                                              </strong>
                     </div>
                   </div>
                   <div class="description">
@@ -251,11 +258,28 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         <!-- <input id="qty" name="qty"  type="text" value="1"   class="form-control input-sm"> -->
 
                         <div class="col-sm-3">
+
+                        @if ($product->availability === 0)
+
+                        <input type="text" class="form-control" name="qty" id="qty"   disabled value="{{ old('qty') }}">
+                        @else
                         <input type="text" class="form-control" name="qty" id="qty"   required value="{{ old('qty') }}">
-</div>
+                        @endif
+
+                        </div>
                     
-                    
-                     <button class="btn btn-primary"  type="submit">Add to cart</button>
+@if ($product->availability === 0)
+                     <button class="btn btn-primary" disabled  type="submit">Add to cart</button>
+                     
+
+@else
+
+<button class="btn btn-primary"   type="submit">Add to cart</button>
+
+@endif
+
+
+
                     <!-- <a href="{{route('cart.store')}}" class="btn btn-primary" >Add to cart</a> -->
                   </div>
                   </form>
@@ -374,14 +398,20 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 
 
+                    
+                @if ($product->availability === 0)
+           
+                <div class="sticker sticker-out"></div>
+@else
+<div class="sticker sticker-new"></div>
+ 
+
+@endif
+               
+              
 
 
-
-
-
-
-
-                <div class="sticker sticker-sale"></div>
+                
               </div>
             </div>
           </div>
