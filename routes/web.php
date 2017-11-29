@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index');
 //      //return view('wellhome');
 //      //return "asasas";
 // });
-
+Route::get('wellhome','SearchController@liveSearch');   
 
 
 //  Route::get('/', 'HomeController@index');

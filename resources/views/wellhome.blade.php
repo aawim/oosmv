@@ -121,19 +121,62 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <!-- END NAVIGATION -->
       </div>
 
-
+<!-- 
       <div class="container">
               <div class="search-box margin-bottom-35">
                 <form action="#">
                   <div class="input-group">
-                    <input type="text" placeholder="Search" class="form-control">
+                    <input type="text" autocomplete="off" id="search" placeholder="Search" class="form-control">
                     <span class="input-group-btn">
                       <button class="btn btn-primary" type="submit">Search</button>
                     </span>
                   </div>
                 </form>
               </div> 
-    </div>
+    </div> -->
+
+
+
+
+
+
+<!-- search box container starts  -->
+<div class="container">
+<div class="search">
+        
+        <p>&nbsp;</p>
+        <div class="row">
+            <div class="col-lg-12 ">
+                <div class="input-group">
+                    <span class="input-group-addon" style="color: white; background-color: rgb(124,77,255);">PRODUCT SEARCH</span>
+                    <input type="text" autocomplete="off" id="search" class="form-control input-lg" placeholder="Enter Blog Product Name Here">
+               </div>
+                <div id="txtHint" class="title-color" style="padding-top:10px;  text-align:center; width:100%; z-index: 2; position:absolute; background-color:white; " ></div>
+            </div>
+        </div>   
+    </div>  
+<!-- search box container ends  -->
+
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
     </div>
     <!-- Header END -->
 
@@ -153,7 +196,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             </ol>
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner" role="listbox"  >
                 <!-- First slide -->
                 <div class="item carousel-item-four active">
                     <div class="container">
@@ -862,27 +905,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- END FOOTER -->
 
 
-    
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <!-- Load javascripts at bottom, this will reduce page load time -->
@@ -914,6 +936,33 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             Layout.initTwitter();
         });
     </script>
+
+
+
+
+<script>
+$(document).ready(function(){
+   $("#search").keyup(function(){
+       var str=  $("#search").val();
+       if(str == "") {
+               $( "#txtHint" ).html("<b></b>"); 
+       }else {
+               $.get( "{{ url('wellhome?id=') }}"+str, function( data ) {
+                   $( "#txtHint" ).html( data );  
+            });
+       }
+   });  
+}); 
+</script>
+
+
+
+
+
+
+
+
+
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
