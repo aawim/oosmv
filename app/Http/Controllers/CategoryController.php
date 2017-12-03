@@ -50,6 +50,7 @@ class CategoryController extends Controller
             $request->file('icon')->move(public_path('imagesx'), $imgName);
             $product  = 'imagesx/'.$imgName;
             $d->icon = $product;
+            $id->is_active = 0;
     
             }else{
                 $current_image = $d->icon;
@@ -108,24 +109,6 @@ class CategoryController extends Controller
         $d->save();
         return redirect()->route('category.index');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
    
     public function destroy($id)

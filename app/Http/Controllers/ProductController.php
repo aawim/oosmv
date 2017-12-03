@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Brand;
 use App\Category;
+use App\Subcategory;
 use App\Product;
 use Auth;
 use App\Store;
@@ -19,7 +20,8 @@ class ProductController extends Controller
         $this->results = ["Document", "Electronic format" ];
         $this->brands = Brand::orderBy('name')->get();
         $this->categories = Category::orderBy('name')->get();
-              $this->products = Product::orderBy('name')->get();
+        $this->scategories = Subcategory::orderBy('name')->get();
+        $this->products = Product::orderBy('name')->get();
        
     }
 
@@ -29,37 +31,19 @@ class ProductController extends Controller
         [   'products' => $this->products ] );
     }
 
-    public function create()
+    public function create($cat_id = null)
     {
-
-
+        $scategories = Subcategory::where('cat_id', '=', 2)->get();
+ 
         return view('product.create', 
         [   'results' => $this->results,
             'brands' => $this->brands,
-            'categories' => $this->categories
-            
+            'categories' => $this->categories,
+            'scategories' => $scategories,
+             
             ] );
-         
+        
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function store(Request $request)
     {
@@ -80,6 +64,10 @@ class ProductController extends Controller
         $d->dprice =$request->dprice;
         $d->qty = $request->qty;
         $d->availability = 0;
+        $d->formfactor = 0;
+        $d->color = 'None';
+        $d->description = 'None';
+
         $d->store()->associate(Store::where('user_id', '=', Auth::user()->id)->first());
         //$d->store_id = Store::where('user_id', '=', Auth::user()->id)->get();
         

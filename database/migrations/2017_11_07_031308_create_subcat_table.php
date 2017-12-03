@@ -13,13 +13,14 @@ class CreateSubcatTable extends Migration
      */
     public function up()
     {
-        Schema::create('subcat', function (Blueprint $table) {
+        Schema::create('Subcategories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cat_id');
+            $table->integer('cat_id')->unsigned();
             $table->string('name')->unique();
             $table->string('is_active');
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('cat_id')->references('id')->on('categories');
            
         });
     }
@@ -31,6 +32,6 @@ class CreateSubcatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subcat');
+        Schema::dropIfExists('Subcategories');
     }
 }

@@ -32,6 +32,13 @@
 
   <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
   <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+
+  
   </head>
 
   <body class="nav-md">
@@ -402,12 +409,91 @@
     <script src="{{ url('/').'/vendors/bootstrap-daterangepicker/daterangepicker.js'}}"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="{{ url('/').'/build/js/custom.min.js'}}"></script>>
+    <script src="{{ url('/').'/build/js/custom.min.js'}}"></script>
    
    
    
     @else
                 <script>window.location.href = "http://127.0.0.1:8000";</script>
                 @endif
+
+
+
+
+
+<!-- <script>
+$( "sweets" )
+  .change(function () {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).text() + " ";
+    });
+    $( "div" ).text( str );
+  })
+  .change();
+</script>
+
+
+ -->
+
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+ <script type="text/javascript">
+
+// $('#cat').on('change', function(e){
+//   console.log(e);
+//   var id = e.target.value;
+
+// $.get('scat?id=' + id, function(data){
+//   $('#scat').empty();
+// $.each(data, function(wellhome, subcatObj){
+//   $('#scat').append('<option value="'+subcatObj.id+'">'+subcatObj.name+'</option>');
+
+// });
+
+// });
+
+
+// });
+
+$(document).ready(function(){
+  $(document).on('change','#cate', function(){
+// console.log("Change");
+
+var cat_id=$(this).val();
+// console.log(cat_id);
+
+$.ajax({
+  type:'get',
+  url:'{||URL::to(findCatgeoryName||}',
+  data:{'id':cat_id},
+  success:function(data){
+    console.log('success');
+    console.log(data);
+  },
+  error:function(){
+
+
+  }
+});
+
+  });
+});
+
+
+
+
+ </script>
+
+
+
+
+
+
+
+
+
+
+
+
   </body>
 </html>

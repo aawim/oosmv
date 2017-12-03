@@ -55,29 +55,49 @@
         <option value="" selected required > Select  </option>
         @foreach($categories as $category)
         <option
-     
-
-
-
-        <option value="{{$category->id}}" >{{$category->name}}</option>
-
-
-
+         <option value="{{$category->id}}" >{{$category->name}}</option>
     @endforeach
     </select>
                   </div>
                     </div>
+
+
+
+
+
                     <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Sub Category</label>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                    <select class="form-control" id="scat" name="scat" required>
-                    <option value="" selected required > Select  </option>
-                    <option value="1" selected required > SC One  </option>
-                    <option value="2" selected required > SC Two  </option>
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Sub Category</label>
+                      <div class="col-md-9 col-sm-9 col-xs-12">
+                      
+                      <select class="form-control" id="scat" name="scat" required>
+        <option value="" selected required > Select  </option>
+        @foreach($scategories as $scategory)
+        <option
+         <option value="{{$scategory->id}}" >{{$scategory->name}}</option>
+    @endforeach
     </select>
-                      </div>
+                  </div>
                     </div>
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

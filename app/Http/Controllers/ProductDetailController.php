@@ -30,7 +30,7 @@ class ProductDetailController extends Controller
     public function show($id)
     {
  
-        $product =Product::find($id);
+        $product = Product::find($id);
         return view('pages.detail',['product'=>$product ]);
     }
 
