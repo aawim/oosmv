@@ -26,7 +26,7 @@ Route::get('/', 'HomeController@index');
 
 Route::get('wellhome','SearchController@liveSearch');   
 Route::get('scat','ProductController@getscat'); 
-
+Route::get('findSubCat', 'ProductController@findSubCatgeoryName');
 //  Route::get('/', 'HomeController@index');
 Route::resource('/item', 'ProductDetailController');
 Auth::routes();
@@ -38,7 +38,7 @@ Route::prefix('manage')->group(function(){
     Route::resource('/product', 'ProductController');
     Route::resource('/store', 'StoreController');
     
-    Route::get('/product/create/{cat_id?}', 'ProductController@create');
+    
 
     
    

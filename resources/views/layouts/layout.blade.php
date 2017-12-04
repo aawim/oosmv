@@ -436,7 +436,7 @@ $( "sweets" )
 
  -->
 
- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+ 
  <script type="text/javascript">
 
 // $('#cat').on('change', function(e){
@@ -456,23 +456,47 @@ $( "sweets" )
 // });
 
 $(document).ready(function(){
-  $(document).on('change','#cate', function(){
-// console.log("Change");
-
-var cat_id=$(this).val();
-// console.log(cat_id);
-
+  $(document).on('change','.cat', function(){
+ //console.log("Change");
+ var cat_id=$(this).val();
+ //console.log(cat_id);
+ //var div=$(this).parent();
+var op=" ";
 $.ajax({
   type:'get',
-  url:'{||URL::to(findCatgeoryName||}',
+  url:'{!!URL::to('findSubCat')!!}',
   data:{'id':cat_id},
+  
   success:function(data){
-    console.log('success');
-    console.log(data);
+     // console.log(data);
+    // console.log(data.length);
+   
+
+$('#scat').html(" ");
+op+='<option value="0" selected disabled> choose a category</option>';
+for(var i=0;i<data.length;i++){
+ // op+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
+ 
+  $("#scat").append( // Append an object to the inside of the select box
+            $("<option></option>") // Yes you can do this.
+                .text(data[i].name)
+                .val(data[i].id)
+        );
+
+
+  }
+
+
+
+
+  div.find('#scat').html(" ");
+div.find('#scat').append(op);
+
   },
   error:function(){
 
-
+    console.log('Error');
+ 
   }
 });
 

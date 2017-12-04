@@ -41,17 +41,17 @@
                     <div class="form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Product Name</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
-                      <input type="text" class="form-control" name="name" id="name"   required value="{{ old('name') }}">
+                      <input type="text" class="form-control " name="name" id="name"   required value="{{ old('name') }}">
                       </div>
                     </div>
               
 
-
+ 
                     <div class="form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                       
-                      <select class="form-control" id="cate" name="cate" required>
+                      <select class="form-control cat" id="cat" name="cat" required>
         <option value="" selected required > Select  </option>
         @foreach($categories as $category)
         <option
@@ -65,16 +65,13 @@
 
 
 
-                    <div class="form-group">
+                    <div class="form-group scat">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Sub Category</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                       
-                      <select class="form-control" id="scat" name="scat" required>
-        <option value="" selected required > Select  </option>
-        @foreach($scategories as $scategory)
-        <option
-         <option value="{{$scategory->id}}" >{{$scategory->name}}</option>
-    @endforeach
+                      <select class="form-control scat" id="scat" name="scat" required>
+                        <option value="" selected required > Select  </option>
+     
     </select>
                   </div>
                     </div>
@@ -82,7 +79,7 @@
 
 
 
-
+ 
 
 
 

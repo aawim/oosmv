@@ -31,17 +31,31 @@ class ProductController extends Controller
         [   'products' => $this->products ] );
     }
 
+
+
+
+    public function findSubCatgeoryName(Request $request){
+        $data = Subcategory::where('cat_id', $request->id)->get();
+        return response()->json($data);
+       
+    }
+
+
+
+
+
+
+
     public function create($cat_id = null)
     {
-        $scategories = Subcategory::where('cat_id', '=', 2)->get();
+        $scategories = Subcategory::where('cat_id', '=', $cat_id)->get();
  
         return view('product.create', 
         [   'results' => $this->results,
             'brands' => $this->brands,
             'categories' => $this->categories,
             'scategories' => $scategories,
-             
-            ] );
+        ]);
         
     }
 
