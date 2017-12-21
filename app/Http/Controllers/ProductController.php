@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Brand;
 use App\Category;
@@ -13,29 +11,38 @@ use Toastr;
 class ProductController extends Controller
 {
     private  $categories, $brands, $products;
-    
     public function __construct()
     {
         $this->middleware('auth');
         $this->results = ["Document", "Electronic format" ];
         $this->brands = Brand::orderBy('name')->get();
-        $this->categories = Category::orderBy('name')->get();
-        $this->scategories = Subcategory::orderBy('name')->get();
+        $this->categories = Category::where('is_active', 1)->orderBy('name')->get();
+        $this->scategories = Subcategory::where('is_active', 1)->orderBy('name')->get();
         $this->products = Product::orderBy('name')->get();
        
     }
 
     public function index()
     {
+                
         return view('product.index', 
-        [   'products' => $this->products ] );
+        [   'products' => $this->products] );
+    }
+
+
+
+    public function search()
+    {
+      return view('product.search');
     }
 
 
 
 
+
+    
     public function findSubCatgeoryName(Request $request){
-        $data = Subcategory::where('cat_id', $request->id)->get();
+        $data = Subcategory::where('cat_id', $request->id)->where('is_active', 1)->get();
         return response()->json($data);
        
     }
@@ -43,9 +50,7 @@ class ProductController extends Controller
 
 
 
-
-
-
+    
     public function create($cat_id = null)
     {
         $scategories = Subcategory::where('cat_id', '=', $cat_id)->get();
@@ -64,13 +69,13 @@ class ProductController extends Controller
         $this->validate($request,[
             'name'=>'required|max:255 ',
             'icon' => 'image|mimes:png,jpg,jpeg',
-            'cate'=>'required',
+            'cat'=>'required',
             'scat'=>'required',
             ]);
 
         $d = new Product();
         $d->name = $request->name;
-        $d->cat_id = $request->cate;
+        $d->cat_id = $request->cat;
         $d->scat_id =$request->scat;
         $d->brand_id =$request->brand;
         $d->size =$request->size;
@@ -84,8 +89,7 @@ class ProductController extends Controller
 
         $d->store()->associate(Store::where('user_id', '=', Auth::user()->id)->first());
         //$d->store_id = Store::where('user_id', '=', Auth::user()->id)->get();
-        
-         $d->is_active = 0;
+        $d->is_active = 0;
  
         if ($request->hasFile('icon')) {
             $imgName = $request->file('icon')->getClientOriginalName();
@@ -107,37 +111,6 @@ class ProductController extends Controller
         }
       
     }
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     

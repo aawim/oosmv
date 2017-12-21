@@ -96,7 +96,7 @@
             </li>
             <li><a href="shop-item.html">Kids</a></li>
             <li class="dropdown dropdown100 nav-catalogue">
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;" style="color:red">
                 New
                 
               </a>
@@ -176,28 +176,28 @@
                 <li><a href="shop-terms-conditions-page.html">Terms &amp; Conditions</a></li>
               </ul>
             </li>
-            
-            
-            <li><a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes&amp;utm_source=download&amp;utm_medium=banner&amp;utm_campaign=metronic_frontend_freebie" target="_blank">Admin theme</a></li>
+       
+       <li>
 
-            <!-- BEGIN TOP SEARCH -->
-            <!-- <li class="menu-search">
-              <span class="sep"></span>
-              <i class="fa fa-search search-btn"></i>
-              <div class="search-box">
-                <form action="#">
-                  <div class="input-group">
-                    <input type="text" placeholder="Search" class="form-control">
-                    <span class="input-group-btn">
-                      <button class="btn btn-primary" type="submit">Search</button>
-                    </span>
-                  </div>
-                </form>
-              </div> 
-            </li> -->
-            <!-- END TOP SEARCH -->
 
 
             
+            
+            
+            
+
+             
+
+
+            <li>
+            <a href="{{url('find')}}" style="color:green; font-style:bold;">
+            PRODUCT SEARCH</a>
+
+
+            
+            </li>
           </ul>
         </div>
+    
+
+     

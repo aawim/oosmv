@@ -113,7 +113,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
        
         <!-- BEGIN CART -->
-        @include('includes.cart')
+
+       @if (Auth::check())  
+       @include('includes.cart')
+       @endif
+       
           <!--END CART -->
     
         <!-- BEGIN NAVIGATION -->
@@ -121,61 +125,29 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <!-- END NAVIGATION -->
       </div>
 
-<!-- 
-      <div class="container">
-              <div class="search-box margin-bottom-35">
-                <form action="#">
-                  <div class="input-group">
-                    <input type="text" autocomplete="off" id="search" placeholder="Search" class="form-control">
-                    <span class="input-group-btn">
-                      <button class="btn btn-primary" type="submit">Search</button>
-                    </span>
-                  </div>
-                </form>
-              </div> 
-    </div> -->
 
 
 
-
-
+<div class="container">
 
 <!-- search box container starts  -->
-<div class="container">
-<div class="search">
-        
+<!-- <div class="search">
         <p>&nbsp;</p>
         <div class="row">
             <div class="col-lg-12 ">
                 <div class="input-group">
-                    <span class="input-group-addon" style="color: white; background-color: rgb(124,77,255);">PRODUCT SEARCH</span>
+                    <span class="input-group-addon"   style="color: white; background-color: rgb(124,77,255);">PRODUCT SEARCH</span>
                     <input type="text" autocomplete="off" id="search" class="form-control input-lg" placeholder="Enter Blog Product Name Here">
                </div>
-                <div id="txtHint" class="title-color" style="padding-top:10px;  text-align:center; width:100%; z-index: 2; position:absolute; background-color:white; " ></div>
+               <div class="container">
+                <div id="txtHint" class="title-color" style="padding-top:9px;    text-align:center; width:97%; z-index: 2; padding-left:-205;  background-color:none; " ></div>
+            </div>
+            
             </div>
         </div>   
     </div>  
+</div>  -->
 <!-- search box container ends  -->
-
-</div> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
 
     </div>
     <!-- Header END -->
@@ -308,7 +280,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       {{ csrf_field() }}
                 <div class="product-item">
                   <div class="pi-img-wrapper">
-                    <img src="{{url('/').'/'.$product->image}}" class="img-responsive" alt="{{$product->name}}" >
+                    <img src="{{url('/').'/'.$product->image}}" style="height:200px;" class="img-responsive" class="img-responsive" alt="{{$product->name}}" >
                     <div>
                       <a href="{{url('/').'/'.$product->image}}" class="btn btn-default fancybox-button">Zoom</a>
                       <a href="#product-pop-up{{$count}}" class="btn btn-default fancybox-fast-view">View</a>
@@ -322,12 +294,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   @if ($product->availability === 0)
                      <button class="btn btn-primary pull-right" disabled  type="submit">Add to cart</button>
                      <div class="sticker sticker-out"></div>
+                  @else
 
-@else
-
-<button class="btn btn-primary pull-right"   type="submit">Add to cart</button>
-<div class="sticker sticker-new"></div>
-@endif
+                <button class="btn btn-primary pull-right"   type="submit">Add to cart</button>
+                <div class="sticker sticker-new"></div>
+              @endif
 
 
                  
@@ -357,108 +328,98 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 
         @foreach ($products as $count => $product)
-
-
-  <!-- BEGIN fast view of a product -->
-  <div id="product-pop-up{{$count}}" style="display: none; width: 700px;">
-            <div class="product-page product-pop-up">
-              <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-3">
-                  <div class="product-main-image">
-                    <img src="{{url('/').'/'.$product->image}}" alt="Cool green dress with red bell" class="img-responsive">
-                  </div>
-                  <div class="product-other-images">
-                    <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="assets/pages/img/products/model3.jpg"></a>
-                    <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model4.jpg"></a>
-                    <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model5.jpg"></a>
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-9">
-                  <h2>Cool green dress with red bell </h2>
-                  <div class="price-availability-block clearfix">
-                    <div class="price">
-                      <strong><span>$</span>{{$product->price}}</strong>
-                      <em>$<span>62.00</span></em>
+      
+        
+        <!-- BEGIN fast view of a product -->
+        <div id="product-pop-up{{$count}}" style="display: none; width: 700px;">
+      
+      
+        <form class="form-horizontal" action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                  <div class="product-page product-pop-up">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 col-xs-3">
+                        <div class="product-main-image">
+                          <img src="{{url('/').'/'.$product->image}}"  alt="Cool green dress with red bell" class="img-responsive">
+                        </div>
+                        <div class="product-other-images">
+                          <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="assets/pages/img/products/model3.jpg"></a>
+                          <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model4.jpg"></a>
+                          <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model5.jpg"></a>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-9">
+                        <h2>Cool green dress with red bell </h2>
+                        <div class="price-availability-block clearfix">
+                          <div class="price">
+                            <strong><span>$</span>{{$product->price}}</strong>
+                            <em>$<span>62.00</span></em>
+                          </div>
+                          <div class="availability">
+                          Availability: <strong> @if ($product->availability === 0)
+                                                    Out of stock 
+                                                @else
+                                                In Stock
+                                                @endif
+                                             
+                                                
+                                                </strong>
+                      </div>
+                        </div>
+                        <div class="description">
+                          <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat Nostrud duis molestie at dolore.</p>
+                        </div>
+                        <div class="product-page-options">
+                          <div class="pull-left">
+                            <label class="control-label">Size:</label>
+                            <select class="form-control input-sm">
+                              <option>L</option>
+                              <option>M</option>
+                              <option>XL</option>
+                            </select>
+                          </div>
+                          <div class="pull-left">
+                            <label class="control-label">Color:</label>
+                            <select class="form-control input-sm">
+                              <option>Red</option>
+                              <option>Blue</option>
+                              <option>Black</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="product-page-cart">
+                        <div class="product-quantity">
+                        <input id="qty" name="qty" type="text" value="1" readonly class="form-control input-sm">
                     </div>
-                    <div class="availability">
-                    Availability: <strong> @if ($product->availability === 0)
-                                              Out of stock 
-                                          @else
-                                          In Stock
-                                          @endif
-                                       
-                                          
-                                          </strong>
-                </div>
-                  </div>
-                  <div class="description">
-                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat Nostrud duis molestie at dolore.</p>
-                  </div>
-                  <div class="product-page-options">
-                    <div class="pull-left">
-                      <label class="control-label">Size:</label>
-                      <select class="form-control input-sm">
-                        <option>L</option>
-                        <option>M</option>
-                        <option>XL</option>
-                      </select>
-                    </div>
-                    <div class="pull-left">
-                      <label class="control-label">Color:</label>
-                      <select class="form-control input-sm">
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>Black</option>
-                      </select>
+                          <!-- <button class="btn btn-primary" type="submit" onClick="{{route('store.create')}}">Add to cart</button> -->
+                        
+                        
+                             <input type="hidden" class="form-control" name="store_id" id="store_id"   value="{{$product->store_id}}">
+                        <input type="hidden" class="form-control" name="product_id" id="product_id"   value="{{$product->id}}">
+                        @if ($product->availability === 0)
+                           <button class="btn btn-primary pull-right" disabled  type="submit">Add to cart</button>
+                           <div class="sticker sticker-out"></div>
+                        @else
+      
+                      <button class="btn btn-primary pull-right"   type="submit">Add to cart</button>
+                      <div class="sticker sticker-new"></div>
+                    @endif
+                                              
+                                <a href="{{route('item.show', $product->id)}}" class="btn btn-default">More details</a>
+                        </div>
+                      </div>
+      
+                      <div class="sticker sticker-sale"></div>
                     </div>
                   </div>
-                  <div class="product-page-cart">
-                  <div class="product-quantity">
-                  <input id="qty" name="qty" type="text" value="1" readonly class="form-control input-sm">
-              </div>
-                    <!-- <button class="btn btn-primary" type="submit" onClick="{{route('store.create')}}">Add to cart</button> -->
-                  
-                  
-                    @if ($product->availability === 0)
-                    <a href="{{route('cart.index')}}" disabled class="btn btn-primary" >Add to cart</a>
-                    
-
-                      @else
-
-                        <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
-
-                      @endif
-                                        
-                  
-                  
-                  
-                  
-                    
-
-
-
-
-
-
-
-
-
-                    <a href="{{route('item.show', $product->id)}}" class="btn btn-default">More details</a>
-                  </div>
-                </div>
-
-                <div class="sticker sticker-sale"></div>
-              </div>
-            </div>
-    </div>
-
-
-     
-    <!-- END fast view of a product -->
-
-
-    @endforeach  
-
+          </div>
+      
+          </form>
+           
+          <!-- END fast view of a product -->
+      
+        
+          @endforeach  
 
 
 
@@ -472,47 +433,18 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <div class="row margin-bottom-40 ">
           <!-- BEGIN SIDEBAR -->
           <div class="sidebar col-md-3 col-sm-4">
-            <ul class="list-group margin-bottom-25 sidebar-menu">
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Ladies</a></li>
-              <li class="list-group-item clearfix dropdown">
-                <a href="shop-product-list.html">
-                  <i class="fa fa-angle-right"></i>
-                  Mens
-                  
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="list-group-item dropdown clearfix">
-                    <a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Shoes </a>
-                      <ul class="dropdown-menu">
-                        <li class="list-group-item dropdown clearfix">
-                          <a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Classic </a>
-                          <ul class="dropdown-menu">
-                            <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Classic 1</a></li>
-                            <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Classic 2</a></li>
-                          </ul>
-                        </li>
-                        <li class="list-group-item dropdown clearfix">
-                          <a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sport  </a>
-                          <ul class="dropdown-menu">
-                            <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sport 1</a></li>
-                            <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sport 2</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                  </li>
-                  <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Trainers</a></li>
-                  <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Jeans</a></li>
-                  <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Chinos</a></li>
-                  <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> T-Shirts</a></li>
-                </ul>
-              </li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Kids</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Accessories</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sports</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Brands</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Electronics</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Home & Garden</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Custom Link</a></li>
+     
+          
+          <ul class="list-group margin-bottom-25 sidebar-menu">
+            <li class="list-group-item clearfix"><a href="{{url('find')}}">
+              <i class="fa fa-angle-right"></i>All</a></li>
+
+
+            @foreach ($categories as $count => $catrgory)
+              <li class="list-group-item clearfix"><a href="{{url('find/'. $catrgory->id)}}">
+              <i class="fa fa-angle-right"></i>{{$catrgory->name}}</a></li>
+            @endforeach
+
             </ul>
           </div>
           <!-- END SIDEBAR -->
@@ -531,7 +463,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary pull-right" >Add to cart</a>
                   <div class="sticker sticker-new"></div>
                 </div>
               </div>
@@ -546,7 +478,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress2</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary pull-right" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -560,7 +492,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress3</a></h3>
                   <div class="pi-price">$29.00</div>
-                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
+                  <a href="{{route('cart.index')}}" class="btn btn-primary pull-right" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -739,7 +671,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     </div>
 
     <!-- BEGIN BRANDS -->
-    <div class="brands">
+    <!-- <div class="brands">
       <div class="container">
             <div class="owl-carousel owl-carousel6-brands">
               <a href="shop-product-list.html"><img src="assets/pages/img/brands/canon.jpg" alt="canon" title="canon"></a>
@@ -756,11 +688,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
               <a href="shop-product-list.html"><img src="assets/pages/img/brands/zara.jpg" alt="zara" title="zara"></a>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- END BRANDS -->
 
     <!-- BEGIN STEPS -->
-    <div class="steps-block steps-block-red">
+    <!-- <div class="steps-block steps-block-red">
       <div class="container">
         <div class="row">
           <div class="col-md-4 steps-block-col">
@@ -788,7 +720,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- END STEPS -->
 
     <!-- BEGIN PRE-FOOTER -->
@@ -818,10 +750,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <!-- END INFO BLOCK -->
 
           <!-- BEGIN TWITTER BLOCK --> 
-          <div class="col-md-3 col-sm-6 pre-footer-col">
+          <!-- <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2 class="margin-bottom-0">Latest Tweets</h2>
             <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>      
-          </div>
+          </div> -->
           <!-- END TWITTER BLOCK -->
 
           <!-- BEGIN BOTTOM CONTACTS -->

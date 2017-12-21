@@ -21,7 +21,7 @@ class CreateProductTable extends Migration
             $table->double('dprice');
             $table->string('image');
             $table->integer('qty');
-            $table->integer('qty');
+            $table->integer('store_id');
             $table->text('description');
             $table->integer('is_active');
             $table->string('availability');

@@ -137,15 +137,14 @@ $('a[data-toggle="tooltip"]').tooltip({
                                                 <td>{{$product->size}} </td>
                                                 <td>{{$product->price}} </td>
                                                 <td>{{$product->dprice}} </td>
-                                                <td>
+                                                <td width="50px">
                                                     
                                                
-                                                <a href="{{url('/').'/'.$product->image}}" target="_blank" >Image
-                                                 
-                                      
-                                                </a>                                            
-                                               
-                                                    
+                                                 <a href="{{url('/').'/'.$product->image}}" target="_blank" > 
+                                                 <div class="product-main-image">
+                                                 <img src="{{url('/').'/'.$product->image}}" alt="Cool green dress with red bell" class="img-responsive">                                        
+                                               </div>
+                                                </a> 
                                             
                                             
                                             

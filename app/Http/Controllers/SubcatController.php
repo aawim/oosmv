@@ -76,7 +76,7 @@ class SubcatController extends Controller
             
             ]);
 
-        $d = Category::findOrFail($id);
+        $d = Subcategory::findOrFail($id);
         $d->name = $request->name;
         $d->is_active = $request->is_active;
             

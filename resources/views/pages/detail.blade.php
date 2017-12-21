@@ -124,48 +124,14 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <div class="row margin-bottom-40">
           <!-- BEGIN SIDEBAR -->
           <div class="sidebar col-md-3 col-sm-5">
-            <ul class="list-group margin-bottom-25 sidebar-menu">
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Ladies</a></li>
-              <li class="list-group-item clearfix dropdown active">
-                <a href="shop-product-list.html" class="collapsed">
-                  <i class="fa fa-angle-right"></i>
-                  Mens
-                  
-                </a>
-                <ul class="dropdown-menu" style="display:block;">
-                  <li class="list-group-item dropdown clearfix active">
-                    <a href="shop-product-list.html" class="collapsed"><i class="fa fa-angle-right"></i> Shoes </a>
-                      <ul class="dropdown-menu" style="display:block;">
-                        <li class="list-group-item dropdown clearfix">
-                          <a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Classic </a>
-                          <ul class="dropdown-menu">
-                            <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Classic 1</a></li>
-                            <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Classic 2</a></li>
-                          </ul>
-                        </li>
-                        <li class="list-group-item dropdown clearfix active">
-                          <a href="shop-product-list.html" class="collapsed"><i class="fa fa-angle-right"></i> Sport  </a>
-                          <ul class="dropdown-menu" style="display:block;">
-                            <li class="active"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sport 1</a></li>
-                            <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sport 2</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                  </li>
-                  <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Trainers</a></li>
-                  <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Jeans</a></li>
-                  <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Chinos</a></li>
-                  <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> T-Shirts</a></li>
-                </ul>
-              </li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Kids</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Accessories</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sports</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Brands</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Electronics</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Home &amp; Garden</a></li>
-              <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Custom Link</a></li>
-            </ul>
+          <ul class="list-group margin-bottom-25 sidebar-menu">
+          <li class="list-group-item clearfix"><a href="{{url('find')}}">
+            <i class="fa fa-angle-right"></i>All</a></li>
+          @foreach ($categories as $count => $catrgory)
+            <li class="list-group-item clearfix"><a href="{{url('find/'. $catrgory->id)}}">
+            <i class="fa fa-angle-right"></i>{{$catrgory->name}}</a></li>
+          @endforeach
+       </ul>
 
             <div class="sidebar-products clearfix">
               <h2>Bestsellers</h2>
@@ -191,7 +157,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 
 
-
+ 
 
 
           <!-- BEGIN CONTENT -->
@@ -199,11 +165,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="product-page">
               <div class="row">
                 <div class="col-md-6 col-sm-6">
-
-            
-               <form class="form-horizontal" action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
                       <input type="hidden" class="form-control" name="product_id" id="product_id"   value="{{$product->id}}">
+                      <input type="hidden" class="form-control" name="store_id" id="store_id"   value="{{$product->store_id}}">
                   <div class="product-main-image">
                     <img src="{{url('/').'/'.$product->image}}" alt="Cool green dress with red bell" class="img-responsive" data-BigImgsrc="{{url('/').'/'.$product->image}}">
                   </div>
@@ -278,9 +243,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 @endif
 
-
-
-                    <!-- <a href="{{route('cart.store')}}" class="btn btn-primary" >Add to cart</a> -->
+ 
+ 
                   </div>
                   </form>
 
@@ -345,53 +309,73 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </div>
                     <div class="tab-pane fade in active" id="Reviews">
                       <!--<p>There are no reviews for this product.</p>-->
+                     
+                     
+                     
+                      
+
+                      @foreach ($reviews as $count => $review)
                       <div class="review-item clearfix">
                         <div class="review-item-submitted">
-                          <strong>Bob</strong>
-                          <em>30/12/2013 - 07:37</em>
-                          <div class="rateit" data-rateit-value="5" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                          <strong>{{$review->user_id}}</strong>
+                          <em>{{$review->created_at}}</em>
+                          <div class="rateit" data-rateit-value="{{$review->rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                         </div>                                              
                         <div class="review-item-content">
-                            <p>Sed velit quam, auctor id semper a, hendrerit eget justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis vel arcu pulvinar dolor tempus feugiat id in orci. Phasellus sed erat leo. Donec luctus, justo eget ultricies tristique, enim mauris bibendum orci, a sodales lectus purus ut lorem.</p>
+                            <p>{{$review->description}}</p>
                         </div>
                       </div>
-                      <div class="review-item clearfix">
-                        <div class="review-item-submitted">
-                          <strong>Mary</strong>
-                          <em>13/12/2013 - 17:49</em>
-                          <div class="rateit" data-rateit-value="2.5" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                        </div>                                              
-                        <div class="review-item-content">
-                            <p>Sed velit quam, auctor id semper a, hendrerit eget justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis vel arcu pulvinar dolor tempus feugiat id in orci. Phasellus sed erat leo. Donec luctus, justo eget ultricies tristique, enim mauris bibendum orci, a sodales lectus purus ut lorem.</p>
-                        </div>
-                      </div>
+                    @endforeach
+
+
+
+
+
+
+
+
+
+
+
 
                       <!-- BEGIN FORM-->
-                      <form action="#" class="reviews-form" role="form">
+                      
+                      @if(isset(Auth::user()->name))
+                       
+
+
+                      <form class="form-horizontal" action="{{route('review.store')}}" method="POST" enctype="multipart/form-data">
+                      {{ csrf_field() }}
+
+
                         <h2>Write a review</h2>
                         <div class="form-group">
                           <label for="name">Name <span class="require">*</span></label>
-                          <input type="text" class="form-control" id="name">
-                        </div>
+                          <input type="text" class="form-control" id="name" value="{{Auth::user()->name}}">
+                                                                   </div>
                         <div class="form-group">
                           <label for="email">Email</label>
-                          <input type="text" class="form-control" id="email">
+                          <input type="text" class="form-control" id="email" value="{{Auth::user()->email}}">
                         </div>
                         <div class="form-group">
                           <label for="review">Review <span class="require">*</span></label>
-                          <textarea class="form-control" rows="8" id="review"></textarea>
+                          <textarea class="form-control" rows="8" name="description" id="description"></textarea>
                         </div>
                         <div class="form-group">
                           <label for="email">Rating</label>
-                          <input type="range" value="4" step="0.25" id="backing5">
+                          <input type="range" name="backing5"  value="0" step="0.25" id="backing5">
                           <div class="rateit" data-rateit-backingfld="#backing5" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
                           </div>
                         </div>
-                        <div class="padding-top-20">                  
+                        <div class="padding-top-20">  
+                        <input type="hidden" value="{{$product->id}}" name="product_id" id="product_id" >                
                           <button type="submit" class="btn btn-primary">Send</button>
                         </div>
                       </form>
                       <!-- END FORM--> 
+                      @else
+                      <strong> Please <a href="{{ route('login') }}"> login  </a> to write a review </strong>
+                      @endif
                     </div>
                   </div>
                 </div>

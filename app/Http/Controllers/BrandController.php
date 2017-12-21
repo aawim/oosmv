@@ -40,16 +40,15 @@ class BrandController extends Controller
         $request->file('icon')->move(public_path('imagesx'), $imgName);
         $product  = 'imagesx/'.$imgName;
         $d->icon = $product;
+        $d->is_active = 0;
         $d->save();
         return redirect()->route('brand.index');
     }
-
  
     public function show($id)
     {
        
     }
-
    
     public function edit($id)
     {
@@ -57,15 +56,7 @@ class BrandController extends Controller
         return view('brand.edit', ['d' => $d]);
     }
 
-   
-
-
-
-
-
-
-
-    public function update(Request $request, $id)
+       public function update(Request $request, $id)
     {
         $this->validate($request,[
             'name'=>'required|max:255',
@@ -96,20 +87,6 @@ class BrandController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
     public function destroy($id)
     {
          

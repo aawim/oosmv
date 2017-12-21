@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', 'HomeController@index');
+ 
 // Route::get('/', function () {
 //      //return view('wellhome');
 //      //return "asasas";
@@ -22,9 +23,11 @@ Route::get('/', 'HomeController@index');
 
 
 
+//Route::get('ps','ProductController@search');
 
-
-Route::get('wellhome','SearchController@liveSearch');   
+Route::get('wellhome','SearchController@liveSearch'); 
+Route::get('find','SearchController@search'); 
+Route::get('find/{id}','SearchController@catesearch'); 
 Route::get('scat','ProductController@getscat'); 
 Route::get('findSubCat', 'ProductController@findSubCatgeoryName');
 //  Route::get('/', 'HomeController@index');
@@ -37,6 +40,7 @@ Route::prefix('manage')->group(function(){
     Route::resource('/brand', 'BrandController');
     Route::resource('/product', 'ProductController');
     Route::resource('/store', 'StoreController');
+    Route::resource('/review', 'ReviewController');
     
     
 

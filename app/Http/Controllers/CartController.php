@@ -48,16 +48,16 @@ class CartController extends Controller
        }else{
         $d->qty = $request->qty;
        }
-        
-       
+            
        
        
         $d->is_active = 1;
         $d->save();
+      
+        return redirect()->back();
 
-        //return view('pages.cart');
-        return redirect()->route('cart.index');
-   
+ 
+ 
     }
 
  
