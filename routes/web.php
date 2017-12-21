@@ -53,6 +53,7 @@ Route::prefix('manage')->group(function(){
 Route::prefix('client')->group(function(){
     Route::resource('/category', 'CategoryController');
     Route::resource('/cart', 'CartController');
+    
 });
 
 

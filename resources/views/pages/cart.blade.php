@@ -136,11 +136,14 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   
                   @foreach ($cartitems as $count => $cart_item)
                   <tr>
+                  
                     <td class="goods-page-image">
                       <a href="javascript:;"><img src="{{url('/').'/'.$cart_item->product()->first()->image}}" alt="Berry Lace Dress"></a>
                     </td>
                     <td class="goods-page-description">
-                      <h3><a href="{{route('item.show', $cart_item->product->id)}}">{{ $cart_item->product->name}}</a></h3>
+
+                      
+                      <h3 ><strong><a href="{{route('cart.edit', $cart_item->id)}}">{{ $cart_item->product->name}}</a></strong></h3>
                       <p><strong>Item {{$count+1}}</strong> - <strong>Color:</strong> 
                       
                       @if($cart_item->product()->first()->color === null)
@@ -149,8 +152,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       {{$cart_item->product()->first()->color}}
                       @endif
                       
-                      <strong> Size:</strong> {{$cart_item->product()->first()->size}}</p>
-                      <em>More info is here</em>
+                      <strong> Size: </strong> {{$cart_item->product()->first()->size}}</p>
+                      <em><strong>Store: <a href="#" style="color:green;">{{ $cart_item->store->name}}</a></strong></em>
                     </td>
                     <td class="goods-page-ref-no">
                       javc2133

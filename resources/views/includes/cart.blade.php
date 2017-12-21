@@ -19,11 +19,13 @@
  
       @foreach ($cartitems as $count => $cart_item)
         <li>
+       
+
           <a href="shop-item.html">
           <img src="{{url('/').'/'.$cart_item->product()->first()->image}}" alt="Rolex Classic Watch" width="37" height="34">
           </a>
           <span class="cart-content-count">x  {{$cart_item->qty}}</span>
-          <strong><a href="shop-item.html">{{$cart_item->product()->first()->name}}</a></strong>
+          <strong><a href="{{route('cart.edit', $cart_item->id)}}">{{$cart_item->product()->first()->name}}</a></strong>
           <em>{{$cart_item->qty * $cart_item->product()->first()->price }}</em>
           <a href="#" class="del-goods" data-toggle="modal" data-target="#deleteModal{{$count}}"
                         data-delete-id="{{$cart_item->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">&nbsp;</a>

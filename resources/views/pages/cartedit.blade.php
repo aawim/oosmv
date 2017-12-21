@@ -124,14 +124,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <div class="row margin-bottom-40">
           <!-- BEGIN SIDEBAR -->
           <div class="sidebar col-md-3 col-sm-5">
-          <ul class="list-group margin-bottom-25 sidebar-menu">
-          <li class="list-group-item clearfix"><a href="{{url('find')}}">
-            <i class="fa fa-angle-right"></i>All</a></li>
-          @foreach ($categories as $count => $catrgory)
-            <li class="list-group-item clearfix"><a href="{{url('find/'. $catrgory->id)}}">
-            <i class="fa fa-angle-right"></i>{{$catrgory->name}}</a></li>
-          @endforeach
-       </ul>
+      
 
             <div class="sidebar-products clearfix">
               <h2>Bestsellers</h2>
@@ -154,244 +147,33 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           </div>
           <!-- END SIDEBAR -->
 
-
-
-
- 
-
-
           <!-- BEGIN CONTENT -->
+          @foreach ($cartitems as $count => $cart_item)
           <div class="col-md-9 col-sm-7">
             <div class="product-page">
               <div class="row">
                 <div class="col-md-6 col-sm-6">
-                    <form class="form-horizontal" action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
-                      {{ csrf_field() }}
-                      <input type="hidden" class="form-control" name="product_id" id="product_id"   value="{{$product->id}}">
-                      <input type="hidden" class="form-control" name="store_id" id="store_id"   value="{{$product->store_id}}">
-                  <div class="product-main-image">
-                    <img src="{{url('/').'/'.$product->image}}" alt="Cool green dress with red bell" class="img-responsive" data-BigImgsrc="{{url('/').'/'.$product->image}}">
-                  </div>
-                  <div class="product-other-images">
-                    <a href="{{url('/').'/assets/pages/img/products/model3.jpg'}}" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress1" src="{{url('/').'/assets/pages/img/products/model3.jpg'}}"></a>
-                    <a href="{{url('/').'/assets/pages/img/products/model4.jpg'}}" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress2" src="{{url('/').'/assets/pages/img/products/model4.jpg'}}"></a>
-                    <a href="{{url('/').'/assets/pages/img/products/model5.jpg'}}" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress3" src="{{url('/').'/assets/pages/img/products/model5.jpg'}}"></a>
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                  <h1>  </h1>
-                  <div class="price-availability-block clearfix">
-                    <div class="price">
-                      <strong><span>$</span> {{ $product->price }} </strong>
-                      <em>$<span>62.00</span></em>
-                    </div>
-                    <div class="availability">
-                        Availability: <strong> @if ($product->availability === 0)
-                                                  Out of stock 
-                                              @else
-                                              In Stock
-                                              @endif
-                                           
-                                              
-                                              </strong>
-                    </div>
-                  </div>
-                  <div class="description">
-                    <p> </p>
-                  </div>
-                  <div class="product-page-options">
-                    <div class="pull-left">
-                      <label class="control-label">Size:</label>
-                      <select class="form-control input-sm">
-                        <option>L</option>
-                        <option>M</option>
-                        <option>XL</option>
-                      </select>
-                    </div>
-                    <div class="pull-left">
-                      <label class="control-label">Color:</label>
-                      <select class="form-control input-sm">
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>Black</option>
-                      </select>
-                    </div>
-                  </div>
-                   
-                  <div class="product-page-cart">
-                   
-                        <!-- <input id="qty" name="qty"  type="text" value="1"   class="form-control input-sm"> -->
-
-                   <div class="col-sm-3">
-                        @if ($product->availability === 0)
-                        <input type="text" class="form-control" name="qty" id="qty"   disabled value="{{ old('qty') }}">
+                <form class="form-horizontal" action="{{route('cart.update',$cart_item->id)}}" method="POST">
+                      {{method_field('PUT')}} {{ csrf_field() }}
+                      <div class="col-sm-3">
+                        @if ($cart_item->product->availability === 0)
+                        <input type="text" class="form-control" name="qty" id="qty"   disabled value="{{ old('qty') ? old('qty') : $cart_item->qty}}">
                         @else
-                        <input type="text" class="form-control" name="qty" id="qty"   required value="{{ old('qty') }}">
+                        <input type="text" class="form-control" name="qty" id="qty"   required value="{{ old('qty') ? old('qty') : $cart_item->qty}}">
                         @endif
                         </div>
                     
-                       @if ($product->availability === 0)
-                      <button class="btn btn-primary" disabled  type="submit">Add to cart</button>
+                       @if ($cart_item->product->availability === 0)
+                      <button class="btn btn-primary" disabled  type="submit"> Update Cart</button>
                       @else
-                      <button class="btn btn-primary"   type="submit">Add to cart</button>
+                      <button class="btn btn-primary"   type="submit">Update Cart</button>
                       @endif
-                  </div>
-
-
-                  
-                  </form>
-
-
-              
-
-
-
-
-
-                  <div class="review">
-                    <input type="range" value="4" step="0.25" id="backing4">
-                    <div class="rateit" data-rateit-backingfld="#backing4" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
-                    </div>
-                    <a href="javascript:;">7 reviews</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;">Write a review</a>
-                  </div>
-                  <ul class="social-icons">
-                    <li><a class="facebook" data-original-title="facebook" href="javascript:;"></a></li>
-                    <li><a class="twitter" data-original-title="twitter" href="javascript:;"></a></li>
-                    <li><a class="googleplus" data-original-title="googleplus" href="javascript:;"></a></li>
-                    <li><a class="evernote" data-original-title="evernote" href="javascript:;"></a></li>
-                    <li><a class="tumblr" data-original-title="tumblr" href="javascript:;"></a></li>
-                  </ul>
                 </div>
-
-                <div class="product-page-content">
-                  <ul id="myTab" class="nav nav-tabs">
-                    <li><a href="#Description" data-toggle="tab">Description</a></li>
-                    <li><a href="#Information" data-toggle="tab">Information</a></li>
-                    <li class="active"><a href="#Reviews" data-toggle="tab">Reviews ({{count($reviews)}})</a></li>
-                  </ul>
-                  <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade" id="Description">
-                      <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed sit nonumy nibh sed euismod laoreet dolore magna aliquarm erat sit volutpat Nostrud duis molestie at dolore. Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed sit nonumy nibh sed euismod laoreet dolore magna aliquarm erat sit volutpat Nostrud duis molestie at dolore. Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed sit nonumy nibh sed euismod laoreet dolore magna aliquarm erat sit volutpat Nostrud duis molestie at dolore. </p>
-                    </div>
-                    <div class="tab-pane fade" id="Information">
-                      <table class="datasheet">
-                        <tr>
-                          <th colspan="2">Additional features</th>
-                        </tr>
-                        <tr>
-                          <td class="datasheet-features-type">Value 1</td>
-                          <td>21 cm</td>
-                        </tr>
-                        <tr>
-                          <td class="datasheet-features-type">Value 2</td>
-                          <td>700 gr.</td>
-                        </tr>
-                        <tr>
-                          <td class="datasheet-features-type">Value 3</td>
-                          <td>10 person</td>
-                        </tr>
-                        <tr>
-                          <td class="datasheet-features-type">Value 4</td>
-                          <td>14 cm</td>
-                        </tr>
-                        <tr>
-                          <td class="datasheet-features-type">Value 5</td>
-                          <td>plastic</td>
-                        </tr>
-                      </table>
-                    </div>
-                    <div class="tab-pane fade in active" id="Reviews">
-                      <!--<p>There are no reviews for this product.</p>-->
-                     
-                     
-                     
-                      
-
-                      @foreach ($reviews as $count => $review)
-                      <div class="review-item clearfix">
-                        <div class="review-item-submitted">
-                          <strong>{{$review->user_id}}</strong>
-                          <em>{{$review->created_at}}</em>
-                          <div class="rateit" data-rateit-value="{{$review->rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                        </div>                                              
-                        <div class="review-item-content">
-                            <p>{{$review->description}}</p>
-                        </div>
-                      </div>
-                    @endforeach
-
-
-
-
-
-
-
-
-
-
-
-
-                      <!-- BEGIN FORM-->
-                      
-                      @if(isset(Auth::user()->name))
-                       
-
-
-                      <form class="form-horizontal" action="{{route('review.store')}}" method="POST" enctype="multipart/form-data">
-                      {{ csrf_field() }}
-
-
-                        <h2>Write a review</h2>
-                        <div class="form-group">
-                          <label for="name">Name <span class="require">*</span></label>
-                          <input type="text" class="form-control" id="name" value="{{Auth::user()->name}}">
-                                                                   </div>
-                        <div class="form-group">
-                          <label for="email">Email</label>
-                          <input type="text" class="form-control" id="email" value="{{Auth::user()->email}}">
-                        </div>
-                        <div class="form-group">
-                          <label for="review">Review <span class="require">*</span></label>
-                          <textarea class="form-control" rows="8" name="description" id="description"></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label for="email">Rating</label>
-                          <input type="range" name="backing5"  value="0" step="0.25" id="backing5">
-                          <div class="rateit" data-rateit-backingfld="#backing5" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
-                          </div>
-                        </div>
-                        <div class="padding-top-20">  
-                        <input type="hidden" value="{{$product->id}}" name="product_id" id="product_id" >                
-                          <button type="submit" class="btn btn-primary">Send</button>
-                        </div>
-                      </form>
-                      <!-- END FORM--> 
-                      @else
-                      <strong> Please <a href="{{ route('login') }}"> login  </a> to write a review </strong>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-
-
-
-                    
-                @if ($product->availability === 0)
-           
-                <div class="sticker sticker-out"></div>
-@else
-<div class="sticker sticker-new"></div>
- 
-
-@endif
-               
-              
-
-
-                
+               </form>
               </div>
             </div>
           </div>
+          @endforeach
           <!-- END CONTENT -->
         </div>
         <!-- END SIDEBAR & CONTENT -->
@@ -537,43 +319,14 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     </div>
     <!-- END BRANDS -->
 
-    <!-- BEGIN STEPS -->
-    <div class="steps-block steps-block-red">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 steps-block-col">
-            <i class="fa fa-truck"></i>
-            <div>
-              <h2>Free shipping</h2>
-              <em>Express delivery withing 3 days</em>
-            </div>
-            <span>&nbsp;</span>
-          </div>
-          <div class="col-md-4 steps-block-col">
-            <i class="fa fa-gift"></i>
-            <div>
-              <h2>Daily Gifts</h2>
-              <em>3 Gifts daily for lucky customers</em>
-            </div>
-            <span>&nbsp;</span>
-          </div>
-          <div class="col-md-4 steps-block-col">
-            <i class="fa fa-phone"></i>
-            <div>
-              <h2>477 505 8877</h2>
-              <em>24/7 customer care available</em>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- END STEPS -->
+    
 
     <!-- BEGIN PRE-FOOTER -->
     <div class="pre-footer">
       <div class="container">
         <div class="row">
           <!-- BEGIN BOTTOM ABOUT BLOCK -->
+
           <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2>About us</h2>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
@@ -595,12 +348,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           </div>
           <!-- END INFO BLOCK -->
 
-          <!-- BEGIN TWITTER BLOCK --> 
-          <div class="col-md-3 col-sm-6 pre-footer-col">
-            <h2 class="margin-bottom-0">Latest Tweets</h2>
-            <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>      
-          </div>
-          <!-- END TWITTER BLOCK -->
           
           <!-- BEGIN BOTTOM CONTACTS -->
           <div class="col-md-3 col-sm-6 pre-footer-col">
@@ -664,11 +411,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <!-- BEGIN PAYMENTS -->
           <div class="col-md-4 col-sm-4">
             <ul class="list-unstyled list-inline pull-right">
-              <li><img src="assets/corporate/img/payments/western-union.jpg" alt="We accept Western Union" title="We accept Western Union"></li>
-              <li><img src="assets/corporate/img/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express"></li>
-              <li><img src="assets/corporate/img/payments/MasterCard.jpg" alt="We accept MasterCard" title="We accept MasterCard"></li>
-              <li><img src="assets/corporate/img/payments/PayPal.jpg" alt="We accept PayPal" title="We accept PayPal"></li>
-              <li><img src="assets/corporate/img/payments/visa.jpg" alt="We accept Visa" title="We accept Visa"></li>
+              <li><img src="{{url('/').'/assets/corporate/img/payments/western-union.jpg'}}" alt="We accept Western Union" title="We accept Western Union"></li>
+              <li><img src="{{url('/').'/assets/corporate/img/payments/american-express.jpg'}}" alt="We accept American Express" title="We accept American Express"></li>
+              <li><img src="{{url('/').'/assets/corporate/img/payments/MasterCard.jpg'}}" alt="We accept MasterCard" title="We accept MasterCard"></li>
+              <li><img src="{{url('/').'/assets/corporate/img/payments/PayPal.jpg'}}" alt="We accept PayPal" title="We accept PayPal"></li>
+              <li><img src="{{url('/').'/assets/corporate/img/payments/visa.jpg'}}" alt="We accept Visa" title="We accept Visa"></li>
             </ul>
           </div>
           <!-- END PAYMENTS -->
