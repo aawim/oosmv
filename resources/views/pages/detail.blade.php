@@ -274,7 +274,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   <ul id="myTab" class="nav nav-tabs">
                     <li><a href="#Description" data-toggle="tab">Description</a></li>
                     <li><a href="#Information" data-toggle="tab">Information</a></li>
-                    <li class="active"><a href="#Reviews" data-toggle="tab">Reviews (2)</a></li>
+                    <li class="active"><a href="#Reviews" data-toggle="tab">Reviews ({{count($reviews)}})</a></li>
                   </ul>
                   <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade" id="Description">
