@@ -43,6 +43,7 @@
                     <ul class="nav child_menu">
                       <li><a href="{{route('category.index')}}">Category</a></li>
                       <li><a href="{{route('brand.index')}}">Brand</a></li>
+                      <li><a href="{{route('carousel.index')}}">Carousel</a></li>
                  
                     </ul>
                   </li>

@@ -165,26 +165,29 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox"  >
                 <!-- First slide -->
                 <div class="item carousel-item-four active">
-                    <div class="container">
+                    <!-- <div class="container">
                         <div class="carousel-position-four text-center">
                             <h2 class="margin-bottom-20 animate-delay carousel-title-v3 border-bottom-title text-uppercase" data-animation="animated fadeInDown">
                                 Tones of <br/><span class="color-red-v2">Shop UI Features</span><br/> designed
                             </h2>
                             <p class="carousel-subtitle-v2" data-animation="animated fadeInUp">Lorem ipsum dolor sit amet constectetuer diam <br/>
                             adipiscing elit euismod ut laoreet dolore.</p>
+                            <a class="carousel-btn" href="#" data-animation="animated fadeInUp">See More Details</a>
                         </div>
-                    </div>
+                        <img class="carousel-position-five animate-delay hidden-sm hidden-xs" src="assets/pages/img/shop-slider/slide2/price.png" alt="Price" data-animation="animated zoomIn">
+                    </div> -->
                 </div>
                 
                 <!-- Second slide -->
                 <div class="item carousel-item-five">
-                    <div class="container">
+                    <!-- <div class="container">
                         <div class="carousel-position-four text-center">
                             <h2 class="animate-delay carousel-title-v4" data-animation="animated fadeInDown">
                                 Unlimted
@@ -198,12 +201,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                             <a class="carousel-btn" href="#" data-animation="animated fadeInUp">See More Details</a>
                         </div>
                         <img class="carousel-position-five animate-delay hidden-sm hidden-xs" src="assets/pages/img/shop-slider/slide2/price.png" alt="Price" data-animation="animated zoomIn">
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Third slide -->
                 <div class="item carousel-item-six">
-                    <div class="container">
+                    <!-- <div class="container">
                         <div class="carousel-position-four text-center">
                             <span class="carousel-subtitle-v3 margin-bottom-15" data-animation="animated fadeInDown">
                                 Full Admin &amp; Frontend
@@ -215,12 +218,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                 Is Ready For Your Project
                             </p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Fourth slide -->
                 <div class="item carousel-item-seven">
-                   <div class="center-block">
+                   <!-- <div class="center-block">
                         <div class="center-block-wrap">
                             <div class="center-block-body">
                                 <h2 class="carousel-title-v1 margin-bottom-20" data-animation="animated fadeInDown">
@@ -230,9 +233,30 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                                 <a class="carousel-btn" href="#" data-animation="animated fadeInUp">But It Now!</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
+
+
+
+
+                <div class="item carousel-item-eight">
+                   <!-- <div class="center-block">
+                        <div class="center-block-wrap">
+                            <div class="center-block-body">
+                                <h2 class="carousel-title-v1 margin-bottom-20" data-animation="animated fadeInDown">
+                                    The most <br/>
+                                    wanted bijouterie
+                                </h2>
+                                <a class="carousel-btn" href="#" data-animation="animated fadeInUp">But It Now!</a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+             
             </div>
+
+
+        
 
             <!-- Controls -->
             <a class="left carousel-control carousel-control-shop" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -859,6 +883,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
     <script src="{{url('/').'/assets/corporate/scripts/layout.js'}}" type="text/javascript"></script>
     <script src="{{url('/').'/assets/pages/scripts/bs-carousel.js'}}" type="text/javascript"></script>
+
+
     <script type="text/javascript">
         jQuery(document).ready(function() {
             Layout.init();    

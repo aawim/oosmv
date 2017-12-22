@@ -92,6 +92,7 @@
                       <li><a href="{{route('category.index')}}">Category</a></li>
                       <li><a href="{{route('brand.index')}}">Brand</a></li>
                       <li><a href="{{route('store.create')}}">Create Store</a></li>
+                      <li><a href="{{route('carousel.index')}}">Carousel</a></li>
                     </ul>
                   </li>
 

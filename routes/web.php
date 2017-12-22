@@ -42,10 +42,8 @@ Route::prefix('manage')->group(function(){
     Route::resource('/store', 'StoreController');
     Route::resource('/review', 'ReviewController');
     Route::resource('/photo', 'ProductPhotoController');
-   
-
-    
-   
+    Route::resource('/carousel', 'CarouselController');
+     
 });
 
 
