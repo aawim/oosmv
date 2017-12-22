@@ -16,7 +16,7 @@
 
                     <a href="{{route('product.index')}}"><button type="submit" class="btn btn-success">View Products</button></a>
                     <a href="{{route('product.create')}}"><button type="submit" class="btn btn-success">Add New Product</button></a>
-                     
+                    <a href="{{url('manage/photo', $d->id)}}"><button type="submit" class="btn btn-info">Add Product Photos</button></a>
                   </li>
               
                       
@@ -178,22 +178,53 @@
                                           <div class="col-xs-offset-2 col-xs-10">
                                               <button type="submit" class="btn btn-primary">Save</button>
                                           </div>
+
+
+
                                       </div>
-              
-              
                   </form>
+
+
+
+
+
+
+
+
+
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                  
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+    {{ csrf_field() }}
+     Product photos (can attach more than one):
+    <br />
+    <input type="file" name="photos[]" multiple />
+    <br /><br />
+    <input type="submit" value="Upload" />
+</form>
+
+ 
+</div>
+
+
+
                 </div>
                 </div>
-             
-
-
-
-
-
-      
-
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 @endsection

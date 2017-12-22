@@ -162,7 +162,7 @@ $('a[data-toggle="tooltip"]').tooltip({
                                             </td>
                                                 <td>
                                                 
-                              <a href="{{route('product.edit', $product->id) }}">Edit</a> 
+                              <a href="{{route('product.edit', $product->id)}}">Edit</a> 
                                  <a href="#" data-toggle="modal" data-target="#deleteModal{{$count}}"
                                 data-delete-id="{{$product->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">Delete</a>
                                                  

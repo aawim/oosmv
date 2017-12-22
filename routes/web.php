@@ -24,7 +24,7 @@ Route::get('/', 'HomeController@index');
 
 
 //Route::get('ps','ProductController@search');
-
+Route::get('/manage/photo/{id}', 'ProductPhotoController@addPhoto');
 Route::get('wellhome','SearchController@liveSearch'); 
 Route::get('find','SearchController@search'); 
 Route::get('find/{id}','SearchController@catesearch'); 
@@ -41,8 +41,8 @@ Route::prefix('manage')->group(function(){
     Route::resource('/product', 'ProductController');
     Route::resource('/store', 'StoreController');
     Route::resource('/review', 'ReviewController');
-    
-    
+    Route::resource('/photo', 'ProductPhotoController');
+   
 
     
    

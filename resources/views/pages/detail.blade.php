@@ -249,10 +249,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 
                   <div class="review">
-                    <input type="range" value="4" step="0.25" id="backing4">
+                    <input type="range" value="{{count($reviews)}}" step="0.25" id="backing4">
                     <div class="rateit" data-rateit-backingfld="#backing4" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
                     </div>
-                    <a href="javascript:;">7 reviews</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;">Write a review</a>
+                    <a href="javascript:;"> {{count($reviews)}} reviews</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;">Write a review</a>
                   </div>
                   <ul class="social-icons">
                     <li><a class="facebook" data-original-title="facebook" href="javascript:;"></a></li>
