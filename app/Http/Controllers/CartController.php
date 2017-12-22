@@ -29,37 +29,30 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-       
-     
-        // $data = $request->all();
-        // $user = Cart::where('User')->pluck('email')->toArray();
-        // if(in_array($user,$data['email']))
-        // {
-        // echo 'existed email';
-        // }
- 
+         $ifexixts = Cart::where('user_id',Auth::user()->id)->where('product_id', $request->product_id)->get();
+           if(count($ifexixts)> 0 ){
+                $d = Cart::findOrFail($ifexixts[0]['id']);
+                $d->qty = $d->qty + 1;
+                $d->save();
+                return redirect()->back();
 
+                       }else{
+                $d = new Cart();
+                $d->user_id = Auth::user()->id;
+                $d->store_id = $request->store_id;
+                $d->product_id = $request->product_id;
+                    if($request->qty== null){
+                            $d->qty = 1;
+                    }else{
+                            $d->qty = $request->qty;
+                    }
+              $d->is_active = 1;
+              $d->save();
+              return redirect()->back();
 
-         $d = new Cart();
-         $d->user_id = Auth::user()->id;
-         $d->store_id = $request->store_id;
-         $d->product_id = $request->product_id;
-             if($request->qty== null){
-                     $d->qty = 1;
-             }else{
-                     $d->qty = $request->qty;
-             }
-       $d->is_active = 1;
-       $d->save();
-       return redirect()->back();
-
- 
- 
-    }
-
- 
-
- 
+            }
+        }
+  
     public function edit($id)
     {
         $categories = Category::where('is_active', 1)->orderBy('name')->get();

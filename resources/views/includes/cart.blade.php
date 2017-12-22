@@ -5,7 +5,6 @@
     <a href="{{route('cart.index')}}" class="top-cart-info-count">
     @if(Auth::user()->cart_items()->get()->count() > 1)
     {{"You have : (" }} <strong> {{ Auth::user()->cart_items()->get()->count() }} </strong> {{") Items Item in your list" }} 
-
     @else
     {{"You have : (" }} <strong> {{ Auth::user()->cart_items()->get()->count() }} </strong>  {{") Item in your list" }} 
     @endif

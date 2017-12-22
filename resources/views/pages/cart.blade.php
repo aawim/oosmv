@@ -135,6 +135,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
                   
                   @foreach ($cartitems as $count => $cart_item)
+
+                 
+                 
                   <tr>
                   
                     <td class="goods-page-image">
@@ -167,7 +170,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       <strong><span>$</span>{{$cart_item->product()->first()->price}}</strong>
                     </td>
                     <td class="goods-page-total">
-                      <strong><span>$</span>{{$subtot = $cart_item->product()->first()->price * $cart_item->qty}}</strong>
+                      <strong><span>$</span>{{ 
+                       $subtot  = $cart_item->product()->first()->price * $cart_item->qty
+                        
+                       
+                       }}  </strong>
                     </td>
                     <td class="del-goods-col">
                       <!-- <a class="del-goods" href="javascript:;">&nbsp;</a> -->
@@ -217,12 +224,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 </div>
 </div>
 
-
-
-                  @endforeach     
+                   @endforeach     
          
 
+ 
 
+ 
 
                 </table>
                 </div>
@@ -236,7 +243,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   <ul>
                     <li>
                       <em>Sub total</em>
-                      <strong class="price"><span>$</span>47.00</strong>
+                      <strong class="price"><span>$</span>{{ $subtot}}</strong>
                     </li>
                     <li>
                       <em>Shipping cost</em>
@@ -256,6 +263,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </li>
                   </ul>
                 </div>
+
+
+
+
               </div>
               <!-- <button class="btn btn-default" type="submit">Continue shopping <i class="fa fa-shopping-cart"></i></button> -->
 

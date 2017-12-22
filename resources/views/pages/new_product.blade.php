@@ -251,7 +251,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
               <div class="col-md-2 col-sm-2 col-xs-12">
                 <div class="product-item">
                   <div class="pi-img-wrapper">
-                    <img src="{{url('/').'/'.$product->image}}" style="height:200px;" class="img-responsive" alt="Berry Lace Dress">
+                    <img src="{{url('/').'/'.$product->image}}" style="height:150px;" class="img-responsive" alt="Berry Lace Dress">
                     <div>
                     <a href="{{url('/').'/'.$product->image}}" class="btn btn-default fancybox-button">Zoom</a>
                     <a href="#product-pop-up{{$count}}" class="btn btn-default fancybox-fast-view">View</a>
