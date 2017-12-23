@@ -12,27 +12,20 @@
 */
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-// Route::get('/', function () {
-//      //return view('wellhome');
-//      //return "asasas";
-// });
-
-
- 
 
 
 
 
-//Route::get('ps','ProductController@search');
-
+Route::get('/client/myaccountchange/{id}', 'MyAccountController@editAccountInformation');
 Route::get('/manage/photo/{id}', 'ProductPhotoController@addPhoto');
 Route::get('/manage/view/{id}', 'ProductPhotoController@viewPhoto');
 Route::get('wellhome','SearchController@liveSearch'); 
 Route::get('find','SearchController@search'); 
+Route::get('stores','SearchController@viewStores');
+Route::get('store','SearchController@oneStore'); 
 Route::get('find/{id}','SearchController@catesearch'); 
 Route::get('scat','ProductController@getscat'); 
 Route::get('findSubCat', 'ProductController@findSubCatgeoryName');
-//  Route::get('/', 'HomeController@index');
 Route::resource('/item', 'ProductDetailController');
 Auth::routes();
 Route::prefix('manage')->group(function(){
@@ -47,16 +40,16 @@ Route::prefix('manage')->group(function(){
     Route::resource('/carousel', 'CarouselController');
     
 });
-
-Route::prefix('client')->group(function(){
+    Route::prefix('client')->group(function(){
     Route::resource('/category', 'CategoryController');
     Route::resource('/cart', 'CartController');
     Route::resource('/myaccount', 'ClientController');
+    Route::resource('/contact', 'ContactController');
 });
 
 
 /*
-// Route::group(array('before' => 'auth'), function(){
+//      Route::group(array('before' => 'auth'), function(){
 //     Route::get('/home', 'HomeController@dash')->name('index');
 //     Route::resource('/category', 'CategoryController');
 //     Route::resource('/subcat', 'SubcatController');

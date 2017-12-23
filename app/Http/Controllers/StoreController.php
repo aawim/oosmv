@@ -3,17 +3,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Store;
 use App\Type;
-// use App\User;
 use App\Product;
 use Auth;
 use Toastr;
 class StoreController extends Controller
 {
  
-
-
-
-
     private  $stores, $types;
     
     public function __construct()
@@ -38,8 +33,7 @@ class StoreController extends Controller
    
     public function store(Request $request)
     {
-    
-        $this->validate($request,[
+         $this->validate($request,[
             'name'=>'required|max:255 ',
             'logo' => 'image|mimes:png,jpg,jpeg',
             'type'=>'required',

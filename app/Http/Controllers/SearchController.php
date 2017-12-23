@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Store;
 use App\Product;
 use App\Cart;
 use App\Category;
@@ -20,14 +21,38 @@ class SearchController extends Controller
         else
         {
             $products = Product::where('name','LIKE',"%{$search}%")->get();
-            // $products = Product::where('is_active','1')->orderBy('name')->get();
             return view('pages.livesearchajax',['products' => $products ]);
-
-
         }
 
     }
 
+   public function viewStores()
+    {
+
+        if (Auth::check()){
+            
+            $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
+            $stores = Store::where('is_active','1')->orderBy('name')->get();
+            return view('pages.stores',['cartitems' => $cartitems, 'stores'=> $stores] );
+            }else{
+            $stores = Store::where('is_active','1')->orderBy('name')->get();
+            return view('pages.stores',[ 'stores'=> $stores  ] );
+           }
+                
+    }
+
+    public function oneStore()
+    {
+        if (Auth::check()){
+            
+            $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
+            $stores = Store::where('is_active','1')->orderBy('name')->get();
+            return view('pages.onestore',['cartitems' => $cartitems, 'stores'=> $stores] );
+            }else{
+            $stores = Store::where('is_active','1')->orderBy('name')->get();
+            return view('pages.onestore',[ 'stores'=> $stores  ] );
+           }
+    }
 
 
 public function search()
@@ -42,7 +67,7 @@ public function search()
             $products = Product::where('is_active','1')->orderBy('name')->get();
             return view('pages.new_product',['products' => $products, 'categories' => $categories, ] );
            }
-        //return view('pages.sales');
+       
       }
 
 

@@ -1,6 +1,6 @@
 <div class="col-md-6 col-sm-6 additional-shop-info">
                     <ul class="list-unstyled list-inline">
-                        <li>For more information :<i class="fa fa-phone"></i><span>9671072</span></li>
+                        <li>For more information :<i class="fa fa-phone"></i><span>+960 9671072</span></li>
                         <!-- BEGIN CURRENCIES -->
                         <!-- <li class="shop-currencies">
                             <a href="javascript:void(0);">€</a>

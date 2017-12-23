@@ -145,7 +145,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       @endif
                       
                       <strong> Size: </strong> {{$cart_item->product()->first()->size}}</p>
-                      <em><strong>Store: <a href="#" style="color:green;">{{ $cart_item->store->name}}</a></strong></em>
+                      <em><strong>Store: <a href="{{url('store')}}" style="color:green;">{{ $cart_item->store->name}}</a></strong></em>
                     </td>
                     <td class="goods-page-ref-no">
                       javc2133

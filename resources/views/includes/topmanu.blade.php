@@ -180,15 +180,6 @@
        <li>
 
 
-
-            
-            
-            
-            
-
-             
-
-
             <li>
             <a href="{{url('find')}}" style="color:green; font-style:bold;">
             PRODUCT SEARCH</a>
@@ -196,6 +187,18 @@
 
             
             </li>
+
+
+            <li>
+            <a href="{{url('stores')}}" style="font-style:bold;">
+            STORE LIST
+            
+            </a>
+
+
+            
+            </li>
+
           </ul>
         </div>
     

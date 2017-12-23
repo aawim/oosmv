@@ -17,7 +17,7 @@
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Customer Service</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Order Tracking</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Shipping &amp; Returns</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="contacts.html">Contact Us</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{{route('contact.index')}}">Contact Us</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Careers</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Payment Methods</a></li>
             </ul>
@@ -60,6 +60,8 @@
           <div class="col-md-6 col-sm-6">
             <div class="pre-footer-subscribe-box pull-right">
               <h2>Newsletter</h2>
+              
+              
               <form action="#">
                 <div class="input-group">
                   <input type="text" placeholder="youremail@mail.com" class="form-control">
@@ -68,6 +70,8 @@
                   </span>
                 </div>
               </form>
+
+
             </div> 
           </div>
           <!-- END NEWLETTER -->
@@ -82,7 +86,7 @@
         <div class="row">
           <!-- BEGIN COPYRIGHT -->
           <div class="col-md-4 col-sm-4 padding-top-10">
-            2015 © Keenthemes. ALL Rights Reserved. 
+            2017 - {{date("Y")}} © OOSMV. ALL Rights Reserved. 
           </div>
           <!-- END COPYRIGHT -->
           <!-- BEGIN PAYMENTS -->
@@ -98,7 +102,7 @@
           <!-- END PAYMENTS -->
           <!-- BEGIN POWERED -->
           <div class="col-md-4 col-sm-4 text-right">
-            <p class="powered">Powered by: <a href="http://www.keenthemes.com/">KeenThemes.com</a></p>
+            <!-- <p class="powered">Powered by: <a href="http://www.keenthemes.com/">KeenThemes.com</a></p> -->
           </div>
           <!-- END POWERED -->
         </div>

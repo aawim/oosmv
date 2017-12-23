@@ -35,7 +35,6 @@ class CartController extends Controller
                 $d->qty = $d->qty + 1;
                 $d->save();
                 return redirect()->back();
-
                        }else{
                 $d = new Cart();
                 $d->user_id = Auth::user()->id;
@@ -51,6 +50,8 @@ class CartController extends Controller
               return redirect()->back();
 
             }
+
+           
         }
   
     public function edit($id)
