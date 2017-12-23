@@ -107,7 +107,7 @@
                       <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="product-item">
                           <div class="pi-img-wrapper">
-                            <a href="shop-item.html"><img src="assets/pages/img/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                            <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/products/model4.jpg'}}" class="img-responsive" alt="Berry Lace Dress"></a>
                           </div>
                           <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                           <div class="pi-price">$29.00</div>
@@ -117,7 +117,7 @@
                       <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="product-item">
                           <div class="pi-img-wrapper">
-                            <a href="shop-item.html"><img src="assets/pages/img/products/model3.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                            <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/products/model3.jpg'}}" class="img-responsive" alt="Berry Lace Dress"></a>
                           </div>
                           <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                           <div class="pi-price">$29.00</div>
@@ -127,7 +127,7 @@
                       <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="product-item">
                           <div class="pi-img-wrapper">
-                            <a href="shop-item.html"><img src="assets/pages/img/products/model7.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                            <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/products/model7.jpg'}}" class="img-responsive" alt="Berry Lace Dress"></a>
                           </div>
                           <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                           <div class="pi-price">$29.00</div>
@@ -137,7 +137,7 @@
                       <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="product-item">
                           <div class="pi-img-wrapper">
-                            <a href="shop-item.html"><img src="assets/pages/img/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress"></a>
+                            <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/products/model4.jpg'}}" class="img-responsive" alt="Berry Lace Dress"></a>
                           </div>
                           <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
                           <div class="pi-price">$29.00</div>
