@@ -2,37 +2,41 @@
 @auth
 <div class="top-cart-block">
   <div class="top-cart-info">
-    <a href="{{route('cart.index')}}" class="top-cart-info-count">
+  @if($cartitems->count()>0)
+  <a href="{{route('cart.index')}}" class="top-cart-info-count">
+  @else
+  <a href="#" class="top-cart-info-count">
+  @endif
+   
     @if(Auth::user()->cart_items()->get()->count() > 1)
     {{"You have : (" }} <strong> {{ Auth::user()->cart_items()->get()->count() }} </strong> {{") Items Item in your list" }} 
     @else
     {{"You have : (" }} <strong> {{ Auth::user()->cart_items()->get()->count() }} </strong>  {{") Item in your list" }} 
     @endif
   </a>
-    <!-- <a href="javascript:void(0);" class="top-cart-info-value"> $1260 </a> -->
-  </div>
-  @if (Auth::check())                
+ </div>
+
+
+
+  @if (Auth::check())  
+  
+  @if($cartitems->count()>0)
   <div class="top-cart-content-wrapper">
     <div class="top-cart-content">
       <ul class="scroller" style="height: 250px;">
- 
-      @foreach ($cartitems as $count => $cart_item)
+       @foreach ($cartitems as $count => $cart_item)
         <li>
-       
-
-          <a href="shop-item.html">
+          <a href="{{route('cart.edit', $cart_item->id)}}">
           <img src="{{url('/').'/'.$cart_item->product()->first()->image}}" alt="Rolex Classic Watch" width="37" height="34">
           </a>
           <span class="cart-content-count">x  {{$cart_item->qty}}</span>
           <strong><a href="{{route('cart.edit', $cart_item->id)}}">{{$cart_item->product()->first()->name}}</a></strong>
           <em>{{$cart_item->qty * $cart_item->product()->first()->price }}</em>
           <a href="#" class="del-goods" data-toggle="modal" data-target="#deleteModal{{$count}}"
-                        data-delete-id="{{$cart_item->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">&nbsp;</a>
+           data-delete-id="{{$cart_item->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">&nbsp;</a>
         </li>
         @endforeach  
- 
-
-      </ul>
+       </ul>
       <div class="text-right">
         <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
         <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
@@ -40,10 +44,27 @@
     </div>
   </div>
 
+@else
+<div class="top-cart-content-wrapper">
+<div class="top-cart-content">
+
+<p style="padding-left:20px;">You don't have any item in your cart.</p>
+</div>
+</div>
+@endif
+
+
   @endif
 
 </div>
+
+
 @endauth
+
+
+
+
+
 
 
 @if (Auth::check()) 

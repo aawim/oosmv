@@ -2,7 +2,7 @@
                 <div class="col-md-6 col-sm-6 additional-nav">
                     <ul class="list-unstyled list-inline pull-right">
                     @auth
-                        <li><a href="#">My Account</a></li>
+                        <li><a href="{{ route('myaccount.index') }}">My Account</a></li>
                         <li><a href="{{ url('manage/home') }}">Dashboard</a></li>
                         <li>
                                 <a href="{{ route('logout') }}"

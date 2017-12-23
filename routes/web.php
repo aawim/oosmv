@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', 'HomeController@index');
- 
+Route::get('/home', 'HomeController@index');
 // Route::get('/', function () {
 //      //return view('wellhome');
 //      //return "asasas";
@@ -24,7 +24,9 @@ Route::get('/', 'HomeController@index');
 
 
 //Route::get('ps','ProductController@search');
+
 Route::get('/manage/photo/{id}', 'ProductPhotoController@addPhoto');
+Route::get('/manage/view/{id}', 'ProductPhotoController@viewPhoto');
 Route::get('wellhome','SearchController@liveSearch'); 
 Route::get('find','SearchController@search'); 
 Route::get('find/{id}','SearchController@catesearch'); 
@@ -43,19 +45,14 @@ Route::prefix('manage')->group(function(){
     Route::resource('/review', 'ReviewController');
     Route::resource('/photo', 'ProductPhotoController');
     Route::resource('/carousel', 'CarouselController');
-     
+    
 });
-
-
 
 Route::prefix('client')->group(function(){
     Route::resource('/category', 'CategoryController');
     Route::resource('/cart', 'CartController');
-    
+    Route::resource('/myaccount', 'ClientController');
 });
-
-
-
 
 
 /*

@@ -155,7 +155,7 @@ class ProductController extends Controller
 
             }else{
                 $d->image = $d->image;
-                    }
+            }
  
         $d->save();
         Toastr::success('A product updated successfully.', 'SSOMV', ["positionClass" => "toast-top-right"]);

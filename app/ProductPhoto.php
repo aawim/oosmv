@@ -9,7 +9,10 @@ class ProductPhoto extends Model
    
     protected $table = 'product_photos';
    
-   
+    protected $hidden = [
+        'created_at', 'updated_at',
+    ];
+
     protected $fillable = ['product_id', 'name'];
          public function product()
        {

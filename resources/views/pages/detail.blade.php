@@ -310,6 +310,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       
 
                       @foreach ($reviews as $count => $review)
+            
                       <div class="review-item clearfix">
                         <div class="review-item-submitted">
                           <strong>{{$review->user_id}}</strong>
@@ -321,44 +322,26 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         </div>
                       </div>
                     @endforeach
-
-
-
-
-
-
-
-
-
-
-
-
-                      <!-- BEGIN FORM-->
-                      
-                      @if(isset(Auth::user()->name))
-                       
-
-
+                     <!-- BEGIN FORM-->
+                       @if(isset(Auth::user()->name))
                       <form class="form-horizontal" action="{{route('review.store')}}" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
-
-
                         <h2>Write a review</h2>
                         <div class="form-group">
                           <label for="name">Name <span class="require">*</span></label>
                           <input type="text" class="form-control" id="name" value="{{Auth::user()->name}}">
-                                                                   </div>
+                        </div>
                         <div class="form-group">
                           <label for="email">Email</label>
                           <input type="text" class="form-control" id="email" value="{{Auth::user()->email}}">
                         </div>
                         <div class="form-group">
                           <label for="review">Review <span class="require">*</span></label>
-                          <textarea class="form-control" rows="8" name="description" id="description"></textarea>
+                          <textarea class="form-control" rows="8" name="description" id="description" required ></textarea>
                         </div>
                         <div class="form-group">
                           <label for="email">Rating</label>
-                          <input type="range" name="backing5"  value="0" step="0.25" id="backing5">
+                          <input type="range" name="backing5"  value="0" step="0.25" id="backing5" required>
                           <div class="rateit" data-rateit-backingfld="#backing5" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
                           </div>
                         </div>

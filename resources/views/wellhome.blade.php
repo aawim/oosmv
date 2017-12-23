@@ -106,10 +106,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     </div>
     <!-- END TOP BAR -->
 
+
+
+
     <!-- BEGIN HEADER -->
     <div class="header">
       <div class="container">
-        <a class="site-logo" href="{{ url('/') }}"><img src="assets/corporate/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
+        <a class="site-logo" href="{{ url('/') }}"><img src="{{url('/').'/assets/corporate/img/logos/logo-shop-red.png'}}" alt="Metronic Shop UI"></a>
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
        
         <!-- BEGIN CART -->
@@ -366,11 +369,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         <div class="product-main-image">
                           <img src="{{url('/').'/'.$product->image}}"  alt="Cool green dress with red bell" class="img-responsive">
                         </div>
-                        <div class="product-other-images">
+                        <!-- <div class="product-other-images">
                           <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="assets/pages/img/products/model3.jpg"></a>
                           <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model4.jpg"></a>
                           <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model5.jpg"></a>
-                        </div>
+                        </div> -->
                       </div>
                       <div class="col-md-6 col-sm-6 col-xs-9">
                         <h2>Cool green dress with red bell </h2>

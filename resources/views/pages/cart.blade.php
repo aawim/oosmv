@@ -128,24 +128,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <th class="goods-page-price">Unit price</th>
                     <th class="goods-page-total" colspan="2">Total</th>
                   </tr>
-
-
-
-                  
-
-                  
+       
                   @foreach ($cartitems as $count => $cart_item)
-
-                 
-                 
                   <tr>
-                  
-                    <td class="goods-page-image">
+                     <td class="goods-page-image">
                       <a href="javascript:;"><img src="{{url('/').'/'.$cart_item->product()->first()->image}}" alt="Berry Lace Dress"></a>
                     </td>
                     <td class="goods-page-description">
-
-                      
                       <h3 ><strong><a href="{{route('cart.edit', $cart_item->id)}}">{{ $cart_item->product->name}}</a></strong></h3>
                       <p><strong>Item {{$count+1}}</strong> - <strong>Color:</strong> 
                       
@@ -173,22 +162,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       <strong><span>$</span>{{ 
                        $subtot  = $cart_item->product()->first()->price * $cart_item->qty
                         
-                       
+                      
                        }}  </strong>
                     </td>
                     <td class="del-goods-col">
                       <!-- <a class="del-goods" href="javascript:;">&nbsp;</a> -->
-
-
                       <a href="#" class="del-goods" data-toggle="modal" data-target="#deleteModal{{$count}}"
                                 data-delete-id="{{$cart_item->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">&nbsp;</a>
-
-
-                      
                     </td>
                   </tr>
-
-                 
+               
 <!-- Modal -->
 <div id="deleteModal{{$count}}" class="modal fade" role="dialog">
 <div class="modal-dialog">
@@ -225,25 +208,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 </div>
 
                    @endforeach     
-         
-
- 
-
- 
-
-                </table>
+                  </table>
                 </div>
-
-
-
-
-                
-
                 <div class="shopping-total">
                   <ul>
                     <li>
                       <em>Sub total</em>
-                      <strong class="price"><span>$</span>{{ $subtot}}</strong>
+                      <strong class="price"><span>$</span> </strong>
                     </li>
                     <li>
                       <em>Shipping cost</em>

@@ -490,7 +490,7 @@ for(var i=0;i<data.length;i++){
 
 
 
-  div.find('#scat').html(" ");
+div.find('#scat').html(" ");
 div.find('#scat').append(op);
 
   },
