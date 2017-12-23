@@ -37,7 +37,7 @@ class ProductPhotoController extends Controller
     public function store(Request $request)
     {
       
-        $d = new ProductPhoto();
+        
         // $d->product_id = $request->product_id;
         //         $d->name = $request->file;
         //         $d->save();
@@ -45,13 +45,13 @@ class ProductPhotoController extends Controller
 
         if($request->hasFile('photos')){
             foreach($request->file('photos') as $count => $file) {
+                $d = new ProductPhoto();
                 $file->move(base_path().'/public/uploads/', $file->getClientOriginalName());
-                
-                $d->name = $request->photos[$count]->getClientOriginalName();
-               
+                $d->name = 'uploads/'.$request->photos[$count]->getClientOriginalName();
+                $d->product_id = $request->product_id;
+                $d->save();
             }
-            $d->product_id = $request->product_id;
-            $d->save();
+           
         }
 
         

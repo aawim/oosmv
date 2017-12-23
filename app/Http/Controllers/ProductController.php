@@ -39,11 +39,6 @@ class ProductController extends Controller
       return view('product.search');
     }
 
-
-
-
-
-    
     public function findSubCatgeoryName(Request $request){
         $data = Subcategory::where('cat_id', $request->id)->where('is_active', 1)->get();
         return response()->json($data);
