@@ -34,7 +34,7 @@
               {{ csrf_field() }}
 
 
-              <h1>Login Form</h1>
+              <h1>System Login</h1>
               <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 
 
@@ -86,13 +86,17 @@
                 <p class="change_link">New to site?
                   <a href="#signup" class="to_register"> Create Account </a>
                 </p>
+                <p> Trials remain: 3</p>
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <h1><i class=""></i> OOSMV</h1>
+                  <p>©2017 - {{date("Y")}}. All Rights Reserved. OOSMV is an online oder system. Target country is Maldives</p>
+                   <p>3 attempt security policy is implemented </p>
+
+                    
                 </div>
               </div>
             </form>

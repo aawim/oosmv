@@ -5,12 +5,12 @@
           <!-- BEGIN BOTTOM ABOUT BLOCK -->
           <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2>About us</h2>
-            <a href="#"> <h4>What is our target?</h4></a>
-            <a href="#"> <h4>What is our aim?</h4></a>
-            <a href="#"> <h4>What is our goal?</h4></a>
-            <a href="#"> <h4>What is our mission?</h4></a>
-            <a href="#"> <h4>What is our vission?</h4></a>
-         
+            <a href="{{url('/info/aboutus')}}"> <h4>Our target</h4></a>
+            <a href="{{url('/info/aboutus')}}"> <h4>Our aim</h4></a>
+            <a href="{{url('/info/aboutus')}}"> <h4>Our goal</h4></a>
+            <a href="{{url('/info/aboutus')}}"> <h4>Our mission</h4></a>
+            <a href="{{url('/info/aboutus')}}"> <h4>Our vission</h4></a>
+            
           </div>
           <!-- END BOTTOM ABOUT BLOCK -->
           <!-- BEGIN BOTTOM INFO BLOCK -->

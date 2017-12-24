@@ -11,7 +11,11 @@ class PagesController extends Controller
  
     
 
-    
+    public function aboutus()
+    {
+        $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
+        return view('pages.aboutus',['cartitems'=>$cartitems]);
+    }
 
     public function faq()
     {
