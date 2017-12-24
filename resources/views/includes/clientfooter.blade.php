@@ -5,21 +5,27 @@
           <!-- BEGIN BOTTOM ABOUT BLOCK -->
           <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2>About us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
-            <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
+            <a href="#"> <h4>What is our target?</h4></a>
+            <a href="#"> <h4>What is our aim?</h4></a>
+            <a href="#"> <h4>What is our goal?</h4></a>
+            <a href="#"> <h4>What is our mission?</h4></a>
+            <a href="#"> <h4>What is our vission?</h4></a>
+         
           </div>
           <!-- END BOTTOM ABOUT BLOCK -->
           <!-- BEGIN BOTTOM INFO BLOCK -->
           <div class="col-md-3 col-sm-6 pre-footer-col">
             <h2>Information</h2>
             <ul class="list-unstyled">
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Delivery Information</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Customer Service</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Order Tracking</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Shipping &amp; Returns</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{{url('/info/delivery')}}">Delivery Information</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{{url('/info/customerservice')}}">Customer Service</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{{url('/info/shipping')}}">Shipping &amp; Returns</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="{{route('contact.index')}}">Contact Us</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Careers</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="javascript:;">Payment Methods</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{{url('/info/payment')}}">Payment Methods</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{{url('/info/privacypolicy')}}">Privacy Policy</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{{url('/info/termsconditions')}}">Terms & Conditions</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{{url('/info/faq')}}">FAQ</a></li>
+              
             </ul>
           </div>
           <!-- END INFO BLOCK -->
@@ -45,21 +51,21 @@
           <!-- BEGIN SOCIAL ICONS -->
           <div class="col-md-6 col-sm-6">
             <ul class="social-icons">
-              <li><a class="rss" data-original-title="rss" href="javascript:;"></a></li>
+              <!-- <li><a class="rss" data-original-title="rss" href="javascript:;"></a></li> -->
               <li><a class="facebook" data-original-title="facebook" href="javascript:;"></a></li>
               <li><a class="twitter" data-original-title="twitter" href="javascript:;"></a></li>
-              <li><a class="googleplus" data-original-title="googleplus" href="javascript:;"></a></li>
-              <li><a class="linkedin" data-original-title="linkedin" href="javascript:;"></a></li>
+              <!-- <li><a class="googleplus" data-original-title="googleplus" href="javascript:;"></a></li>
+              <li><a class="linkedin" data-original-title="linkedin" href="javascript:;"></a></li> -->
               <li><a class="youtube" data-original-title="youtube" href="javascript:;"></a></li>
-              <li><a class="vimeo" data-original-title="vimeo" href="javascript:;"></a></li>
-              <li><a class="skype" data-original-title="skype" href="javascript:;"></a></li>
+              <!-- <li><a class="vimeo" data-original-title="vimeo" href="javascript:;"></a></li>
+              <li><a class="skype" data-original-title="skype" href="javascript:;"></a></li> -->
             </ul>
           </div>
           <!-- END SOCIAL ICONS -->
           <!-- BEGIN NEWLETTER -->
           <div class="col-md-6 col-sm-6">
             <div class="pre-footer-subscribe-box pull-right">
-              <h2>Newsletter</h2>
+              <h2>Be the fisrt to know</h2>
               
               
               <form action="#">
@@ -70,6 +76,9 @@
                   </span>
                 </div>
               </form>
+
+
+
 
 
             </div> 
@@ -86,18 +95,18 @@
         <div class="row">
           <!-- BEGIN COPYRIGHT -->
           <div class="col-md-4 col-sm-4 padding-top-10">
-            2017 - {{date("Y")}} © OOSMV. ALL Rights Reserved. 
+            2017 - {{date("Y")}} © OOSMV. &nbsp;&nbsp; ALL Rights Reserved. 
           </div>
           <!-- END COPYRIGHT -->
           <!-- BEGIN PAYMENTS -->
           <div class="col-md-4 col-sm-4">
-            <ul class="list-unstyled list-inline pull-right">
+            <!-- <ul class="list-unstyled list-inline pull-right">
               <li><img src="{{url('/').'/assets/corporate/img/payments/western-union.jpg'}}" alt="We accept Western Union" title="We accept Western Union"></li>
               <li><img src="{{url('/').'/assets/corporate/img/payments/american-express.jpg'}}" alt="We accept American Express" title="We accept American Express"></li>
               <li><img src="{{url('/').'/assets/corporate/img/payments/MasterCard.jpg'}}" alt="We accept MasterCard" title="We accept MasterCard"></li>
               <li><img src="{{url('/').'/assets/corporate/img/payments/PayPal.jpg'}}" alt="We accept PayPal" title="We accept PayPal"></li>
               <li><img src="{{url('/').'/assets/corporate/img/payments/visa.jpg'}}" alt="We accept Visa" title="We accept Visa"></li>
-            </ul>
+            </ul> -->
           </div>
           <!-- END PAYMENTS -->
           <!-- BEGIN POWERED -->

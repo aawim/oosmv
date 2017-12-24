@@ -41,12 +41,11 @@ class SearchController extends Controller
                 
     }
 
-    public function oneStore()
+    public function oneStore($id)
     {
         if (Auth::check()){
-            
             $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
-            $stores = Store::where('is_active','1')->orderBy('name')->get();
+            $stores = Store::where('is_active','1')->where('id',$id)->orderBy('name')->get();
             return view('pages.onestore',['cartitems' => $cartitems, 'stores'=> $stores] );
             }else{
             $stores = Store::where('is_active','1')->orderBy('name')->get();

@@ -10,19 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/info/faq', 'PagesController@faq');
+Route::get('/info/termsconditions', 'PagesController@termsconditions');
+Route::get('/info/privacypolicy', 'PagesController@privacypolicy');
+Route::get('/info/delivery', 'PagesController@delivery');
+Route::get('/info/customerservice', 'PagesController@customerservice');
+Route::get('/info/payment', 'PagesController@payment');
+Route::get('/info/shipping', 'PagesController@shipping');
+
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-
-
-
-
 Route::get('/client/myaccountchange/{id}', 'MyAccountController@editAccountInformation');
 Route::get('/manage/photo/{id}', 'ProductPhotoController@addPhoto');
 Route::get('/manage/view/{id}', 'ProductPhotoController@viewPhoto');
 Route::get('wellhome','SearchController@liveSearch'); 
 Route::get('find','SearchController@search'); 
 Route::get('stores','SearchController@viewStores');
-Route::get('store','SearchController@oneStore'); 
+Route::get('store/{id}','SearchController@oneStore'); 
 Route::get('find/{id}','SearchController@catesearch'); 
 Route::get('scat','ProductController@getscat'); 
 Route::get('findSubCat', 'ProductController@findSubCatgeoryName');

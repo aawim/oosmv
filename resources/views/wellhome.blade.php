@@ -421,7 +421,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                           <!-- <button class="btn btn-primary" type="submit" onClick="{{route('store.create')}}">Add to cart</button> -->
                         
                         
-                             <input type="hidden" class="form-control" name="store_id" id="store_id"   value="{{$product->store_id}}">
+                        <input type="hidden" class="form-control" name="store_id" id="store_id"   value="{{$product->store_id}}">
                         <input type="hidden" class="form-control" name="product_id" id="product_id"   value="{{$product->id}}">
                         @if ($product->availability === 0)
                            <button class="btn btn-primary pull-right" disabled  type="submit">Add to cart</button>

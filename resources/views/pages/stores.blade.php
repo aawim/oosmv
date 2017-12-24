@@ -115,44 +115,34 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <div class="row product-list">
 
 
- @if(count($stores) > 0)
-             @foreach ($stores as $count => $store)
+@if(count($stores) > 0)
+@foreach ($stores as $count => $store)
 <!-- PRODUCT ITEM START -->
 <form class="form-horizontal" action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
-                      {{ csrf_field() }}
-              <div class="col-md-2 col-sm-2 col-xs-12">
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="{{url('/').'/'.$store->logo}}" style="height:150px;" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                    <a href="{{url('/').'/'.$store->logo}}" class="btn btn-default fancybox-button">Zoom</a>
-                    <a href="#product-pop-up{{$count}}" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                  <div class="pi-price">$29.00</div>
+         {{ csrf_field() }}
+ <div class="col-md-2 col-sm-2 col-xs-12">
+   <div class="product-item">
+     <div class="pi-img-wrapper">
+       <img src="{{url('/').'/'.$store->logo}}" style="height:100px;" class="img-responsive" alt="Berry Lace Dress">
+    </div>
+     <div class="container">
+     <h3><a href="shop-item.html">{{$store->name}}</a></h3>
+     </div>
+    <!-- <div class="sticker sticker-new"></div> -->
+        </div>
+ </div>
+ </form>
+ <!-- PRODUCT ITEM END -->
+ @endforeach
 
-                 
-                 
-
-                <button class="btn btn-primary pull-right"   type="submit">Add to cart</button>
-                <div class="sticker sticker-new"></div>
-                     </div>
-              </div>
-              </form>
-              <!-- PRODUCT ITEM END -->
-              @endforeach
-
-              @else
-          
-              <div class="container-fluid">
-          
-          <div class="alert alert-info" >
-  <strong>Info! </strong> No store found at the moment. 
+ @else
+<div class="container-fluid">
+ <div class="alert alert-info" >
+<strong>Info! </strong> No store found at the moment. 
 </div>
 </div>
 
-          @endif
+@endif
 
 
             </div>

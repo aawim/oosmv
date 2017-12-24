@@ -29,6 +29,8 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
+
+         
          $ifexixts = Cart::where('user_id',Auth::user()->id)->where('product_id', $request->product_id)->get();
            if(count($ifexixts)> 0 ){
                 $d = Cart::findOrFail($ifexixts[0]['id']);

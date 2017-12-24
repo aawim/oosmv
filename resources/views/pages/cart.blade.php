@@ -145,7 +145,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       @endif
                       
                       <strong> Size: </strong> {{$cart_item->product()->first()->size}}</p>
-                      <em><strong>Store: <a href="{{url('store')}}" style="color:green;">{{ $cart_item->store->name}}</a></strong></em>
+                      <em><strong>Store: <a href="{{url('store', $cart_item->store->id)}}" style="color:green;">{{ $cart_item->store->name}}</a></strong></em>
                     </td>
                     <td class="goods-page-ref-no">
                       javc2133
@@ -167,8 +167,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </td>
                     <td class="del-goods-col">
                       <!-- <a class="del-goods" href="javascript:;">&nbsp;</a> -->
-                      <a href="#" class="del-goods" data-toggle="modal" data-target="#deleteModal{{$count}}"
-                                data-delete-id="{{$cart_item->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">&nbsp;</a>
+                     
+                      <a href="#" class="del-goods btn" data-toggle="modal" data-target="#deleteModal{{$count}}"
+                                data-delete-id="{{$cart_item->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">&nbsp;
+                      </a>
+     
                     </td>
                   </tr>
                
@@ -250,6 +253,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <!-- END CONTENT -->
         </div>
         <!-- END SIDEBAR & CONTENT -->
+
+
+
+
+
 
         <!-- BEGIN SIMILAR PRODUCTS -->
         <div class="row margin-bottom-40">
@@ -349,6 +357,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
       </div>
     </div>
 
+
+
+
+
+
+    
  
 
     <!-- BEGIN PRE-FOOTER -->

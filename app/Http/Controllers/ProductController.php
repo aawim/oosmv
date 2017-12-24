@@ -28,8 +28,7 @@ class ProductController extends Controller
       public function index()
     {
                 
-        return view('product.index', 
-        [   'products' => $this->products] );
+        return view('product.index',['products' => $this->products] );
     }
 
 

@@ -18,7 +18,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- Head BEGIN -->
 <head>
   <meta charset="utf-8">
-  <title>Metronic Shop UI</title>
+  <title>My Account | Metronic Shop UI</title>
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -66,110 +66,106 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 <!-- Body BEGIN -->
 <body class="ecommerce">
+ 
 
-
+    
     <!-- BEGIN TOP BAR -->
     <div class="pre-header">
         <div class="container">
-        <div class="row">
+            <div class="row">
 
-        <!-- BEGIN TOP BAR LEFT PART -->
-    @include('includes.topleftbar')
-        <!-- END TOP BAR LEFT PART -->
+                <!-- BEGIN TOP BAR LEFT PART -->
+            @include('includes.topleftbar')
+                <!-- END TOP BAR LEFT PART -->
 
 
-        <!-- BEGIN TOP BAR MENU -->
-    @include('includes.topbarmenu')
-        <!-- END TOP BAR MENU -->
-    </div>
+                <!-- BEGIN TOP BAR MENU -->
+            @include('includes.topbarmenu')
+                <!-- END TOP BAR MENU -->
+            </div>
 
 
         </div>        
     </div>
     <!-- END TOP BAR -->
+     
 
     <!-- BEGIN HEADER -->
     <div class="header">
       <div class="container">
       <a class="site-logo" href="{{ url('/') }}"><img src="{{url('/').'/assets/corporate/img/logos/logo-shop-red.png'}}" alt="Metronic Shop UI"></a>
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-       
-       <!-- BEGIN CART -->
+
+        <!-- BEGIN CART -->
+
        @if (Auth::check())  
-       @include('includes.cart')
+                @include('includes.cart')
        @endif
-       <!--END CART -->
-    
-      <!-- BEGIN NAVIGATION -->
-      @include('includes.topmanu')
-      <!-- END NAVIGATION -->
+
+        <!--END CART -->
+
+        <!-- BEGIN NAVIGATION -->
+        @include('includes.topmanu')
+        <!-- END NAVIGATION -->
       </div>
+    </div>
+    <!-- Header END -->
+    
+    <div class="main">
+      <div class="container">
+       
+        <ul class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Store</a></li>
+            <li class="active">My Account Page</li>
+        </ul>
 
 
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+          <!-- BEGIN SIDEBAR -->
+        @if (Auth::check())  
+                @include('includes.client.sidebar')
+        @endif
+          <!-- END SIDEBAR -->
+
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-9 col-sm-7">
+            <h1>Terms & Conditions</h1>
+            <div class="content-page">
+              <h3>Types of business allowed</h3>
+              <ul>
+                <!-- <li><a href="{{ url('/client/myaccountchange',2) }}">Edit your account information</a></li>
+                <li><a href="javascript:;">Change your password</a></li>
+                <li><a href="javascript:;">Modify your address book entries</a></li>
+                <li><a href="javascript:;">Modify your wish list</a></li> -->
+              </ul>
+              <hr>
 
 
-<div class="container">
-<!-- BEGIN PRODUCT LIST -->
-<div class="row product-list">
- @if(count($stores) > 0)
-             @foreach ($stores as $count => $store)
-<!-- PRODUCT ITEM START -->
-<form class="form-horizontal" action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
-                      {{ csrf_field() }}
-              <div class="col-md-2 col-sm-2 col-xs-12">
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="{{url('/').'/'.$store->logo}}" style="height:100px;" class="img-responsive" alt="Berry Lace Dress">
-                 </div>
-                  <div class="container">
-                  <h3><a href="shop-item.html">{{$store->name}}</a></h3>
-                  </div>
-                 <!-- <div class="sticker sticker-new"></div> -->
-                     </div>
-              </div>
-              </form>
-              <!-- PRODUCT ITEM END -->
-              @endforeach
-
-              @else
-            <div class="container-fluid">
-              <div class="alert alert-info" >
-  <strong>Info! </strong> No store found at the moment. 
-</div>
-</div>
-
-          @endif
 
 
             </div>
-            <!-- END PRODUCT LIST -->
-
-
+          </div>
+          <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+      </div>
     </div>
-    <!-- Header END -->
 
 
 
 
- 
-    
 
-    <div class="main">
-      <div class="container-fluid">
- 
-   
     <!-- BEGIN FOOTER -->
     @include('includes.clientfooter')
     <!-- END FOOTER -->
 
-
-
-
     <!-- Load javascripts at bottom, this will reduce page load time -->
-    <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
     <!--[if lt IE 9]>
-    <script src="{{url('/').'/assets/plugins/respond.min.js'}}"></script>  
-    <![endif]-->
+    <script src="assets/plugins/respond.min.js"></script>  
+    <![endif]-->  
     <script src="{{url('/').'/assets/plugins/jquery.min.js'}}" type="text/javascript"></script>
     <script src="{{url('/').'/assets/plugins/jquery-migrate.min.js'}}" type="text/javascript"></script>
     <script src="{{url('/').'/assets/plugins/bootstrap/js/bootstrap.min.js'}}" type="text/javascript"></script>      
@@ -180,47 +176,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
     <script src="{{url('/').'/assets/plugins/fancybox/source/jquery.fancybox.pack.js'}}" type="text/javascript"></script><!-- pop up -->
     <script src="{{url('/').'/assets/plugins/owl.carousel/owl.carousel.min.js'}}" type="text/javascript"></script><!-- slider for products -->
-    <script src="{{url('/').'/assets/plugins/zoom/jquery.zoom.min.js'}}" type="text/javascript"></script><!-- product zoom -->
-    <script src="{{url('/').'/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js'}}" type="text/javascript"></script><!-- Quantity -->
 
     <script src="{{url('/').'/assets/corporate/scripts/layout.js'}}" type="text/javascript"></script>
-    <script src="{{url('/').'/assets/pages/scripts/bs-carousel.js'}}" type="text/javascript"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
             Layout.init();    
             Layout.initOWL();
-            Layout.initImageZoom();
-            Layout.initTouchspin();
             Layout.initTwitter();
         });
     </script>
-
-
-
-
-<script>
-$(document).ready(function(){
-   $("#search").keyup(function(){
-       var str=  $("#search").val();
-       if(str == "") {
-               $( "#txtHint" ).html("<b></b>"); 
-       }else {
-               $.get( "{{ url('wellhome?id=') }}"+str, function( data ) {
-                   $( "#txtHint" ).html( data );  
-            });
-       }
-   });  
-}); 
-</script>
-
-
-
-
-
-
-
-
-
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

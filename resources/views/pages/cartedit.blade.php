@@ -155,14 +155,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <div class="col-md-6 col-sm-6">
                 <form class="form-horizontal" action="{{route('cart.update',$cart_item->id)}}" method="POST">
                       {{method_field('PUT')}} {{ csrf_field() }}
+                     
+                      <div class="product-quantity">
                       <div class="col-sm-3">
                         @if ($cart_item->product->availability === 0)
-                        <input type="text" class="form-control" name="qty" id="qty"   disabled value="{{ old('qty') ? old('qty') : $cart_item->qty}}">
+                        <input type="text" class="form-control input-sm" name="qty" id="qty"   disabled value="{{ old('qty') ? old('qty') : $cart_item->qty}}">
                         @else
                         <input type="text" class="form-control" name="qty" id="qty"   required value="{{ old('qty') ? old('qty') : $cart_item->qty}}">
                         @endif
                         </div>
-                    
+                        </div> 
                        @if ($cart_item->product->availability === 0)
                       <button class="btn btn-primary" disabled  type="submit"> Update Cart</button>
                       @else

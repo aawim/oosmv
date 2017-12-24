@@ -13,8 +13,9 @@ class DatabaseSeeder extends Seeder
     {
         //$this->call(CategorySeeder::class);
        //$this->call(SubCategorySeeder::class);
-       $this->call(SubSubCategorySeeder::class);
+      // $this->call(SubSubCategorySeeder::class);
        // $this->call(BrandTableSeeder::class);
+         $this->call(TypesTableSeeder::class);
 
     }
 }
