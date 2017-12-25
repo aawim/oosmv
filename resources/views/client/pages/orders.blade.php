@@ -139,7 +139,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
               @if($orders->count()>0)
                @foreach($orders as $count => $order)
                
-                <li><a href="{{ url('/client/orderdetail', $order->ref) }}">{{$order->ref}} &nbsp; &nbsp; {{$order->store_id}}</a> </li>
+                <li><a href="{{ url('/client/orderdetail', $order->store_id) }}">{{$order->ref}} &nbsp; &nbsp; {{$order->store_id}}</a> </li>
                
                 @endforeach
               @else

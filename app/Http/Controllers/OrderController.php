@@ -21,7 +21,7 @@ class OrderController extends Controller
         if (Auth::check()){
         $categories = Category::where('is_active', 1)->orderBy('name')->get();
         $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
-        $orders = Order::select('ref')->distinct()->where('user_id',$id)->where('is_active',1)->where('status',1)->get();
+        $orders = Order::select('store_id')->distinct()->where('user_id',$id)->where('is_active',1)->where('status',1)->get();
        // $orders = Order::select('ref')->where('user_id',$id)->where('is_active',1)->where('status',1)->get();
         return view('client.pages.orders',['cartitems'=>$cartitems, 'categories'=>$categories,'orders'=>$orders]);
         }else{
@@ -37,7 +37,7 @@ class OrderController extends Controller
         if (Auth::check()){
         $categories = Category::where('is_active', 1)->orderBy('name')->get();
         $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
-        $orders = Order::where('ref',$id)->where('is_active',1)->where('status',1)->get();
+        $orders = Order::where('store_id',$id)->where('is_active',1)->where('status',1)->get();
         $products = Product::where('is_active',1)->get();
         $stores = Store::where('is_active',1)->get();
         return view('client.pages.orderdetail',['cartitems'=>$cartitems, 'categories'=>$categories,'orders'=>$orders,'products'=>$products,'stores'=>$stores]);
@@ -79,19 +79,22 @@ class OrderController extends Controller
     public function store(Request $request)
     {
        $orders = Cart::where('user_id',$request->user_id)->where('is_active',1)->orderBy('store_id')->get();
+       
+      
        $rendomnumber = $this->guidv4();
         
        
 
-      $temp_store_id =  $orders[0]['store_id'];
+      $temp_store_id  =  $orders[0]['store_id'];
+
        
             if(count($orders)>0){
 
             foreach($orders  as $count => $item) {
+             
                 if($item->store_id != $temp_store_id){
                     $rendomnumber = $this->guidv4();
-                }
-
+               } 
 
                 $add_order = new Order();
                 $add_order->product_id = $item->product_id;
@@ -101,10 +104,17 @@ class OrderController extends Controller
                 $add_order->qty = $item->qty;
                 $add_order->status = 1;
                 $add_order->is_active = 1;
+
+
+                $add_order->save();
+
+               
+
+
                 $d = Cart::findOrFail($item->id);
                 $d->is_active = 0;
                 $d->delete();
-                $add_order->save();
+
            }
 
             return redirect()->back();
