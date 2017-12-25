@@ -25,7 +25,7 @@
     <div class="top-cart-content">
       <ul class="scroller" style="height: 250px;">
        @foreach ($cartitems as $count => $cart_item)
-       @if($cart_item->is_active===1)
+       @if($cart_item->is_active === 1)
         <li>
           <a href="{{route('cart.edit', $cart_item->id)}}">
           <img src="{{url('/').'/'.$cart_item->product()->first()->image}}" alt="Rolex Classic Watch" width="37" height="34">

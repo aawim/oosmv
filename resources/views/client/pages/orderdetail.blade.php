@@ -137,9 +137,27 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
               <ul>
 
               
+             
+              
+                     
+             
                @foreach($orders as $count => $order)
-                   <li><a href="{{ url('/client/orderdetail', $order->ref) }}">{{$order->ref}} &nbsp; &nbsp; {{$order->store_id}}</a> </li>
+             
+                
+                  @foreach($products as $count => $product)
+                    @if($order->product_id === $product->id)
+                        <li> {{$product->name}} &nbsp; &nbsp;{{$order->qty}}  </li>
+                                   
+                    @endif
+
+
+                   @endforeach
+                    
                 @endforeach
+ 
+               
+
+
 
 
               </ul>

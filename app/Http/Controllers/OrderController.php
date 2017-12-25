@@ -4,24 +4,19 @@ use Illuminate\Http\Request;
 
 use App\Cart;
 use App\Category;
+use App\Product;
 use App\Order;
+use App\Store;
 use Auth;
 use Toastr;
 class OrderController extends Controller
 {
-   
-   
-   
-   
+  
     public function __construct()
     {
         $this->middleware('auth');
     }
-   
-   
-   
-   
-    public function index($id)
+      public function index($id)
     {
         if (Auth::check()){
         $categories = Category::where('is_active', 1)->orderBy('name')->get();
@@ -43,13 +38,16 @@ class OrderController extends Controller
         $categories = Category::where('is_active', 1)->orderBy('name')->get();
         $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
         $orders = Order::where('ref',$id)->where('is_active',1)->where('status',1)->get();
-        // $orders = Order::selectRaw('ref','user_id')->where('user_id',$id)->groupBy('ref','user_id')->get();
-        return view('client.pages.orderdetail',['cartitems'=>$cartitems, 'categories'=>$categories,'orders'=>$orders]);
+        $products = Product::where('is_active',1)->get();
+        $stores = Store::where('is_active',1)->get();
+        return view('client.pages.orderdetail',['cartitems'=>$cartitems, 'categories'=>$categories,'orders'=>$orders,'products'=>$products,'stores'=>$stores]);
         }else{
 
         $categories = Category::where('is_active', 1)->orderBy('name')->get();
         return view('client.pages.orderdetail',[ 'categories'=>$categories]);
         }
+
+       
     }
 
 
@@ -80,7 +78,7 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-       $orders = Cart::where('user_id',$request->user_id)->where('is_active',1)->get();
+       $orders = Cart::where('user_id',$request->user_id)->where('is_active',1)->orderBy('store_id')->get();
        $rendomnumber = $this->guidv4();
         
        
@@ -90,9 +88,6 @@ class OrderController extends Controller
             if(count($orders)>0){
 
             foreach($orders  as $count => $item) {
-
-                //$temp_store_id = $item->store_id;
-
                 if($item->store_id != $temp_store_id){
                     $rendomnumber = $this->guidv4();
                 }
