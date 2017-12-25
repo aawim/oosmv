@@ -227,13 +227,24 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
               </div>
               <!-- <button class="btn btn-default" type="submit">Continue shopping <i class="fa fa-shopping-cart"></i></button> -->
               <a href="{{url('/find')}}" class="btn btn-default" >Continue shopping </a>
-              <form class="form-horizontal" action="{{route('order.store')}}" method="POST" >
+              <!-- <form class="form-horizontal" action="{{route('order.store')}}" method="POST" >
                       {{ csrf_field() }}
                       <input type="hidden" class="form-control " name="user_id" id="user_id"   required value="{{ Auth::user()->id }}">
                <button class="btn btn-primary" type="submit">Check for availability <i class="fa fa-check"></i></button>
             
-            </form>
-            
+            </form> -->
+
+            <!-- <a href="#" class="del-goods btn" data-toggle="modal" data-target="#conformationModal">Check for availability </a> -->
+           
+            @if(Auth::user()->cart_items()->where('is_active', 1)->get()->count() > 0)
+            <button class="btn btn-primary" data-toggle="modal" data-target="#conformationModal" type="submit">Check for availability <i class="fa fa-check"></i></button>
+           @else
+           <button class="btn btn-primary" data-toggle="modal" disabled data-target="#conformationModal" type="submit">Check for availability <i class="fa fa-check"></i></button>
+            @endif
+
+
+
+
             </div>
           </div>
           <!-- END CONTENT -->
@@ -241,7 +252,32 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         <!-- END SIDEBAR & CONTENT -->
 
 
-
+<!-- Modal -->
+<div id="conformationModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+  <!-- Modal content-->
+  <div class="modal-content">
+  <form class="form-horizontal" action="{{route('order.store')}}" method="POST" >
+  {{ csrf_field() }}
+  <input type="hidden" class="form-control " name="user_id" id="user_id"   required value="{{ Auth::user()->id }}">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Order Conformation</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to place this order ?</p>
+        <input type="text" id="delete-id" name="id" value="0" hidden />
+      </div>
+      <div class="modal-footer">
+        <span id="delete-dialog-link">
+          <button type="submit"  class="btn btn-danger">Confirm</button>
+        </span>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
 
 
 

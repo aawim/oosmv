@@ -19,8 +19,8 @@
 
 
   @if (Auth::check())  
-  
-  @if($cartitems->count() > 0)
+ 
+  @if(Auth::user()->cart_items()->where('is_active', 1)->get()->count() > 0)
   <div class="top-cart-content-wrapper">
     <div class="top-cart-content">
       <ul class="scroller" style="height: 250px;">
@@ -40,8 +40,13 @@
         @endforeach  
        </ul>
       <div class="text-right">
-        <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
-        <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
+        <!-- <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a> -->
+        <form class="form-horizontal" action="{{route('order.store')}}" method="POST" >
+                      {{ csrf_field() }}
+                      <input type="hidden" class="form-control " name="user_id" id="user_id"   required value="{{ Auth::user()->id }}">
+               <button class="btn btn-primary" type="submit">Check for availability <i class="fa fa-check"></i></button>
+
+               </form>
       </div>
     </div>
   </div>

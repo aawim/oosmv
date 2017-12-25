@@ -22,10 +22,7 @@ class ProductController extends Controller
        
     }
 
-
-
-
-      public function index()
+     public function index()
     {
                 
         return view('product.index',['products' => $this->products] );
@@ -130,7 +127,6 @@ class ProductController extends Controller
             'scat'=>'required',
             ]);
 
-      
         $d = Product::findOrFail($id);
         $d->name = $request->name;
         $d->cat_id = $request->cate;

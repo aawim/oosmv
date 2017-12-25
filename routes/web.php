@@ -31,6 +31,13 @@ Route::get('find','SearchController@search');
 Route::get('stores','SearchController@viewStores');
 Route::get('store/{id}','SearchController@oneStore'); 
 Route::get('find/{id}','SearchController@catesearch'); 
+Route::get('shop/{id}','SearchController@shopProductSearch'); 
+
+Route::get('client/orderds/{id}','OrderController@index'); 
+Route::get('client/orderdetail/{id}','OrderController@orderdetail');
+
+
+
 Route::get('scat','ProductController@getscat'); 
 Route::get('findSubCat', 'ProductController@findSubCatgeoryName');
 Route::resource('/item', 'ProductDetailController');

@@ -126,7 +126,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
        <img src="{{url('/').'/'.$store->logo}}" style="height:100px;" class="img-responsive" alt="Berry Lace Dress">
     </div>
      <div class="container">
-     <h3><a href="shop-item.html">{{$store->name}}</a></h3>
+     <h3><a href="{{url('shop',$store->id)}}">{{$store->name}}</a></h3>
      </div>
     <!-- <div class="sticker sticker-new"></div> -->
         </div>

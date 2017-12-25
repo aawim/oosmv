@@ -54,6 +54,31 @@ class SearchController extends Controller
     }
 
 
+
+
+
+
+
+    public function shopProductSearch($id)
+    {
+         if (Auth::check()){
+            $categories = Category::where('is_active','1')->orderBy('name')->get();
+            $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
+            $products = Product::where('is_active','1')->where('store_id',$id)->orderBy('name')->get();
+            return view('pages.shop',['products' => $products,'cartitems' => $cartitems, 'categories' => $categories] );
+            }else{
+            $categories = Category::where('is_active','1')->orderBy('name')->get();
+            $products = Product::where('is_active','1')->where('store_id',$id)->orderBy('name')->get();
+            return view('pages.shop',['products' => $products, 'categories' => $categories, ] );
+           }
+   
+      }
+
+
+
+
+
+
 public function search()
     {
          if (Auth::check()){

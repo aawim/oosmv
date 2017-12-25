@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('store_id');
             $table->integer('qty');
             $table->integer('is_active');
+            $table->integer('ref');
             $table->integer('status');
             $table->timestamps();
         });
