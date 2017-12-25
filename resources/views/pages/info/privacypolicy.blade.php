@@ -88,9 +88,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
             <!-- BEGIN CONTENT -->
             <div class="col-md-9 col-sm-7">
-            <h1>Terms & Conditions</h1>
+            <h1>Privacy Policy</h1>
             <div class="content-page">
-              <h3>Types of business allowed</h3>
+              <h3>How we use your information</h3>
               <ul>
                 <!-- <li><a href="{{ url('/client/myaccountchange',2) }}">Edit your account information</a></li>
                 <li><a href="javascript:;">Change your password</a></li>
@@ -108,6 +108,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
         <!-- END SIDEBAR & CONTENT -->
       </div>
+      <div class="container">
+   <!-- BEGIN SIMILAR PRODUCTS -->
+   @include('includes.popular')
+          <!-- END SIMILAR PRODUCTS -->
+          </div>
     </div>
 
 

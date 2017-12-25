@@ -18,7 +18,7 @@ class CartController extends Controller
 
     public function index()
     {
-     $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
+     $cartitems = Cart::where('user_id',Auth::user()->id)->where('is_active', 1)->orderBy('product_id')->get();
      return view('pages.cart',['cartitems' => $cartitems ] );
     }
 
@@ -31,7 +31,7 @@ class CartController extends Controller
     {
 
          
-         $ifexixts = Cart::where('user_id',Auth::user()->id)->where('product_id', $request->product_id)->get();
+         $ifexixts = Cart::where('user_id',Auth::user()->id)->where('is_active', 1)->where('product_id', $request->product_id)->get();
            if(count($ifexixts)> 0 ){
                 $d = Cart::findOrFail($ifexixts[0]['id']);
                 $d->qty = $d->qty + 1;
@@ -59,7 +59,7 @@ class CartController extends Controller
     public function edit($id)
     {
         $categories = Category::where('is_active', 1)->orderBy('name')->get();
-        $cartitems = Cart::where('user_id',Auth::user()->id)->where('id',$id)->orderBy('store_id')->get();
+        $cartitems = Cart::where('user_id',Auth::user()->id)->where('is_active',1)->where('id',$id)->orderBy('store_id')->get();
         return view('pages.cartedit',['cartitems' => $cartitems, 'categories'=> $categories]);
     }
 

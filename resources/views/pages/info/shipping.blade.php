@@ -86,14 +86,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         @endif
           <!-- END SIDEBAR -->
 
-            <!-- BEGIN CONTENT -->
-            <div class="col-md-9 col-sm-7">
-            <h1>Payment Methods</h1>
+          <!-- BEGIN CONTENT -->
+          <div class="col-md-9 col-sm-7">
+            <h1>Shipping Information</h1>
             <div class="content-page">
-              <h3>Types Of Payments</h3>
+              <h3>Shipping Types</h3>
               <ul>
-
-              
                 <!-- <li><a href="{{ url('/client/myaccountchange',2) }}">Edit your account information</a></li>
                 <li><a href="javascript:;">Change your password</a></li>
                 <li><a href="javascript:;">Modify your address book entries</a></li>
@@ -110,6 +108,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
         <!-- END SIDEBAR & CONTENT -->
       </div>
+      <div class="container">
+   <!-- BEGIN SIMILAR PRODUCTS -->
+   @include('includes.popular')
+          <!-- END SIMILAR PRODUCTS -->
+          </div>
     </div>
 
 

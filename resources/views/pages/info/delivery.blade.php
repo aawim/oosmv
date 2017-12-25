@@ -109,6 +109,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
         <!-- END SIDEBAR & CONTENT -->
       </div>
+
+      <div class="container">
+   <!-- BEGIN SIMILAR PRODUCTS -->
+   @include('includes.popular')
+          <!-- END SIMILAR PRODUCTS -->
+          </div>
     </div>
 
 

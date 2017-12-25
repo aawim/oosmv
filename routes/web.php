@@ -52,6 +52,11 @@ Route::prefix('manage')->group(function(){
     Route::resource('/cart', 'CartController');
     Route::resource('/myaccount', 'ClientController');
     Route::resource('/contact', 'ContactController');
+    Route::resource('/order', 'OrderController');
+
+
+
+    
 });
 
 

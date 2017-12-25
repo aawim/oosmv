@@ -24,8 +24,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- Body BEGIN -->
 <body class="ecommerce">
  
-
-    
     <!-- BEGIN TOP BAR -->
     <div class="pre-header">
         <div class="container">
@@ -84,34 +82,39 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         @if (Auth::check())  
                 @include('includes.client.sidebar')
         @endif
+
+ 
           <!-- END SIDEBAR -->
 
-            <!-- BEGIN CONTENT -->
-            <div class="col-md-9 col-sm-7">
-            <h1>Privacy Policy</h1>
+          <!-- BEGIN CONTENT -->
+          <div class="col-md-9 col-sm-7">
+            <h1>About Us</h1>
             <div class="content-page">
-              <h3>How we use your information</h3>
-              <ul>
-                <!-- <li><a href="{{ url('/client/myaccountchange',2) }}">Edit your account information</a></li>
-                <li><a href="javascript:;">Change your password</a></li>
-                <li><a href="javascript:;">Modify your address book entries</a></li>
-                <li><a href="javascript:;">Modify your wish list</a></li> -->
-              </ul>
-              <hr>
-
-
-
-
-            </div>
+              <h3>Our target</h3><hr>
+              <h3>Our aim</h3><hr>
+              <h3>Our goal</h3><hr>
+              <h3>Our mission</h3><hr>
+              <h3>Our vission</h3><hr>
+</div>
           </div>
           <!-- END CONTENT -->
         </div>
         <!-- END SIDEBAR & CONTENT -->
       </div>
+
+      
+      <div class="container">
+   <!-- BEGIN SIMILAR PRODUCTS -->
+   @include('includes.popular')
+          <!-- END SIMILAR PRODUCTS -->
+          </div>
+
+
+
     </div>
 
 
-
+  
 
 
     <!-- BEGIN FOOTER -->

@@ -8,10 +8,10 @@
   <a href="#" class="top-cart-info-count">
   @endif
    
-    @if(Auth::user()->cart_items()->get()->count() > 1)
-    {{"You have : (" }} <strong> {{ Auth::user()->cart_items()->get()->count() }} </strong> {{") Items Item in your list" }} 
+    @if(Auth::user()->cart_items()->where('is_active', 1)->get()->count() > 1)
+    {{"You have : (" }} <strong> {{ Auth::user()->cart_items()->where('is_active', 1)->get()->count() }} </strong> {{") Items Item in your list" }} 
     @else
-    {{"You have : (" }} <strong> {{ Auth::user()->cart_items()->get()->count() }} </strong>  {{") Item in your list" }} 
+    {{"You have : (" }} <strong> {{ Auth::user()->cart_items()->where('is_active', 1)->get()->count() }} </strong>  {{") Item in your list" }} 
     @endif
   </a>
  </div>
@@ -20,11 +20,12 @@
 
   @if (Auth::check())  
   
-  @if($cartitems->count()>0)
+  @if($cartitems->count() > 0)
   <div class="top-cart-content-wrapper">
     <div class="top-cart-content">
       <ul class="scroller" style="height: 250px;">
        @foreach ($cartitems as $count => $cart_item)
+       @if($cart_item->is_active===1)
         <li>
           <a href="{{route('cart.edit', $cart_item->id)}}">
           <img src="{{url('/').'/'.$cart_item->product()->first()->image}}" alt="Rolex Classic Watch" width="37" height="34">
@@ -35,6 +36,7 @@
           <a href="#" class="del-goods" data-toggle="modal" data-target="#deleteModal{{$count}}"
            data-delete-id="{{$cart_item->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">&nbsp;</a>
         </li>
+        @endif
         @endforeach  
        </ul>
       <div class="text-right">
@@ -51,9 +53,9 @@
 <p style="padding-left:20px;">You don't have any item in your cart.</p>
 </div>
 </div>
+ 
+
 @endif
-
-
   @endif
 
 </div>

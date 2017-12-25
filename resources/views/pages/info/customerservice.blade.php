@@ -14,7 +14,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
-
 <!-- Head BEGIN -->
 <head>
 @include('includes.clienthead')
@@ -88,20 +87,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
           <!-- BEGIN CONTENT -->
           <div class="col-md-9 col-sm-7">
-            <h1>About Us</h1>
+            <h1>Customer Services</h1>
             <div class="content-page">
-              <h3>Our target</h3><hr>
-              <h3>Our aim</h3><hr>
-              <h3>Our goal</h3><hr>
-              <h3>Our mission</h3><hr>
-              <h3>Our vission</h3><hr>
-
-            
-
-
-
-
-
+              <h3>Types of services</h3>
+              <ul>
+                <!-- <li><a href="{{ url('/client/myaccountchange',2) }}">Edit your account information</a></li>
+                <li><a href="javascript:;">Change your password</a></li>
+                <li><a href="javascript:;">Modify your address book entries</a></li>
+                <li><a href="javascript:;">Modify your wish list</a></li> -->
+              </ul>
+              <hr>
 
             </div>
           </div>
@@ -109,10 +104,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
         <!-- END SIDEBAR & CONTENT -->
       </div>
+      <div class="container">
+   <!-- BEGIN SIMILAR PRODUCTS -->
+   @include('includes.popular')
+          <!-- END SIMILAR PRODUCTS -->
+          </div>
     </div>
-
-
-
 
 
     <!-- BEGIN FOOTER -->

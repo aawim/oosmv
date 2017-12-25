@@ -11,15 +11,10 @@
                   <div class="x_title">
                     <h2>Create New Product |<small>Create products.</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
-                    
-                
-
-                    <a href="{{route('product.index')}}"><button type="submit" class="btn btn-success">View Products</button></a>
+                     <a href="{{route('product.index')}}"><button type="submit" class="btn btn-success">View Products</button></a>
                      
                   </li>
-              
-                      
-                    </ul>
+                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -34,11 +29,9 @@
                           </ul>
                       </div>
                       @endif
-                  
-                      <form class="form-horizontal" action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
+                       <form class="form-horizontal" action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
-              
-                    <div class="form-group">
+                            <div class="form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Product Name</label>
                       <div class="col-md-9 col-sm-9 col-xs-12">
                       <input type="text" class="form-control " name="name" id="name"   required value="{{ old('name') }}">
