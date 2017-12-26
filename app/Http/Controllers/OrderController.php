@@ -50,12 +50,6 @@ class OrderController extends Controller
        
     }
 
-
-
-
-
-
-
     public function create()
     {
         //
@@ -79,23 +73,13 @@ class OrderController extends Controller
     public function store(Request $request)
     {
        $orders = Cart::where('user_id',$request->user_id)->where('is_active',1)->orderBy('store_id')->get();
-       
-      
        $rendomnumber = $this->guidv4();
-        
-       
-
-      $temp_store_id  =  $orders[0]['store_id'];
-
-       
+       $temp_store_id  =  $orders[0]['store_id'];
             if(count($orders)>0){
-
             foreach($orders  as $count => $item) {
-             
                 if($item->store_id != $temp_store_id){
                     $rendomnumber = $this->guidv4();
                } 
-
                 $add_order = new Order();
                 $add_order->product_id = $item->product_id;
                 $add_order->user_id = $item->user_id;
@@ -104,19 +88,13 @@ class OrderController extends Controller
                 $add_order->qty = $item->qty;
                 $add_order->status = 1;
                 $add_order->is_active = 1;
-
-
                 $add_order->save();
 
-               
-
-
-                $d = Cart::findOrFail($item->id);
-                $d->is_active = 0;
-                $d->delete();
-
+                // $d = Cart::findOrFail($item->id);
+                // $d->is_active = 0;
+                // $d->delete();
            }
-
+           Toastr::success('Your order was processed successfully!', 'OOSMV', ["positionClass" => "toast-top-right"]);
             return redirect()->back();
            } 
 

@@ -7,6 +7,9 @@ use App\Cart;
 use App\Category;
 use App\Product;
 use App\Store;
+use Toastr;
+
+
 class CartController extends Controller
 {
     private  $cartitems, $products;
@@ -55,6 +58,11 @@ class CartController extends Controller
 
            
         }
+
+
+
+
+        
   
     public function edit($id)
     {
