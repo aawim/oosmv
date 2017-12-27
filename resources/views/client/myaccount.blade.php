@@ -70,23 +70,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
     
     <!-- BEGIN TOP BAR -->
-    <div class="pre-header">
-        <div class="container">
-            <div class="row">
-
-                <!-- BEGIN TOP BAR LEFT PART -->
-            @include('includes.topleftbar')
-                <!-- END TOP BAR LEFT PART -->
-
-
-                <!-- BEGIN TOP BAR MENU -->
-            @include('includes.topbarmenu')
-                <!-- END TOP BAR MENU -->
-            </div>
-
-
-        </div>        
-    </div>
+    @include('includes.topbar')
     <!-- END TOP BAR -->
      
 
@@ -111,63 +95,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     </div>
     <!-- Header END -->
     
-    <div class="main">
-      <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="">Store</a></li>
-            <li class="active">My Account Page</li>
-        </ul>
-        <!-- BEGIN SIDEBAR & CONTENT -->
-        <div class="row margin-bottom-40">
-          <!-- BEGIN SIDEBAR -->
-          @if (Auth::check())  
-                @include('includes.client.sidebar')
-          @endif
-          <!-- END SIDEBAR -->
-
-          <!-- BEGIN CONTENT -->
-          <div class="col-md-9 col-sm-7">
-            <h1>My Account Page</h1>
-            <div class="content-page">
-              <h3>My Account</h3>
-              <ul>
-                <li><a href="{{ url('/client/myaccountchange',Auth::user()->id) }}">Edit your account information</a></li>
-                <li><a href="javascript:;">Change your password</a></li>
-                <li><a href="javascript:;">Modify your address book entries</a></li>
-                <li><a href="javascript:;">Modify your wish list</a></li>
-              </ul>
-              <hr>
-
-              <h3>My Orders</h3>
-              <ul>
-                <li><a href="{{ url('client/orderds',Auth::user()->id) }}">View your order history</a></li>
-                <li><a href="javascript:;">Downloads</a></li>
-                <li><a href="javascript:;">Your Reward Points</a></li>
-                <li><a href="javascript:;">View your return requests</a></li>
-                <li><a href="javascript:;">Your Transactions</a></li>
-              </ul>
-
-              <hr>
-
-              <h3>Orders Recieved</h3>
-              <ul>
-                <li><a href="javascript:;">View your order history</a></li>
-                <li><a href="javascript:;">Downloads</a></li>
-                <li><a href="javascript:;">Your Reward Points</a></li>
-                <li><a href="javascript:;">View your return requests</a></li>
-                <li><a href="javascript:;">Your Transactions</a></li>
-              </ul>
+    
 
 
 
-            </div>
-          </div>
-          <!-- END CONTENT -->
-        </div>
-        <!-- END SIDEBAR & CONTENT -->
-      </div>
-    </div>
+
+      
+     
 
 
 

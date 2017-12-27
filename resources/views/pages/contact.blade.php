@@ -70,22 +70,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <body class="ecommerce">
 {!! Toastr::message() !!}
   <!-- BEGIN TOP BAR -->
-  <div class="pre-header">
-  <div class="container">
-      <div class="row">
+  @include('includes.topbar')
+  <!-- END TOP BAR -->
 
-      
-       <!-- BEGIN TOP BAR LEFT PART -->
-       @include('includes.topleftbar')
-          <!-- END TOP BAR LEFT PART -->
 
-          <!-- BEGIN TOP BAR MENU -->
-          @include('includes.topbarmenu')
-          <!-- END TOP BAR MENU -->
-      </div>
-  </div>        
-</div>
-<!-- END TOP BAR -->
 
     <!-- BEGIN HEADER -->
     <div class="header">
@@ -155,7 +143,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           <div class="col-md-9 col-sm-9">
             <h1>Contact</h1>
             <div class="content-page">
-              <div id="map" class="gmaps margin-bottom-40" style="height:400px;"></div>
+              <!-- <div id="map" class="gmaps margin-bottom-40" style="height:400px;"></div> -->
 
               <h2>Note</h2>
               <p> 
@@ -169,14 +157,55 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       {{ csrf_field() }}
 
               {{ csrf_field() }}
+
+              @if (Auth::check())  
+       
+       
+                <div class="form-group">
+                  <!-- <label for="name">Name</label> -->
+                  <input type="hidden" class="form-control" id="name" name="name"  disabled value="{{Auth::user()->name}}">
+                </div>
+
+                <div class="form-group">
+                  <!-- <label for="email">Email <span class="require"></span></label> -->
+                  <input type="hidden" class="form-control" id="email" name="email"  disabled value="{{Auth::user()->email}}">
+                </div>
+                <div class="form-group">
+                  <label for="name">Subject</label>
+                  <input type="text" class="form-control" id="subject"  name="subject" required  value="">
+                </div>
+
+              @else
+            
+
+                
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" disabled value="{{Auth::user()->name}}">
+                  <input type="text" class="form-control" id="name"  name="name" required  value="">
                 </div>
+
+                <div class="form-group">
+                  <label for="name">Subject</label>
+                  <input type="text" class="form-control" id="subject"  name="subject" required  value="">
+                </div>
+
                 <div class="form-group">
                   <label for="email">Email <span class="require"></span></label>
-                  <input type="text" class="form-control" id="email" name="email"  disabled value="{{Auth::user()->email}}">
+                  <input type="text" class="form-control" id="email" name="email" required value="">
                 </div>
+
+
+
+                @endif
+
+
+
+
+
+
+
+
+
                 <div class="form-group">
                   <label for="message">Message</label>
                   <textarea class="form-control" rows="8" id="message" name="message" required></textarea>

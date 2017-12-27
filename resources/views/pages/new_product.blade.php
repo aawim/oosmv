@@ -148,23 +148,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- END BEGIN STYLE CUSTOMIZER --> 
 
     <!-- BEGIN TOP BAR -->
-    <div class="pre-header">
-        <div class="container">
-        <div class="row">
-
-        <!-- BEGIN TOP BAR LEFT PART -->
-    @include('includes.topleftbar')
-        <!-- END TOP BAR LEFT PART -->
-
-
-        <!-- BEGIN TOP BAR MENU -->
-    @include('includes.topbarmenu')
-        <!-- END TOP BAR MENU -->
-    </div>
-
-
-        </div>        
-    </div>
+    @include('includes.topbar')
     <!-- END TOP BAR -->
 
     <!-- BEGIN HEADER -->

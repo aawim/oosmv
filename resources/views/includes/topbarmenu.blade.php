@@ -1,5 +1,9 @@
 @if (Route::has('login'))
-                <div class="col-md-6 col-sm-6 additional-nav">
+               
+
+
+ 
+<div class="col-md-6 col-sm-6 additional-nav">
                     <ul class="list-unstyled list-inline pull-right">
                     @auth
                         <li><a href="{{ route('myaccount.index') }}">My Account</a></li>
@@ -16,7 +20,7 @@
                                         </form>
 
                        <li><a href="#">My Wishlist</a></li>
-                                 
+                       <li>Your loggeg in as : <a href="#"><strong> {{ Auth::user()->name }}</strong></a></li>        
                     </li>
                     @else
 
@@ -33,4 +37,4 @@
        
                 <div class="top-right links">
                 </div>
-                </div>
+                </div>  

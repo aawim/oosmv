@@ -12,8 +12,16 @@ class ContactController extends Controller
    
     public function index()
     {
+       
+       
+        if (Auth::check()){
         $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();   
         return view('pages.contact',['cartitems'=>$cartitems]);
+        }else{
+            return view('pages.contact');
+
+        }
+
     }
 
 
@@ -27,12 +35,24 @@ class ContactController extends Controller
     {
        
        $d = new Contact();
+        
+       if (Auth::check()){
         $d->user_id = Auth::user()->id;
         $d->email = Auth::user()->email;
+        $d->name =  Auth::user()->name;
+    }else{
+
+        $d->user_id = 0;
+        $d->email = $request->email;
+        $d->name =  $request->name;
+        
+         }
+        $d->subject = $request->subject;
+        $d->store_id = $request->store_id;
         $d->message = $request->message;
         $d->is_read = 0;
         $d->is_active = 1;
-        $d->user_ip = "10.0.0.1";
+        $d->user_ip = "127.0.0.1";
         $d->save();
         
 
@@ -49,7 +69,7 @@ class ContactController extends Controller
    
     public function show($id)
     {
-        //
+        
     }
  
     public function edit($id)

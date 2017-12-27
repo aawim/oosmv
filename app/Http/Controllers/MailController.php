@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Mail;
 class MailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
-        return view('client.mailbox.mailbox');
+        $mails = Mail::all();
+        return view('client.mailbox.inbox',['mails'=>$mails]);
     }
 
     /**
@@ -23,7 +27,7 @@ class MailController extends Controller
      */
     public function create()
     {
-        return view('client.mailbox.compose');
+        return view('client.mailbox.create');
     }
 
     /**
@@ -45,7 +49,22 @@ class MailController extends Controller
      */
     public function show($id)
     {
-        //
+        $mails = Mail::where('id',$id)->get();
+         
+
+
+        $d = Mail::findOrFail($id);
+        $d->is_read = 1;
+        $d->save();
+        return view('client.mailbox.message',['mails'=>$mails]);
+        
+       // return redirect()->route('cart.index');
+
+
+
+
+
+
     }
 
     /**

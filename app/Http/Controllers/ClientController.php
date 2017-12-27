@@ -27,16 +27,17 @@ class ClientController extends Controller
     public function index()
     {
         
-        if (Auth::check()){
-            $categories = Category::where('is_active','1')->orderBy('name')->get();
-            $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
-            return view('client.myaccount',['cartitems'=>$cartitems,'categories'=>$categories]);
-            }else{
+        // if (Auth::check()){
+        //     $categories = Category::where('is_active','1')->orderBy('name')->get();
+        //     $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
+        //     return view('client.myaccount',['cartitems'=>$cartitems,'categories'=>$categories]);
+        //     }else{
     
-            $categories = Category::where('is_active', 1)->orderBy('name')->get();
-            return view('client.myaccount',[ 'categories'=>$categories]);
-            }
+        //     $categories = Category::where('is_active', 1)->orderBy('name')->get();
+        //     return view('client.myaccount',[ 'categories'=>$categories]);
+        //     }
 
+        return view('client.pages.dashboard');
    }
 
 

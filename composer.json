@@ -9,6 +9,7 @@
         "brian2694/laravel-toastr": "^5.5",
         "davejamesmiller/laravel-breadcrumbs": "^4.2",
         "fideloper/proxy": "~3.3",
+        "illuminate/http": "^5.5",
         "laravel/framework": "5.5.*",
         "laravel/passport": "^4.0",
         "laravel/tinker": "~1.0",

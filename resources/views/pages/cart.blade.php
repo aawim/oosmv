@@ -71,14 +71,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 
     <!-- BEGIN TOP BAR -->
-    <div class="pre-header">
-        <div class="container">
-            <div class="row">
-<!-- BEGIN TOP BAR LEFT PART -->
-@include('includes.topleftbar')
-<!-- END TOP BAR LEFT PART -->
-<!-- BEGIN TOP BAR MENU -->
-@include('includes.topbarmenu')
+    @include('includes.topbar')
 <!-- END TOP BAR MENU -->
             </div>
         </div>        
