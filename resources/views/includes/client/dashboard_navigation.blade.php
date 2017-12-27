@@ -16,17 +16,17 @@
                                 <div class="profile-data-name">John Doe</div>
                                 <div class="profile-data-title">Web Developer/Designer</div>
                             </div>
-                            <div class="profile-controls">
+                            <!-- <div class="profile-controls">
                                 <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
                                 <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
-                            </div>
+                            </div> -->
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Navigation</li>
                     <li class="active">
                         <a href="{{ route('myaccount.index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>                    
-                    <li class="xn-openable">
+                    <li class="active xn-openable">
                         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
                         <ul>
                             <li><a href="pages-gallery.html"><span class="fa fa-image"></span> Gallery</a></li>
@@ -42,9 +42,8 @@
                             <li class="xn-openable">
                                 <a href="#"><span class="fa fa-envelope"></span> Mailbox</a>
                                 <ul>
-                                    <li><a href="{{route('mail.index')}}"><span class="fa fa-inbox"></span> Inbox</a></li>
-                                    <li><a href="{{route('mail.show',1)}}"><span class="fa fa-file-text"></span> Message</a></li>
-                                    <li><a href="{{route('mail.create')}}"><span class="fa fa-pencil"></span> Compose</a></li>
+                                <li><a href="{{route('mail.index')}}"><span class="fa fa-inbox"></span> Inbox</a></li>
+                                <li><a href="{{route('mail.create')}}"><span class="fa fa-pencil"></span> Compose</a></li>
                                 </ul>
                             </li>
                             <li><a href="pages-messages.html"><span class="fa fa-comments"></span> Messages</a></li>

@@ -75,6 +75,8 @@ Route::prefix('manage')->group(function(){
     Route::resource('/contact', 'ContactController');
     Route::resource('/order', 'OrderController');
     Route::resource('/mail', 'MailController');
+    Route::resource('/reply', 'ReplyController');
+    
   
 });
 

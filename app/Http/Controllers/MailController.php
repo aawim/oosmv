@@ -20,39 +20,23 @@ class MailController extends Controller
         return view('client.mailbox.inbox',['mails'=>$mails]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function create()
     {
-        return view('client.mailbox.create');
+        $mails = Mail::all();
+        return view('client.mailbox.create',['mails'=>$mails]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show($id)
     {
-        $mails = Mail::where('id',$id)->get();
-         
-
-
+        $mails = Mail::all();
         $d = Mail::findOrFail($id);
         $d->is_read = 1;
         $d->save();
@@ -60,44 +44,23 @@ class MailController extends Controller
         
        // return redirect()->route('cart.index');
 
-
-
-
-
-
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
-        //
+        return "The mail with" . $id . "Is updated";
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+      return "Deleted";
     }
 }
