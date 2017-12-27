@@ -82,7 +82,7 @@ Route::prefix('manage')->group(function(){
 
 
 /*
-//      Route::group(array('before' => 'auth'), function(){
+//    Route::group(array('before' => 'auth'), function(){
 //     Route::get('/home', 'HomeController@dash')->name('index');
 //     Route::resource('/category', 'CategoryController');
 //     Route::resource('/subcat', 'SubcatController');

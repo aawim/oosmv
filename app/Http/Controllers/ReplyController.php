@@ -21,8 +21,13 @@ class ReplyController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(Request $request )
     {
+
+
+       
+
+
         $this->validate($request,[
             'message'=>'required ',
           'mail_id'=>'required ',

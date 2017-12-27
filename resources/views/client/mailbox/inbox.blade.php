@@ -55,11 +55,11 @@
                     <!-- END CONTENT FRAME LEFT -->
                     
                     <!-- START CONTENT FRAME BODY -->
-                    <div class="content-frame-body">
+                    <div class="content-frame-body" >
                         
-                        <div class="panel panel-default">
+                        <div class="panel panel-default" style="width:95%;">
                             <div class="panel-heading">
-                                <label class="check mail-checkall">
+                              <!--   <label class="check mail-checkall">
                                     <input type="checkbox" class="icheckbox"/>
                                 </label>
                                 <div class="btn-group">
@@ -78,7 +78,7 @@
                                         <div class="input-group-addon"><span class="fa fa-calendar"></span></div>
                                         <input class="form-control datepicker" type="text" data-orientation="left"/>                                    
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="panel-body mail">
                                 
@@ -102,7 +102,7 @@
 
 
                             @foreach($mails as $count => $mail)
-
+ 
                                 @if($mail->is_read === 0)
                                 <div class="mail-item mail-unread mail-danger"> 
                                
@@ -124,7 +124,10 @@
                                     </form> -->
 
                                     <div class="mail-user">{{$mail->name}}</div>                                    
-                                    <a href="{{route('mail.show',$mail->id) }}" class="mail-text">{{$mail->subject}}</a>                                    
+                                    <a href="{{route('mail.show',$mail->id) }}" class="mail-text">{{$mail->subject}}</a>  
+                                    
+                                    
+
                                     <div class="mail-date">{{$mail->created_at}}</div>
                                 </div>
                                 
@@ -139,7 +142,7 @@
                                 
                             </div>
                             <div class="panel-footer">                                
-                                <div class="btn-group">
+                                <!-- <div class="btn-group">
                                     <button class="btn btn-default"><span class="fa fa-mail-reply"></span></button>
                                     <button class="btn btn-default"><span class="fa fa-mail-reply-all"></span></button>
                                     <button class="btn btn-default"><span class="fa fa-mail-forward"></span></button>
@@ -150,7 +153,7 @@
                                 </div>
                                 
                                 <button class="btn btn-default"><span class="fa fa-warning"></span></button>
-                                <button class="btn btn-default"><span class="fa fa-trash-o"></span></button>                                    
+                                <button class="btn btn-default"><span class="fa fa-trash-o"></span></button>                                     -->
                                 
                                 <ul class="pagination pagination-sm pull-right">
                                     <li class="disabled"><a href="#">«</a></li>
@@ -165,6 +168,10 @@
                         
                     </div>
                     <!-- END CONTENT FRAME BODY -->
+
+
+
+
                 </div>
                 <!-- END CONTENT FRAME -->
                 

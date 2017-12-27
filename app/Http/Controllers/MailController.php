@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail;
+use App\Reply;
 class MailController extends Controller
 {
    
@@ -13,17 +14,20 @@ class MailController extends Controller
         $this->middleware('auth');
     }
 
-
+   
     public function index()
     {
-        $mails = Mail::all();
-        return view('client.mailbox.inbox',['mails'=>$mails]);
+    $replies = Reply::all();
+    $mails = Mail::where('is_active',1)->get();
+    return view('client.mailbox.inbox',['mails'=>$mails,'replies'=>$replies]);
+
+      
     }
 
  
     public function create()
     {
-        $mails = Mail::all();
+        $mails = Mail::where('is_active',1);
         return view('client.mailbox.create',['mails'=>$mails]);
     }
 
@@ -36,14 +40,25 @@ class MailController extends Controller
   
     public function show($id)
     {
-        $mails = Mail::all();
+        
+        $mails = Mail::where('is_active',1);
+        $mail = Mail::findOrFail($id);
+        $replies = Reply::where('mail_id',$id)->get();
+       
+
+
+
+
         $d = Mail::findOrFail($id);
         $d->is_read = 1;
         $d->save();
-        return view('client.mailbox.message',['mails'=>$mails]);
         
-       // return redirect()->route('cart.index');
 
+        return view('client.mailbox.message',['mail'=>$mail,'mails'=>$mails,'replies'=>$replies]);
+
+
+    //    return redirect()->route('cart.index');
+     
     }
 
   
@@ -61,6 +76,14 @@ class MailController extends Controller
     
     public function destroy($id)
     {
-      return "Deleted";
+       
+
+        $d = Mail::findOrFail($id);
+        $d->is_active = 0;
+        $d->save();
+
+        $mails = Mail::all();
+        return view('client.mailbox.inbox',['mails'=>$mails]);
+         
     }
 }
