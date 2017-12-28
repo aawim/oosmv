@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cart;
+use App\Mail;
 use Auth;
 use App\Category;
 class ClientController extends Controller
@@ -36,8 +37,9 @@ class ClientController extends Controller
         //     $categories = Category::where('is_active', 1)->orderBy('name')->get();
         //     return view('client.myaccount',[ 'categories'=>$categories]);
         //     }
-
-        return view('client.pages.dashboard');
+        $mails = Mail::where('is_active',1)->get();
+       
+        return view('client.pages.dashboard',['mails'=>$mails]);
    }
 
 

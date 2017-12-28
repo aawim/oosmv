@@ -53,6 +53,18 @@
 
 
               </div>
+
+
+
+
+
+              
+
+
+
+
+
+
               <div  class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                  
 
@@ -68,6 +80,17 @@
 
 
               </div>
+
+
+
+
+
+
+
+
+
+
+
               <div>
             
                   <button type="submit" class="btn btn-primary">

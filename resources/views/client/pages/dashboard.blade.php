@@ -67,7 +67,7 @@
                     
                     <div class="col-md-3">
                           <!-- START WIDGET SLIDER -->
-                            <div class="widget widget-default widget-carousel">
+                            <!-- <div class="widget widget-default widget-carousel">
                                 <div class="owl-carousel" id="owl-example">
                                     <div>                                    
                                         <div class="widget-title">Total Visitors</div>                                                                        
@@ -88,8 +88,43 @@
                                 <div class="widget-controls">                                
                                     <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
                                 </div>                             
-                            </div>         
+                            </div>          -->
                             <!-- END WIDGET SLIDER -->
+                        
+                        
+                        
+                        
+                         <!-- START WIDGET ORDER -->
+                         <div class="widget widget-default widget-item-icon" onclick="location.href='{{route('mail.index')}}';">
+                                <div class="widget-item-left">
+                                    <span class="fa fa-shopping-cart"></span>
+                                </div>                             
+                                <div class="widget-data">
+                                    <div class="widget-int num-count">{{$mails->count()}}</div>
+                                   
+                                   @if($mails->count() === 1)
+                                    <div class="widget-title">New order</div>
+                                    @elseif($mails->count()>1)
+                                    <div class="widget-title">New orders</div>
+                                    @endif
+
+                                   <!-- <div class="widget-subtitle">In your mailbox</div> -->
+                                </div>      
+                                <div class="widget-controls">                                
+                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                                </div>
+                            </div>                            
+                            <!-- END WIDGET ORDER -->
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         </div>
 
 
@@ -99,13 +134,20 @@
 
                         <div class="col-md-3">
                             <!-- START WIDGET MESSAGES -->
-                            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-messages.html';">
+                            <div class="widget widget-default widget-item-icon" onclick="location.href='{{route('mail.index')}}';">
                                 <div class="widget-item-left">
                                     <span class="fa fa-envelope"></span>
                                 </div>                             
                                 <div class="widget-data">
-                                    <div class="widget-int num-count">48</div>
+                                    <div class="widget-int num-count">{{$mails->count()}}</div>
+                                  
+                                  @if($mails->count() === 1)
+                                    <div class="widget-title">New message</div>
+                                    @elseif($mails->count()>1)
                                     <div class="widget-title">New messages</div>
+                                    @endif
+
+
                                     <div class="widget-subtitle">In your mailbox</div>
                                 </div>      
                                 <div class="widget-controls">                                
@@ -115,13 +157,7 @@
                             <!-- END WIDGET MESSAGES -->
                         </div>
 
-
-
-
-
-
-
-                        <div class="col-md-3">
+                       <div class="col-md-3">
                             <!-- START WIDGET REGISTRED -->
                             <div class="widget widget-default widget-item-icon" onclick="location.href='pages-address-book.html';">
                                 <div class="widget-item-left">
@@ -129,7 +165,7 @@
                                 </div>
                                 <div class="widget-data">
                                     <div class="widget-int num-count">375</div>
-                                    <div class="widget-title">Registred users</div>
+                                    <div class="widget-title">customers</div>
                                     <div class="widget-subtitle">On your website</div>
                                 </div>
                                 <div class="widget-controls">                                
@@ -142,27 +178,23 @@
 
 
                         <div class="col-md-3">
-                             <!-- START WIDGET CLOCK -->
-                            <div class="widget widget-info widget-padding-sm">
-                                <div class="widget-big-int plugin-clock">00:00</div>                            
-                                <div class="widget-subtitle plugin-date">Loading...</div>
+                            <!-- START WIDGET REGISTRED -->
+                            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-address-book.html';">
+                                <div class="widget-item-left">
+                                    <span class="fa fa-user"></span>
+                                </div>
+                                <div class="widget-data">
+                                    <div class="widget-int num-count">375</div>
+                                    <div class="widget-title">users</div>
+                                    <div class="widget-subtitle">On your website</div>
+                                </div>
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="left" title="Remove Widget"><span class="fa fa-times"></span></a>
+                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
                                 </div>                            
-                                <div class="widget-buttons widget-c3">
-                                    <div class="col">
-                                        <a href="#"><span class="fa fa-clock-o"></span></a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="#"><span class="fa fa-bell"></span></a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="#"><span class="fa fa-calendar"></span></a>
-                                    </div>
-                                </div>                            
-                            </div>                        
-                            <!-- END WIDGET CLOCK -->
+                            </div>                            
+                            <!-- END WIDGET REGISTRED -->
                         </div>
+               
 
 
                     </div>
