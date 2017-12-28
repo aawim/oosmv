@@ -11,6 +11,22 @@
 |
 */
 
+
+// Route::get('client/getRequest', function(){
+//     if(Request::ajax()){
+//         return 'getRequest had loaded complete';
+//     }
+// });
+
+// Route::post('client/finduser', function(){
+//     if(Request::ajax()){
+//         return Response::json(Request::all());
+//     }
+// });
+
+
+
+
 // PAGE CONTROLLER
 Route::get('/info/aboutus', 'PagesController@aboutus');
 Route::get('/info/faq', 'PagesController@faq');
@@ -40,6 +56,16 @@ Route::get('stores','SearchController@viewStores');
 Route::get('store/{id}','SearchController@oneStore'); 
 Route::get('find/{id}','SearchController@catesearch'); 
 Route::get('shop/{id}','SearchController@shopProductSearch'); 
+//Route::post('client/contact','SearchController@userSearch'); 
+
+
+
+
+
+
+
+
+
 
 // ORDER CONTROLLER
 Route::get('client/orderds/{id}','OrderController@index'); 

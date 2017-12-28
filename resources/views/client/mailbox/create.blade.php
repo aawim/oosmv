@@ -15,12 +15,9 @@
             </div>
             <!-- END PAGE SIDEBAR -->
 
-           
             <!-- PAGE CONTENT -->
             <div class="page-content">
-                
-             
-               <!-- START X-NAVIGATION VERTICAL -->
+                <!-- START X-NAVIGATION VERTICAL -->
                 @include('includes.client.dashboard_top_vertical_navigation')
                 <!-- END X-NAVIGATION VERTICAL -->                  
                 

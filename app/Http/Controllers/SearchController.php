@@ -26,6 +26,22 @@ class SearchController extends Controller
 
     }
 
+
+
+
+    public function userSearch(Request $request)
+    {
+        $user = User::findOrFail($request->searchText);
+        dd($user);
+
+        return "asas";
+    }
+
+
+
+
+
+
    public function viewStores()
     {
 
