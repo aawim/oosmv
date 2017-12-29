@@ -48,8 +48,27 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+       return parent::render($request, $exception);
+
+       
+
+       
+        // if ($e instanceof \Illuminate\Database\QueryException) {
+        //     dd($e->getMessage());
+
+        //     return "No Table";
+        //     //return response()->view('custom_view');
+        // } elseif ($e instanceof \PDOException) {
+        //     //dd($e->getMessage());
+        //     //return response()->view('custom_view');
+        //     return "No Connection";
+        // }
+
+
     }
+
+
+    
 
 
     // protected function unauthenticated($request, AuthenticationException $exception)

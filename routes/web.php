@@ -11,6 +11,32 @@
 |
 */
 
+// Route::get('/', function() {
+//     try
+//     {
+//         $pdo = DB::connection('mysql')->getPdo();
+//        // if($pdo){
+//  return redirect()->url('/home');
+
+            
+//         }
+       
+//    }
+//     catch(PDOException $exception)
+//     {
+       
+//        return view('error.error');
+//         // return " There is a data base error";//Response::make('Database error! ' . $exception->getCode());
+//     }
+   
+     // HOME CONTROLLER
+  // return 'all fine';
+//});
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
+
+// Route::get('/', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
 
 // Route::get('client/getRequest', function(){
 //     if(Request::ajax()){
@@ -38,9 +64,7 @@ Route::get('/info/payment', 'PagesController@payment');
 Route::get('/info/shipping', 'PagesController@shipping');
 
 
-// HOME CONTROLLER
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
+
 
 // MY ACCOUNT CONTROLLER
 Route::get('/client/myaccountchange/{id}', 'MyAccountController@editAccountInformation');

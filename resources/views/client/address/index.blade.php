@@ -87,6 +87,12 @@
 
 
                     <div class="row">
+@foreach($addresess as $count => $address)
+
+
+
+
+
                         <div class="col-md-3">
                             <!-- CONTACT ITEM -->
                             <div class="panel panel-default">
@@ -95,7 +101,7 @@
                                         <img src="assets/images/users/user3.jpg" alt="Nadia Ali"/>
                                     </div>
                                     <div class="profile-data">
-                                        <div class="profile-data-name">Nadia Ali</div>
+                                        <div class="profile-data-name">{{$address->name}}</div>
                                         <div class="profile-data-title">Singer-Songwriter</div>
                                     </div>
                                     <div class="profile-controls">
@@ -113,6 +119,8 @@
                             </div>
                             <!-- END CONTACT ITEM -->
                         </div>
+@endforeach
+
                     </div>
 
 
