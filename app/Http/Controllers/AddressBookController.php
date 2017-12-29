@@ -10,11 +10,20 @@ use Toastr;
 class AddressBookController extends Controller
 {
      
-    public function index()
+   
+   
+    public function __construct()
     {
         $this->middleware('auth');
-        $errors = "";
-        return view('client.address.index',['errors'=>$errors]);
+    }
+   
+   
+   
+   
+    public function index()
+    {
+        
+         return view('client.address.index' );
     }
 
    
@@ -26,26 +35,44 @@ class AddressBookController extends Controller
     
     public function store(Request $request)
     {
-        $errors = "";
+     
         $store_id = Store::where('user_id', Auth::user()->id)->get();
         $user = User::where('contact', $request->searchtext)->get();
         
-        if(count($store_id)>0 AND count($user)>0){
-        $d = new AddressBook();
-        $d->user_id = $user[0]['id'];
-        $d->store_id = $store_id[0]['id'];
-        $d->is_active=0;
-        $d->save();
-        Toastr::success('New product added successfully!', 'OOSMV', ["positionClass" => "toast-top-right"]);
-        return redirect()->route('address.index',['errors'=>$errors]);
-        }else{
-           
-        $errors = "The person is not yet in the system. Please register";  
-        Toastr::success('New product added successfully!', 'OOSMV', ["positionClass" => "toast-top-right"]);      
-        return redirect()->route('address.index',['errors'=>$errors]);
-        }
+
+
+ 
+
+            if(count($user) > 0){
+                $Address = AddressBook::where('user_id', $user[0]['id'])->where('store_id',$store_id[0]['id'])->get();
+                        if(count($Address)>0){
+                          
+                                Toastr::info('The customer already exists!', 'OOSMV', ["positionClass" => "toast-top-right"]);
+                                return redirect()->route('address.index' );
+                        }else{
+                                $d = new AddressBook();
+                                $d->user_id = $user[0]['id'];
+                                $d->store_id = $store_id[0]['id'];
+                                $d->is_active=0;
+                                $d->save();
+                                Toastr::success('New customer added successfully!', 'OOSMV', ["positionClass" => "toast-top-right"]);
+                                return redirect()->route('address.index' );
+
+                        }
+
+
+
+            } else {
+
+                Toastr::info('The user could not found', 'OOSMV', ["positionClass" => "toast-top-right"]);
+                return redirect()->route('address.index' );
+
+            }
+
         
-        
+
+
+       
         
         
       

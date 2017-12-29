@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>        
-    @include('includes.client.dashboard_top')                                      
+    @include('includes.client.dashboard_top')   
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+                                       
     </head>
     <body>
 
@@ -60,7 +65,7 @@
                                                     <div class="input-group-btn">
                                                         <a href="#" id="getRequest" class="btn btn-primary">Search</a>
 
-                                                    
+                                                  
 
                                                     </div>
                                                 </div>
@@ -70,7 +75,7 @@
                                             </div>
                                         </div>
                                     </form>    
-                                    <p>{{ $errors }}</p>
+                               
                                     
 
                                 </div>
@@ -160,30 +165,6 @@
 
 
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- START PRELOADS -->
         <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
         <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
@@ -200,6 +181,11 @@
         <script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
         <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
         <!-- END THIS PAGE PLUGINS-->        
+
+
+        
+       
+ 
 
         <!-- START TEMPLATE -->
         <script type="text/javascript" src="js/settings.js"></script>

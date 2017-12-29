@@ -24,7 +24,7 @@ class ProductController extends Controller
 
      public function index()
     {
-                
+               
         return view('product.index',['products' => $this->products] );
     }
 
@@ -121,38 +121,41 @@ class ProductController extends Controller
  
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'name'=>'required|max:255 ',
-            'cate'=>'required',
-            'scat'=>'required',
-            ]);
+        // $this->validate($request,[
+        //     'name'=>'required|max:255 ',
+        //     'cate'=>'required',
+        //     'scat'=>'required',
+        //     ]);
 
-        $d = Product::findOrFail($id);
-        $d->name = $request->name;
-        $d->cat_id = $request->cate;
-        $d->scat_id =$request->scat;
-        $d->brand_id =$request->brand;
-        $d->size =$request->size;
-        $d->price =$request->price;
-        $d->dprice =$request->dprice;
-        $d->qty = $request->qty;
-        $d->store_id = $d->store_id;
-        $d->is_active = $request->is_active;
-        $d->availability = $request->availability;
+        // $d = Product::findOrFail($id);
+        // $d->name = $request->name;
+        // $d->cat_id = $request->cate;
+        // $d->scat_id =$request->scat;
+        // $d->brand_id =$request->brand;
+        // $d->size =$request->size;
+        // $d->price =$request->price;
+        // $d->dprice =$request->dprice;
+        // $d->qty = $request->qty;
+        // $d->store_id = $d->store_id;
+        // $d->is_active = $request->is_active;
+        // $d->availability = $request->availability;
 
-        if ($request->hasFile('image_file')) {
+        // if ($request->hasFile('image_file')) {
             
-            $imgName = $request->file('image_file')->getClientOriginalName();
-            $request->file('image_file')->move(public_path('imagesx'), $imgName);
-            $product  = 'imagesx/'.$imgName;
+        //     $imgName = $request->file('image_file')->getClientOriginalName();
+        //     $request->file('image_file')->move(public_path('imagesx'), $imgName);
+        //     $product  = 'imagesx/'.$imgName;
             
-            $d->image = $product;
+        //     $d->image = $product;
 
-            }else{
-                $d->image = $d->image;
-            }
+        //     }else{
+        //         $d->image = $d->image;
+        //     }
  
-        $d->save();
+        // $d->save();
+
+
+
         Toastr::success('A product updated successfully.', 'SSOMV', ["positionClass" => "toast-top-right"]);
         return redirect()->route('product.index');
     }
