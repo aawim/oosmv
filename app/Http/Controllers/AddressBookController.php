@@ -12,6 +12,7 @@ class AddressBookController extends Controller
      
     public function index()
     {
+        $this->middleware('auth');
         $errors = "";
         return view('client.address.index',['errors'=>$errors]);
     }
