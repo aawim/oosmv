@@ -10,6 +10,13 @@
     </head>
     <body>
 
+
+
+
+
+
+
+
     {!! Toastr::message() !!}
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
@@ -71,13 +78,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <button class="btn btn-success btn-block"><span class="fa fa-plus"></span> Add new contact</button>
+                                                <button type="submit" class="btn btn-success btn-block" name = "submit" value = "Add new contact">  Add new contact</button>
+                                                <!-- <button name="add" class="btn btn-success btn-block"><span class="fa fa-plus"></span> Add new contact</button> -->
                                             </div>
                                         </div>
                                     </form>    
-                               
-                                    
-
                                 </div>
                             </div>
                             
@@ -88,12 +93,14 @@
 
                     <div class="row">
 @foreach($addresess as $count => $address)
+ 
+ @if($users->where('id', $address->user_id))
 
 
 
 
 
-                        <div class="col-md-3">
+                       <div class="col-md-2">
                             <!-- CONTACT ITEM -->
                             <div class="panel panel-default">
                                 <div class="panel-body profile">
@@ -101,25 +108,23 @@
                                         <img src="assets/images/users/user3.jpg" alt="Nadia Ali"/>
                                     </div>
                                     <div class="profile-data">
-                                        <div class="profile-data-name">{{$address->name}}</div>
+                                        <div class="profile-data-name">{{$users[$count]['name']}}</div>
                                         <div class="profile-data-title">Singer-Songwriter</div>
                                     </div>
-                                    <div class="profile-controls">
-                                        <a href="#" class="profile-control-left"><span class="fa fa-info"></span></a>
-                                        <a href="#" class="profile-control-right"><span class="fa fa-phone"></span></a>
-                                    </div>
+                                    
                                 </div>                                
                                 <div class="panel-body">                                    
                                     <div class="contact-info">
-                                        <p><small>Mobile</small><br/>(555) 555-55-55</p>
-                                        <p><small>Email</small><br/>nadiaali@domain.com</p>
+                                        <p><small>Mobile</small><br/>{{$users[$count]['contact']}}</p>
+                                        <p><small>Email</small><br/>{{$users[$count]['email']}}</p>
                                         <p><small>Address</small><br/>123 45 Street San Francisco, CA, USA</p>                                   
                                     </div>
                                 </div>                                
                             </div>
                             <!-- END CONTACT ITEM -->
-                        </div>
+          @endif                                   </div>
 @endforeach
+ 
 
                     </div>
 
