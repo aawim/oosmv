@@ -39,7 +39,7 @@
                 
                 <!-- PAGE TITLE -->
                 <div class="page-title">                    
-                    <h2><span class="fa fa-users"></span> Address Book <small>139 contacts</small></h2>
+                    <h2><span class="fa fa-users"></span> Address Book <small>{{$addresess->count()}} contacts</small></h2>
                 </div>
                 <!-- END PAGE TITLE -->                
                 

@@ -164,7 +164,7 @@
                                     <span class="fa fa-user"></span>
                                 </div>
                                 <div class="widget-data">
-                                    <div class="widget-int num-count">375</div>
+                                    <div class="widget-int num-count">{{ $addresess->count() }}</div>
                                     <div class="widget-title">customers</div>
                                     <div class="widget-subtitle">On your website</div>
                                 </div>

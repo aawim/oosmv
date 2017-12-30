@@ -26,8 +26,9 @@ class AddressBookController extends Controller
     {
         $store_id = Store::where('user_id', Auth::user()->id)->get();
         $addresess = AddressBook::where('store_id',$store_id[0]['id'])->get();
-         return view('client.address.index',['addresess'=>$addresess] );
-    }
+        return view('client.address.index',['addresess'=>$addresess] );
+
+   }
 
    
     public function create()
