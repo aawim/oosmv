@@ -51,12 +51,13 @@ class ContactController extends Controller
         $d->user_id = Auth::user()->id;
         $d->email = Auth::user()->email;
         $d->name =  Auth::user()->name;
+        $d->fromto = $request->store_id;
     }else{
 
         $d->user_id = 0;
         $d->email = $request->email;
         $d->name =  $request->name;
-        
+        $d->fromto = $request->store_id;
          }
         $d->subject = $request->subject;
         $d->store_id = $request->store_id;

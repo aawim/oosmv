@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>        
-    @include('includes.client.dashboard_top')                                   
+    @include('includes.client.dashboard_top')  
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>   
+                                  
     </head>
     <body>
+  
+    {!! Toastr::message() !!}
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
@@ -38,7 +45,7 @@
                         <div class="page-title">                    
                             <h2><span class="fa fa-file-text"></span> Message</h2>
                         </div>                                                                                
-                        
+                       
                         <div class="pull-right">                                                                                    
                             <button class="btn btn-default"><span class="fa fa-print"></span> Print</button>
                             <button class="btn btn-default content-frame-left-toggle"><span class="fa fa-bars"></span></button>

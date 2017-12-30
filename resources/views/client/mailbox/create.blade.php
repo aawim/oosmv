@@ -38,11 +38,11 @@
                             <h2><span class="fa fa-pencil"></span> Compose </h2>
                         </div>                         
                         
-                        <div class="pull-right">                                                                                    
+                        <!-- <div class="pull-right">                                                                                    
                             <button class="btn btn-default"><span class="fa fa-cogs"></span> Settings</button>
                             <button class="btn btn-default"><span class="fa fa-floppy-o"></span> Save</button>
                             <button class="btn btn-default content-frame-left-toggle"><span class="fa fa-bars"></span></button>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- END CONTENT FRAME TOP -->
                     
@@ -92,7 +92,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">To:</label>
                                 <div class="col-md-9">                                        
-                                    <input type="text" class="form-control " id="store_id" name="store_id"  value="2" data-placeholder="Store"/>                                
+                                    <input type="text" class="form-control " id="store_id" name="store_id"  value="3" data-placeholder="Store"/>                                
                                 </div>
                                 <!-- <div class="col-md-1">
                                     <button class="btn btn-link toggle" data-toggle="mail-cc">Cc</button>

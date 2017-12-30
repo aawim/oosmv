@@ -139,7 +139,7 @@
                                     <span class="fa fa-envelope"></span>
                                 </div>                             
                                 <div class="widget-data">
-                                    <div class="widget-int num-count">{{$mails->count()}}</div>
+                                    <div class="widget-int num-count">{{$mails->where('is_read',0)->where('fromto','!=' , 2)->count()}}</div>
                                   
                                   @if($mails->count() === 1)
                                     <div class="widget-title">New message</div>
@@ -159,7 +159,7 @@
 
                        <div class="col-md-3">
                             <!-- START WIDGET REGISTRED -->
-                            <div class="widget widget-default widget-item-icon" onclick="location.href='pages-address-book.html';">
+                            <div class="widget widget-default widget-item-icon" onclick="location.href='{{ url('client/address') }}';">
                                 <div class="widget-item-left">
                                     <span class="fa fa-user"></span>
                                 </div>
@@ -167,6 +167,8 @@
                                     <div class="widget-int num-count">{{ $addresess->count() }}</div>
                                     <div class="widget-title">customers</div>
                                     <div class="widget-subtitle">On your website</div>
+
+                                   
                                 </div>
                                 <div class="widget-controls">                                
                                     <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>

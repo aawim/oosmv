@@ -4,9 +4,9 @@
                         </div>
                         <div class="block">
                             <div class="list-group border-bottom">
-                                <a href="{{ route('mail.index') }}" class="list-group-item active"><span class="fa fa-inbox"></span> Inbox <span class="badge badge-success">{{$mails->count()}}</span></a>
+                                <a href="{{ route('mail.index') }}" class="list-group-item active"><span class="fa fa-inbox"></span> Inbox <span class="badge badge-success">{{$mails->where('fromto','!=',2)->count()}} </span></a>
                                 <!-- <a href="#" class="list-group-item"><span class="fa fa-star"></span> Starred <span class="badge badge-warning">6</span></a> -->
-                                <a href="#" class="list-group-item"><span class="fa fa-rocket"></span> Sent</a>
+                                <a href="#" class="list-group-item"><span class="fa fa-rocket"></span> Sent <span class="badge badge-success">{{$mails->where('fromto',2)->count()}} </span></a>
                                 <!-- <a href="#" class="list-group-item"><span class="fa fa-flag"></span> Flagged</a> -->
                                 <a href="#" class="list-group-item"><span class="fa fa-trash-o"></span> Deleted <span class="badge badge-default">1.4k</span></a>                            
                             </div>                        

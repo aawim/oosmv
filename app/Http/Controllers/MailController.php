@@ -27,7 +27,7 @@ class MailController extends Controller
  
     public function create()
     {
-        $mails = Mail::where('is_active',1);
+        $mails = Mail::where('is_active',1)->get();
         return view('client.mailbox.create',['mails'=>$mails]);
     }
 
@@ -41,7 +41,7 @@ class MailController extends Controller
     public function show($id)
     {
         
-        $mails = Mail::where('is_active',1);
+        $mails = Mail::where('is_active',1)->get();
         $mail = Mail::findOrFail($id);
         $replies = Reply::where('mail_id',$id)->get();
        

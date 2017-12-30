@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>        
-    @include('includes.client.dashboard_top')                                   
+    @include('includes.client.dashboard_top')   
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>                                
     </head>
     <body>
+    {!! Toastr::message() !!}
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
@@ -25,7 +30,6 @@
                 @include('includes.client.dashboard_top_vertical_navigation')
                 <!-- END X-NAVIGATION VERTICAL -->
                                   
-                
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb push-down-0">
                     <li><a href="#">Home</a></li>
@@ -40,13 +44,13 @@
                     <!-- START CONTENT FRAME TOP -->
                     <div class="content-frame-top">                        
                         <div class="page-title">                    
-                            <h2><span class="fa fa-inbox"></span> Inbox <small>{{$mails->where('is_read',0)->count()}} (unread)</small></h2>
+                            <h2><span class="fa fa-inbox"></span> Inbox <small>{{$mails->where('is_read',0)->where('fromto','!=' ,2)->count()}} (unread)</small></h2>
                         </div>                                                                                
                         
-                        <div class="pull-right">                            
+                        <!-- <div class="pull-right">                            
                             <button class="btn btn-default"><span class="fa fa-cogs"></span> Settings</button>
                             <button class="btn btn-default content-frame-left-toggle"><span class="fa fa-bars"></span></button>
-                        </div>                        
+                        </div>                         -->
                     </div>
                     <!-- END CONTENT FRAME TOP -->
                     
@@ -101,7 +105,7 @@
 
 
 
-                            @foreach($mails as $count => $mail)
+                            @foreach($mails->where('fromto','!=' ,2) as $count => $mail)
  
                                 @if($mail->is_read === 0)
                                 <div class="mail-item mail-unread mail-danger"> 
@@ -110,9 +114,9 @@
                                     <div class="mail-item mail-success">
                                     @endif
 
-                                    <div class="mail-checkbox">
+                                    <!-- <div class="mail-checkbox">
                                         <input type="checkbox" class="icheckbox"/>
-                                    </div>
+                                    </div> -->
 
 
                                     <!-- <form class="form-horizontal" action="{{route('mail.update', $mail->id) }}" method="POST" >

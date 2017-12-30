@@ -29,7 +29,7 @@ class ReplyController extends Controller
 
 
         $this->validate($request,[
-            'message'=>'required ',
+        'message'=>'required ',
           'mail_id'=>'required ',
              
             ]);
@@ -44,8 +44,8 @@ class ReplyController extends Controller
          $d->save();
         
 
-        Toastr::success('We have recieved your message. Your message will be replied within 24 hours!', 'OOSMV', ["positionClass" => "toast-top-right"]);
-        return redirect()->route('mail.index');
+         Toastr::success('Rely was sent sucessfully!', 'OOSMV', ["positionClass" => "toast-top-right"]);
+         return redirect()->route('mail.index' );
 
  
     }

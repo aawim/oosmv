@@ -78,14 +78,6 @@ if($request->searchtext === null ){
 
 }
              
-        
-
-
-       
-        
-        
-      
-
        
     }
 

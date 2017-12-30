@@ -20,6 +20,7 @@ class CreateContactsTable extends Migration
             $table->string('name');
             $table->string('subject');
             $table->text('message');
+            $table->string('fromto');
             $table->integer('store_id');
             $table->integer('is_read');
             $table->integer('is_active');

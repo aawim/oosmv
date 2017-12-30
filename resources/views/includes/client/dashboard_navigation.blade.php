@@ -23,9 +23,27 @@
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Navigation</li>
-                    <li class="active">
+                    <!-- <li class="active">
                         <a href="{{ route('myaccount.index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
-                    </li>                    
+                    </li>    -->
+                    
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+                        <ul>
+                            <li><a href="{{ route('myaccount.index') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a> </li>
+                            <li><a href="{{ url('/') }}"><span class="fa fa-globe"></span> <span class="xn-text">Site</span></a> /a></li>
+                            
+                        </ul>
+                    </li>
+
+
+
+
+
+
+
+
+                                     
                     <li class="active xn-openable">
                         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
                         <ul>
