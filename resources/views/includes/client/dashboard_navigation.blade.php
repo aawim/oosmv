@@ -13,7 +13,7 @@
                                 <img src="{{url('/').'/client/assets/images/users/avatar.jpg'}}" alt="John Doe"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">John Doe</div>
+                                <div class="profile-data-name">{{ Auth::user()->name }} </div>
                                 <div class="profile-data-title">Web Developer/Designer</div>
                             </div>
                             <!-- <div class="profile-controls">

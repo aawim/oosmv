@@ -95,20 +95,23 @@
                         
                         
                          <!-- START WIDGET ORDER -->
-                         <div class="widget widget-default widget-item-icon" onclick="location.href='{{route('mail.index')}}';">
+                         <div class="widget widget-default widget-item-icon" onclick="location.href='{{route('order.index')}}';">
                                 <div class="widget-item-left">
                                     <span class="fa fa-shopping-cart"></span>
                                 </div>                             
                                 <div class="widget-data">
-                                    <div class="widget-int num-count">{{$mails->count()}}</div>
+                                    <div class="widget-int num-count">{{$orders->count()}}</div>
                                    
-                                   @if($mails->count() === 1)
+                                   @if($orders->count() === 1)
                                     <div class="widget-title">New order</div>
-                                    @elseif($mails->count()>1)
+                                    @elseif($orders->count() > 1)
                                     <div class="widget-title">New orders</div>
-                                    @endif
 
-                                   <!-- <div class="widget-subtitle">In your mailbox</div> -->
+                                    @else
+                                    <div class="widget-title">You have no orders</div>
+                                    @endif
+                                    <div class="widget-subtitle">For your shop</div>
+
                                 </div>      
                                 <div class="widget-controls">                                
                                     <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
@@ -462,7 +465,7 @@
                     </div>
                     
                     <!-- START DASHBOARD CHART -->
-					<div class="chart-holder" id="dashboard-area-1" style="height: 200px;"></div>
+					<div class="chart-holder" id="dashboard-area-1" style="height: 100px;"></div>
 					<div class="block-full-width">
                                                                        
                     </div>                    
