@@ -57,28 +57,36 @@
                             
                             <!-- START SALES BLOCK -->
                             <div class="panel panel-default">
-                              
                                 <div class="panel-heading">
                                     <div class="panel-title-box">
                                         <h3>Sales</h3>
                                         <span>Sales activity by period you selected</span>
                                     </div>                                     
+                                    <ul class="panel-controls panel-controls-title">                                        
+                                        <li>
+                                            <div id="reportrange" class="dtrange">                                            
+                                                <span></span><b class="caret"></b>
+                                            </div>                                     
+                                        </li>                                
+                                        <li><a href="#" class="panel-fullscreen rounded"><span class="fa fa-expand"></span></a></li>
+                                    </ul>                                    
+                                    
                                 </div>
 
 
                                 <div class="panel-body">                                    
                                     <div class="row stacked">
                                         <div class="col-md-4">                                            
-                                           <p><span class="fa fa-warning"></span> Data update in end of each hour. You can update it manual by pressign update button</p>
+                                             
+                                       
+                                         
+                                            <p><span class="fa fa-warning"></span> Data update in end of each hour. You can update it manual by pressign update button</p>
                                         </div>
                                         <div class="col-md-8">
                                             <div id="dashboard-map-seles" style="width: 100%; height: 200px"></div>
                                         </div>
                                     </div>                                    
                                 </div>
-
-
-
                             </div>
                             <!-- END SALES BLOCK -->
                             

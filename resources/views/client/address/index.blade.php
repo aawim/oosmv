@@ -98,7 +98,7 @@
                             <!-- CONTACT ITEM -->
                             <div class="panel panel-default">
                                
-                               <a href="{{ url('client/profile', $address->user_id )}}" >
+                               <a href="{{ route('profile.show', $address->user_id )}}" >
                                 <div class="panel-body profile">
                                     <div class="profile-image">
                                          @foreach($user_profile as $count2 => $one_profile) 
