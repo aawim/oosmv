@@ -46,7 +46,7 @@
                 
                 <!-- PAGE TITLE -->
                 <div class="page-title">                    
-                    <h2><span class="fa fa-users"></span> Address Book <small>{{$addresess->count()}} contacts</small></h2>
+                    <h2><span class="fa fa-users"></span> Profile </h2>
                 </div>
                 <!-- END PAGE TITLE -->                
                 
@@ -59,96 +59,28 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <span>Use search to find contacts. You can search by: mobile number .</span>
-                                   
-                                    <form class="form-horizontal" action="{{ route('address.store') }}" method="POST" >
-                                       {{ csrf_field() }}
-                                        <div class="form-group">
-                                            <div class="col-md-8">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <span class="fa fa-search"></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" name="searchtext" placeholder="Who are you looking for?"/>
-                                                    <div class="input-group-btn">
-                                                        <a href="#" id="getRequest" class="btn btn-primary">Search</a>
-
-                                                  
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button type="submit" class="btn btn-success btn-block" name = "submit" value = "Add new contact">  Add new contact</button>
-                                                <!-- <button name="add" class="btn btn-success btn-block"><span class="fa fa-plus"></span> Add new contact</button> -->
-                                            </div>
-                                        </div>
-                                    </form>    
+                                    
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                     
-
-
                     <div class="row">
-@foreach($addresess as $count => $address)
- @if($users->where('id', $address->user_id))
-                       <div class="col-md-2">
-                            <!-- CONTACT ITEM -->
+                    <div class="col-md-12">
+                            
                             <div class="panel panel-default">
-                               
-                               <a href="{{ url('client/profile', $address->user_id )}}" >
-                                <div class="panel-body profile">
-                                    <div class="profile-image">
-                                         @foreach($user_profile as $count2 => $one_profile) 
-                                            @if($one_profile->address_id == $address->id)
-                                             <img src="{{url('/').'/'.$one_profile->image}}" alt=" "/>
-                                            @else
-                                            <img src="assets/images/users/no-image.jpg" alt="Nadia Ali"/>
-                                            @endif
-                                        @endforeach
-                                        
-                                    </div>
-                                    <div class="profile-data">
-                                        <div class="profile-data-name">{{$users[$count]['name']}} {{count($user_profile)}}</div>
-                                        <div class="profile-data-title">Singer-Songwriter</div>
-                                    </div>
+                                <div class="panel-body">
+                                    <span>Use search to find contacts. You can search by: mobile number .</span>
                                     
-                                </div>  
-</a>
-
-
-                                <div class="panel-body">                                    
-                                    <div class="contact-info">
-                                        <p><small>Mobile</small><br/>{{$users[$count]['contact']}}</p>
-                                        <p><small>Email</small><br/>{{$users[$count]['email']}}</p>
-                                        <p><small>Address</small><br/>123 45 Street San Francisco, CA, USA</p>                                   
-                                    </div>
-                                </div>                                
+                                </div>
                             </div>
-                            <!-- END CONTACT ITEM -->
-          @endif                                   </div>
-@endforeach
+                        </div>
  
 
                     </div>
 
 
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="pagination pagination-sm pull-right push-down-10 push-up-10">
-                                <li class="disabled"><a href="#">«</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>                                    
-                                <li><a href="#">»</a></li>
-                            </ul>                            
-                        </div>
-                    </div>
-
+ 
 
  
 

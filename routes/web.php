@@ -87,9 +87,8 @@ Route::get('shop/{id}','SearchController@shopProductSearch');
 
 
 
-
-
-
+// CLIENT PROFILE
+Route::get('client/profile/{id}','ProfileController@show'); 
 
 // ORDER CONTROLLER
 Route::get('client/orderds/{id}','OrderController@index'); 
@@ -127,6 +126,7 @@ Route::prefix('manage')->group(function(){
     Route::resource('/mail', 'MailController');
     Route::resource('/reply', 'ReplyController');
     Route::resource('/address', 'AddressBookController');
+    Route::resource('/profile', 'ProfileController');
 });
 
 

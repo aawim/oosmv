@@ -6,6 +6,7 @@ use Auth;
 use App\User;
 use App\AddressBook;
 use App\Store;
+use App\UserProfile;
 use Toastr;
 class AddressBookController extends Controller
 {
@@ -27,7 +28,8 @@ class AddressBookController extends Controller
         $store_id = Store::where('user_id', Auth::user()->id)->get();
         $addresess = AddressBook::where('store_id',$store_id[0]['id'])->get();
         $users = User::all();
-        return view('client.address.index',['addresess'=>$addresess,'users' => $users] );
+        $user_profile = UserProfile::all();
+        return view('client.address.index',['user_profile'=>$user_profile,'addresess'=>$addresess,'users' => $users] );
 
    }
 
