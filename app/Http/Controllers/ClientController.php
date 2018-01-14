@@ -6,6 +6,7 @@ use App\Cart;
 use App\Mail;
 use App\Store;
 use App\AddressBook;
+use App\Order;
 use Auth;
 use App\Category;
 class ClientController extends Controller
@@ -40,14 +41,10 @@ class ClientController extends Controller
         //     return view('client.myaccount',[ 'categories'=>$categories]);
         //     }
         $mails = Mail::where('is_active',1)->get();
-        
-
-
         $store_id = Store::where('user_id', Auth::user()->id)->get();
         $addresess = AddressBook::where('store_id',$store_id[0]['id'])->get();
-
-
-        return view('client.pages.dashboard',['mails'=>$mails, 'addresess'=>$addresess ]);
+        $orders = Order::where('store_id',$store_id[0]['id'])->get();
+        return view('client.pages.dashboard',['orders'=>$orders, 'mails'=>$mails, 'addresess'=>$addresess ]);
    }
 
 

@@ -16,12 +16,8 @@
 
                     You are logged in!
 
-
-
-
                     <ul class="nav side-menu">
-                  
-                
+                                 
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <li><a><i class="fa fa-edit"></i> Manage User <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">

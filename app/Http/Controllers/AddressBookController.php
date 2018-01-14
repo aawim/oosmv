@@ -6,6 +6,7 @@ use Auth;
 use App\User;
 use App\AddressBook;
 use App\Store;
+use App\UserProfile;
 use Toastr;
 class AddressBookController extends Controller
 {
@@ -26,7 +27,9 @@ class AddressBookController extends Controller
     {
         $store_id = Store::where('user_id', Auth::user()->id)->get();
         $addresess = AddressBook::where('store_id',$store_id[0]['id'])->get();
-        return view('client.address.index',['addresess'=>$addresess] );
+        $users = User::all();
+        $user_profile = UserProfile::all();
+        return view('client.address.index',['user_profile'=>$user_profile,'addresess'=>$addresess,'users' => $users] );
 
    }
 
@@ -39,17 +42,21 @@ class AddressBookController extends Controller
     
     public function store(Request $request)
     {
-     
-        $store_id = Store::where('user_id', Auth::user()->id)->get();
-        $user = User::where('contact', $request->searchtext)->get();
-        
-if($request->searchtext === null ){
-    Toastr::warning('Please enter customer mobile number', 'OOSMV', ["positionClass" => "toast-top-right"]);
-    $store_id = Store::where('user_id', Auth::user()->id)->get();
-    $addresess = AddressBook::where('store_id',$store_id[0]['id'])->get();
-     return view('client.address.index',['addresess'=>$addresess] );
 
-}else{
+        if($request->submit == "Add new contact" AND $request->searchtext != "")
+        {
+            $store_id = Store::where('user_id', Auth::user()->id)->get();
+            $user = User::where('contact', $request->searchtext)->get();
+        
+            if($request->searchtext === null ){
+                Toastr::warning('Please enter customer mobile number', 'OOSMV', ["positionClass" => "toast-top-right"]);
+                $store_id = Store::where('user_id', Auth::user()->id)->get();
+                $addresess = AddressBook::where('store_id',$store_id[0]['id'])->get();
+                
+                $users = User::all();
+                return view('client.address.index',['addresess'=>$addresess,'users' => $users] );
+
+            }else{
 
     if(count($user) > 0){
         $Address = AddressBook::where('user_id', $user[0]['id'])->where('store_id',$store_id[0]['id'])->get();
@@ -77,7 +84,19 @@ if($request->searchtext === null ){
 
 
 }
+     
+        }else{
+            Toastr::info('The user could not found', 'OOSMV', ["positionClass" => "toast-top-right"]);
+            return redirect()->route('address.index' );
              
+        }
+
+
+
+
+
+
+
        
     }
 

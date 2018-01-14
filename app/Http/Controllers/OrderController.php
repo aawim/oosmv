@@ -7,6 +7,7 @@ use App\Category;
 use App\Product;
 use App\Order;
 use App\Store;
+use App\User;
 use Auth;
 use Toastr;
 class OrderController extends Controller
@@ -16,18 +17,32 @@ class OrderController extends Controller
     {
         $this->middleware('auth');
     }
-      public function index($id)
+      public function index()
     {
+         $id = Auth::user()->id;
+        
         if (Auth::check()){
-        $categories = Category::where('is_active', 1)->orderBy('name')->get();
-        $cartitems = Cart::where('user_id',Auth::user()->id)->orderBy('product_id')->get();
-        $orders = Order::select('store_id')->distinct()->where('user_id',$id)->where('is_active',1)->where('status',1)->get();
-       // $orders = Order::select('ref')->where('user_id',$id)->where('is_active',1)->where('status',1)->get();
-        return view('client.pages.orders',['cartitems'=>$cartitems, 'categories'=>$categories,'orders'=>$orders]);
-        }else{
+    //     $categories = Category::where('is_active', 1)->orderBy('name')->get();
+    //     $cartitems = Cart::where('user_id', $id)->orderBy('product_id')->get();
+    //     $orders = Order::select('store_id')->distinct()->where('user_id',$id)->where('is_active',1)->where('status',1)->get();
+    //    // $orders = Order::select('ref')->where('user_id',$id)->where('is_active',1)->where('status',1)->get();
+    //     return view('client.pages.orders',['cartitems'=>$cartitems, 'categories'=>$categories,'orders'=>$orders]);
+    //     }else{
 
-        $categories = Category::where('is_active', 1)->orderBy('name')->get();
-        return view('client.pages.orders',[ 'categories'=>$categories]);
+    //     $categories = Category::where('is_active', 1)->orderBy('name')->get();
+    //     return view('client.pages.orders',[ 'categories'=>$categories]);
+   
+   
+   
+    //$stors = Store::
+    $orders = Order::all();
+    $users = User::all();
+    $stores = Store::all();
+    return view('client.pages.orders.index',['orders'=>$orders, 'users' => $users, 'stores'=> $stores]);
+
+
+ 
+
         }
     }
 
