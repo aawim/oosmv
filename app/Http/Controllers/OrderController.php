@@ -10,6 +10,7 @@ use App\Store;
 use App\User;
 use Auth;
 use Toastr;
+use DB;
 class OrderController extends Controller
 {
   
@@ -38,7 +39,13 @@ class OrderController extends Controller
     $orders = Order::all();
     $users = User::all();
     $stores = Store::all();
-    return view('client.pages.orders.index',['orders'=>$orders, 'users' => $users, 'stores'=> $stores]);
+
+
+    $user_orders = Order::groupBy('ref','store_id')->where('user_id',Auth::user()->id)->select('ref','store_id', DB::raw('count(*) as total'))->get();
+
+
+
+    return view('client.pages.orders.index',['orders'=>$orders, 'users' => $users, 'stores'=> $stores, 'user_orders' => $user_orders]);
 
 
  
@@ -87,31 +94,60 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-       $orders = Cart::where('user_id',$request->user_id)->where('is_active',1)->orderBy('store_id')->get();
-       $rendomnumber = $this->guidv4();
-       $temp_store_id  =  $orders[0]['store_id'];
-            if(count($orders)>0){
-            foreach($orders  as $count => $item) {
-                if($item->store_id != $temp_store_id){
-                    $rendomnumber = $this->guidv4();
-               } 
-                $add_order = new Order();
-                $add_order->product_id = $item->product_id;
-                $add_order->user_id = $item->user_id;
-                $add_order->store_id = $item->store_id;
-                $add_order->ref = $rendomnumber;
-                $add_order->qty = $item->qty;
-                $add_order->status = 1;
-                $add_order->is_active = 1;
-                $add_order->save();
+
+
+       $store_orders = Cart::where('user_id',$request->user_id)->where('is_active',1)->orderBy('store_id')->get()->groupBy('store_id');
+
+       foreach($store_orders as $store_order){
+        $rendomnumber = $this->guidv4();
+
+        foreach($store_order as $order){
+
+            $add_order = new Order();
+            $add_order->product_id = $order->product_id;
+            $add_order->user_id = $order->user_id;
+            $add_order->store_id = $order->store_id;
+            $add_order->ref = $rendomnumber;
+            $add_order->qty = $order->qty;
+            $add_order->status = 1;
+            $add_order->is_active = 1;
+            $add_order->save();
+
+
+             $d = Cart::findOrFail($order->id);
+                $d->is_active = 0;
+                $d->delete();
+
+        }
+       }
+
+
+
+
+    //    $rendomnumber = $this->guidv4();
+    //    $temp_store_id  =  $orders[0]['store_id'];
+    //         if(count($orders)>0){
+    //         foreach($orders  as $count => $item) {
+    //             if($item->store_id != $temp_store_id){
+    //                 $rendomnumber = $this->guidv4();
+    //            } 
+    //             $add_order = new Order();
+    //             $add_order->product_id = $item->product_id;
+    //             $add_order->user_id = $item->user_id;
+    //             $add_order->store_id = $item->store_id;
+    //             $add_order->ref = $rendomnumber;
+    //             $add_order->qty = $item->qty;
+    //             $add_order->status = 1;
+    //             $add_order->is_active = 1;
+                // $add_order->save();
 
                 // $d = Cart::findOrFail($item->id);
                 // $d->is_active = 0;
                 // $d->delete();
-           }
+        //    }
            Toastr::success('Your order was processed successfully!', 'OOSMV', ["positionClass" => "toast-top-right"]);
             return redirect()->back();
-           } 
+            
 
 
     }

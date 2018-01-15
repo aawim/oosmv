@@ -94,9 +94,9 @@
 
 
 
-                            @foreach($orders->where('store_id',1)->where('status',1) as $count2 => $order)
+                            @foreach($user_orders as $user_order)
                              
-                                @if($order->is_active === 1)
+                                @if($user_order->is_active == 1)
                                 <div class="mail-item mail-unread mail-danger"> 
                                
                                     @else
@@ -108,16 +108,12 @@
                                     </div> -->
 
 
-                                    @foreach($stores->where('user_id',$order->user_id) as $count => $store)
-                                     
-                                 
-                                         
-                                    <div class="mail-user">{{$count2+1}}</div>                                    
-                                    <a href="{{route('order.show',$order->id) }}" class="mail-text">{{$store->name}}   </a>  
-                                    <div class="mail-date">{{$order->created_at}}</div>
+                                    
+                                    <div class="mail-user"></div>                                    
+                                    <a href="{{route('order.show',$user_order->id) }}" class="mail-text">{{$user_order->store()->first()->name}} | Products ordered from the store : {{$user_order->total}}   </a>  
+                                    <div class="mail-date">{{$user_order->created_at}}</div>
                                        
                         
-                                    @endforeach 
 
                                 </div>
                               

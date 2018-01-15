@@ -13,6 +13,10 @@ class Order extends Model
         'created_at', 'updated_at','is_active',
     ];
 
+    public function store(){
+        return $this->belongsTo(Store::class, 'store_id');
+    }
+
   
 
 }

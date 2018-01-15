@@ -13,7 +13,7 @@ class CreateProfileModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile_models', function (Blueprint $table) {
+        Schema::create('user_profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('address_id');
             $table->string('image');
@@ -29,6 +29,6 @@ class CreateProfileModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile_models');
+        Schema::dropIfExists('user_profiles');
     }
 }
