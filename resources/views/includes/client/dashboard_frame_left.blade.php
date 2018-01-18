@@ -1,4 +1,8 @@
-<div class="content-frame-left">
+               
+               
+               
+               
+                <div class="content-frame-left">
                         <div class="block">
                             <a href="{{ route('mail.create') }}" class="btn btn-danger btn-block btn-lg"><span class="fa fa-edit"></span> COMPOSE</a>
                         </div>

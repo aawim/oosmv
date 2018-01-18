@@ -20,7 +20,26 @@
                                         </form>
 
                        <li><a href="#">My Wishlist</a></li>
-                       <li>Your loggeg in as : <a href="#"><strong> {{ Auth::user()->name }}</strong></a></li>        
+                       <li>Your loggeg in as : <a href="#"><strong> 
+                       
+                           @if(Auth::user()->user_type == 0 )                
+                       
+                       {{ Auth::user()->name }} (Administrator)
+                       
+                       
+                       
+                       @elseif(Auth::user()->user_type == 2 ) 
+
+                    {{ Auth::user()->name }} (Business)
+                       
+                       @else
+
+                       {{ Auth::user()->name }} (User)
+
+                       @endif
+                       
+                       
+                       </strong></a></li>        
                     </li>
                     @else
 

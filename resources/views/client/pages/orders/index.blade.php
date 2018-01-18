@@ -9,10 +9,11 @@
     </head>
     <body>
     {!! Toastr::message() !!}
-        <!-- START PAGE CONTAINER -->
-        <div class="page-container">
-            
         
+
+  <!-- START PAGE CONTAINER -->
+  <div class="page-container">
+            
             <!-- START PAGE SIDEBAR -->
             <div class="page-sidebar">
                 <!-- START X-NAVIGATION -->
@@ -20,151 +21,149 @@
                 <!-- END X-NAVIGATION -->
             </div>
             <!-- END PAGE SIDEBAR -->
-
-           
+            
             <!-- PAGE CONTENT -->
             <div class="page-content">
                 
-             
-               <!-- START X-NAVIGATION VERTICAL -->
-                @include('includes.client.dashboard_top_vertical_navigation')
-                <!-- END X-NAVIGATION VERTICAL -->
-                                  
+                <!-- START X-NAVIGATION VERTICAL -->
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                    <!-- TOGGLE NAVIGATION -->
+                    <li class="xn-icon-button">
+                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+                    </li>
+                    <!-- END TOGGLE NAVIGATION -->                    
+                </ul>
+                <!-- END X-NAVIGATION VERTICAL -->                     
+                
                 <!-- START BREADCRUMB -->
-                <ul class="breadcrumb push-down-0">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Pages</a></li>
-                    <li><a href="#">Clients</a></li>
-                    <li class="active">Order</li>
+                <ul class="breadcrumb">
+                    <li><a href="#">Link</a></li>                    
+                    <li class="active">Active</li>
                 </ul>
                 <!-- END BREADCRUMB -->                
-                                
-                <!-- START CONTENT FRAME -->
-                <div class="content-frame">                                    
-                    <!-- START CONTENT FRAME TOP -->
-                    <div class="content-frame-top">                        
-                        <div class="page-title">                    
-                            <h2><span class="fa fa-inbox"></span> Order <small></small></h2>
-                        </div>                                                                                
-                        
-                        <!-- <div class="pull-right">                            
-                            <button class="btn btn-default"><span class="fa fa-cogs"></span> Settings</button>
-                            <button class="btn btn-default content-frame-left-toggle"><span class="fa fa-bars"></span></button>
-                        </div>                         -->
-                    </div>
-                    <!-- END CONTENT FRAME TOP -->
-                    
-                    <!-- START CONTENT FRAME LEFT -->
-            @include('includes.client.order_frame_left')
-                    <!-- END CONTENT FRAME LEFT -->
-                    
-                    <!-- START CONTENT FRAME BODY -->
-                    <div class="content-frame-body" >
-                        
-                        <div class="panel panel-default" style="width:95%;">
-                            <div class="panel-heading">
-                              <!--   <label class="check mail-checkall">
-                                    <input type="checkbox" class="icheckbox"/>
-                                </label>
-                                <div class="btn-group">
-                                    <button class="btn btn-default"><span class="fa fa-mail-reply"></span></button>
-                                    <button class="btn btn-default"><span class="fa fa-mail-reply-all"></span></button>
-                                    <button class="btn btn-default"><span class="fa fa-mail-forward"></span></button>
+                
+                <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Active Orders</h2>
+                </div>                   
+                
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">
+                
+                    <div class="row">
+                        <div class="col-md-8">
+
+                            <!-- START DEFAULT DATATABLE -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">                                
+                                    <h3 class="panel-title">Pendings</h3>
+                                    <ul class="panel-controls">
+                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                                    </ul>                                
                                 </div>
-                                <div class="btn-group">
-                                    <button class="btn btn-default"><span class="fa fa-star"></span></button>                                    
-                                    <button class="btn btn-default"><span class="fa fa-flag"></span></button>
-                                </div>                                
-                                <button class="btn btn-default"><span class="fa fa-warning"></span></button>
-                                <button class="btn btn-default"><span class="fa fa-trash-o"></span></button>                                                                    
-                                <div class="pull-right" style="width: 150px;">
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><span class="fa fa-calendar"></span></div>
-                                        <input class="form-control datepicker" type="text" data-orientation="left"/>                                    
-                                    </div>
-                                </div> -->
-                            </div>
-                            <div class="panel-body mail">
-                                
-                           
-                                
-                          
-                                
+                                <div class="panel-body">
+                                    <table class="table datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Order Number</th>
+                                                <th>Vendor</th>
+                                                <th>Status</th>
+                                                <th>Order Date</th>
+                                              
+                                            </tr>
+                                        </thead>
 
 
 
 
-                            @foreach($user_orders as $user_order)
+
+
+
+                                        <tbody>
+
+
+                       @foreach($user_orders as $count => $user_order)
                              
-                                @if($user_order->is_active == 1)
-                                <div class="mail-item mail-unread mail-danger"> 
-                               
-                                    @else
-                                    <div class="mail-item mail-success">
+                        
+ 
+
+
+                             <tr>
+                                <td>{{$count+1}}</td>
+                                <td>Order Number</td>
+                                <td><a href="od/{{$user_order->ref}}" > {{$user_order->store()->first()->name}}</a></td>
+                              
+                              
+                                <td>
+                                
+                                @foreach($orders->where('store_id',$user_order->store_id) as $count => $order)  
+                                
+                                    @if($order->status==1) 
+
+                                        Pending @break
+
+                                        @elseif($order->status==2)
+
+                                        On Progress @break
+
+                                        @elseif($order->status==3)
+
+                                        Need Approval @break
+
+
+
+
                                     @endif
 
-                                    <!-- <div class="mail-checkbox">
-                                        <input type="checkbox" class="icheckbox"/>
-                                    </div> -->
+                                @endforeach  
+                             
+                    
+                            </td>
 
 
-                                    
-                                    <div class="mail-user"></div>                                    
-                                    <a href="{{route('order.show',$user_order->id) }}" class="mail-text">{{$user_order->store()->first()->name}} | Products ordered from the store : {{$user_order->total}}   </a>  
-                                    <div class="mail-date">{{$user_order->created_at}}</div>
-                                       
-                        
 
-                                </div>
+                                <td>{{$user_order->store()->first()->created_at}}</td>
+                            </tr>
+                     
+
+                             </div>
+                           
+                          @endforeach   
                               
-                             @endforeach   
-                                 
-                                
-                            
-                                
-                                
-                                 
-                                                
-                                
+
+
+
+
+                                       
+                                           
+                                        </tbody>
+
+
+
+
+
+
+
+
+                                    </table>
+                                </div>
                             </div>
-                            <div class="panel-footer">                                
-                                <!-- <div class="btn-group">
-                                    <button class="btn btn-default"><span class="fa fa-mail-reply"></span></button>
-                                    <button class="btn btn-default"><span class="fa fa-mail-reply-all"></span></button>
-                                    <button class="btn btn-default"><span class="fa fa-mail-forward"></span></button>
-                                </div>
-                                <div class="btn-group">
-                                    <button class="btn btn-default"><span class="fa fa-star"></span></button>                                    
-                                    <button class="btn btn-default"><span class="fa fa-flag"></span></button>
-                                </div>
-                                
-                                <button class="btn btn-default"><span class="fa fa-warning"></span></button>
-                                <button class="btn btn-default"><span class="fa fa-trash-o"></span></button>                                     -->
-                                
-                                <ul class="pagination pagination-sm pull-right">
-                                    <li class="disabled"><a href="#">«</a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>                                    
-                                    <li><a href="#">»</a></li>
-                                </ul>
-                            </div>                            
+                            <!-- END DEFAULT DATATABLE -->
+                 
+
                         </div>
-                        
                     </div>
-                    <!-- END CONTENT FRAME BODY -->
-
-
-
-
-                </div>
-                <!-- END CONTENT FRAME -->
                 
+                </div>
+                <!-- END PAGE CONTENT WRAPPER -->                
             </div>            
             <!-- END PAGE CONTENT -->
         </div>
         <!-- END PAGE CONTAINER -->
+
+
 
         <!-- MESSAGE BOX-->
         <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">

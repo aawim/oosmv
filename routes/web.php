@@ -44,6 +44,9 @@ Route::get('scat','ProductController@getscat');
 Route::get('findSubCat', 'ProductController@findSubCatgeoryName');
 // PRODUCT DEATAIL CONTROLLER
 Route::resource('/item', 'ProductDetailController');
+
+
+
 Auth::routes();
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
@@ -67,6 +70,9 @@ Route::post(' /store/storecreate', 'StoreController@adminstorecreate');
     
 });
 });
+
+
+
 
 
 Route::group(['middleware' => 'App\Http\Middleware\ClientMiddleware'], function()
