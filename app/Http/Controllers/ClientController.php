@@ -45,6 +45,9 @@ class ClientController extends Controller
         $addresess = AddressBook::where('store_id',$store_id[0]['id'])->get();
         $orders = Order::where('store_id',$store_id[0]['id'])->get();
         return view('client.pages.dashboard',['orders'=>$orders, 'mails'=>$mails, 'addresess'=>$addresess ]);
+
+
+
    }
 
 

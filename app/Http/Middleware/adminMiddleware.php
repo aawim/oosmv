@@ -12,10 +12,10 @@ class adminMiddleware
 
         if (Auth::check()) 
         {
-            if ($request->user()->user_type != 0 )
+            if ($request->user()->user_type !=0)
             {
-             return redirect('/');
-           }
+                return redirect('/');
+            }
         }
 		 
         

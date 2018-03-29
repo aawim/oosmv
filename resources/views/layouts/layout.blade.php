@@ -28,9 +28,9 @@
   <!-- Custom Theme Style -->
   <link href="{{url('/').'/build/css/custom.min.css'}}" rel="stylesheet">
 
-  <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+  <!-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> -->
   <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
-  <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+ <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
  </head>

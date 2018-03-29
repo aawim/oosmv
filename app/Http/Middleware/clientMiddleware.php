@@ -9,7 +9,7 @@ class clientMiddleware
     {
         if (Auth::check()) 
         {
-            if ($request->user()->user_type ===2 || $request->user()->user_type === 0  )
+            if ($request->user()->user_type == 2 || $request->user()->user_type == 0  )
             {
               return $next($request);
             } else{

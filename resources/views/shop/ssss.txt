@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Half Slider - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url('/').'/client/new/vendor/bootstrap/css/bootstrap.min.css'}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url('/').'/client/new/css/half-slider.css'}}" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+
+
+ body { background-color: rgba(248, 248, 220, .5); }
+
+
+.row{
+    padding-top:20px;
+}
+
+
+card {
+  display: block;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border-radius: 2px;
+    /* box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); */
+    transition: box-shadow .25s;
+}
+/* .card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+} */
+.img-card {
+  width: 100%;
+  height:200px;
+  /* border-top-left-radius:2px;
+  border-top-right-radius:2px; */
+  display:block;
+    overflow: hidden;
+}
+.img-card img{
+  width: 100%;
+  height: 200px;
+  object-fit:cover;
+  transition: all .25s ease;
+}
+.card-content {
+  padding:5px;
+  text-align:left;
+}
+.card-title {
+  margin-top:0px;
+  font-weight: 700;
+  font-size: 1.65em;
+}
+.card-title a {
+  color: #000;
+  text-decoration: none !important;
+}
+.card-read-more {
+  border-top: 1px solid #D4D4D4;
+}
+.card-read-more a {
+  text-decoration: none !important;
+  padding:5px;
+  font-weight:600;
+  text-transform: uppercase
+}
+
+
+
+
+
+    </style>
+
+
+
+
+
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide One - Set the background image for this slide in the line below -->
+          <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>First Slide</h3>
+              <p>This is a description for the first slide.</p>
+            </div>
+          </div>
+          <!-- Slide Two - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>Second Slide</h3>
+              <p>This is a description for the second slide.</p>
+            </div>
+          </div>
+          <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>Third Slide</h3>
+              <p>This is a description for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </header>
+
+
+ 
+
+ 
+ <div class="container-fluid">
+    <div class="row">
+      
+   
+        <div class="col-xs-12 col-sm-3">
+                <div class="card">
+                    <a class="img-card" href="http://www.fostrap.com/">
+                        <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"/>
+                    </a>
+                    
+                    <!-- <div class="card-content">
+                        <h4 class="card-title">
+                            <a href="http://www.fostrap.com/">
+                                BMW X5 SERIES
+                            </a>
+                        </h4>
+                        <div class="">
+                            New Delhi, 2005, Petrol
+                        </div>
+                    </div> -->
+                    <!-- <div class="card-read-more">
+                        <a class="btn btn-link btn-block" href="http://www.fostrap.com/">
+                            BID NOW
+                        </a>
+                    </div> -->
+                </div>
+                    <div style="text-align:center" > sss</div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-3">
+                <div class="card">
+                    <a class="img-card" href="http://www.fostrap.com/">
+                        <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"/>
+                    </a>
+                    
+                    <!-- <div class="card-content">
+                        <h4 class="card-title">
+                            <a href="http://www.fostrap.com/">
+                                BMW X5 SERIES
+                            </a>
+                        </h4>
+                        <div class="">
+                            New Delhi, 2005, Petrol
+                        </div>
+                    </div> -->
+                    <!-- <div class="card-read-more">
+                        <a class="btn btn-link btn-block" href="http://www.fostrap.com/">
+                            BID NOW
+                        </a>
+                    </div> -->
+                </div>
+                    <div style="text-align:center" > sss</div>
+        </div>        <div class="col-xs-12 col-sm-3">
+                <div class="card">
+                    <a class="img-card" href="http://www.fostrap.com/">
+                        <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"/>
+                    </a>
+                    
+                    <!-- <div class="card-content">
+                        <h4 class="card-title">
+                            <a href="http://www.fostrap.com/">
+                                BMW X5 SERIES
+                            </a>
+                        </h4>
+                        <div class="">
+                            New Delhi, 2005, Petrol
+                        </div>
+                    </div> -->
+                    <!-- <div class="card-read-more">
+                        <a class="btn btn-link btn-block" href="http://www.fostrap.com/">
+                            BID NOW
+                        </a>
+                    </div> -->
+                </div>
+                    <div style="text-align:center" > sss</div>
+        </div>        <div class="col-xs-12 col-sm-3">
+                <div class="card">
+                    <a class="img-card" href="http://www.fostrap.com/">
+                        <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"/>
+                    </a>
+                    
+                    <!-- <div class="card-content">
+                        <h4 class="card-title">
+                            <a href="http://www.fostrap.com/">
+                                BMW X5 SERIES
+                            </a>
+                        </h4>
+                        <div class="">
+                            New Delhi, 2005, Petrol
+                        </div>
+                    </div> -->
+                    <!-- <div class="card-read-more">
+                        <a class="btn btn-link btn-block" href="http://www.fostrap.com/">
+                            BID NOW
+                        </a>
+                    </div> -->
+                </div>
+                    <div style="text-align:center" > sss</div>
+        </div>
+
+
+   
+    </div>
+</div>
+
+ 
+
+
+
+
+    <!-- Page Content -->
+    <section >
+      <div class="container-fluid">
+        <!-- <h1>Half Slider by Start Bootstrap</h1>
+        <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this template are contained within the
+          <code>half-slider.css</code>
+          file.</p> -->
+     
+  <div class="row">
+
+        <div class="col-sm-2" style=" background-color: green; height:500px;">
+            <h4>Users</h4>
+            <p>1 Million</p> 
+        </div>
+
+
+
+        <div class="col-sm-10" style=" background-color: red;  height:80px;">
+            <h4>Pages</h4>
+            <p>100 Million</p> 
+           
+                        <div class="row">
+                            
+                                <div class="col-sm-2" style=" background-color: green; margin-left:15px;  ">
+                                    <h4>Users</h4>
+                                    <p>1 Million</p> 
+                                </div>
+
+                                <div class="col-sm-2" style=" background-color: green; margin-left:15px;  ">
+                                    <h4>Users</h4>
+                                    <p>1 Million</p> 
+                                </div>
+
+
+                                <div class="col-sm-2" style=" background-color: green; margin-left:15px;  ">
+                                    <h4>Users</h4>
+                                    <p>1 Million</p> 
+                                </div>
+
+                                <div class="col-sm-2" style=" background-color: green; margin-left:15px;  ">
+                                    <h4>Users</h4>
+                                    <p>1 Million</p> 
+                                </div>
+                             
+                        </div>                          
+        </div>
+</div>
+     
+     
+     
+     
+     </div>
+    </section>
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url('/').'/client/new/vendor/jquery/jquery.min.js'}}"></script>
+    <script src="{{ url('/').'/client/new/vendor/bootstrap/js/bootstrap.bundle.min.js'}}"></script>
+
+
+
+   
+
+  </body>
+
+</html>

@@ -60,6 +60,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
   <link href="{{url('/').'/assets/corporate/css/style-responsive.css'}}" rel="stylesheet">
   <link href="{{url('/').'/assets/corporate/css/themes/red.css'}}" rel="stylesheet" id="style-color">
   <link href="{{url('/').'/assets/corporate/css/custom.css'}}" rel="stylesheet">
+
+
+
+
+
+
   <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -67,6 +73,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- Body BEGIN -->
 <body class="ecommerce">
 
+{!! Toastr::message() !!}
 
     <!-- BEGIN STYLE CUSTOMIZER -->
     <!-- <div class="color-panel hidden-sm">
@@ -89,16 +96,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- BEGIN TOP BAR -->
     @include('includes.topbar')
     <!-- END TOP BAR -->
-
-
-
-
     <!-- BEGIN HEADER -->
     <div class="header">
       <div class="container">
         <a class="site-logo" href="{{ url('/') }}"><img src="{{url('/').'/assets/corporate/img/logos/logo-shop-red.png'}}" alt="Metronic Shop UI"></a>
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-       
+   
         <!-- BEGIN CART -->
 
        @if (Auth::check())  
@@ -442,16 +445,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40 ">
+         
+         
+         
+         
           <!-- BEGIN SIDEBAR -->
           <div class="sidebar col-md-3 col-sm-4">
-     
-          
           <ul class="list-group margin-bottom-25 sidebar-menu">
             <li class="list-group-item clearfix"><a href="{{url('find')}}">
               <i class="fa fa-angle-right"></i>All</a></li>
-
-
-            @foreach ($categories as $count => $catrgory)
+          @foreach ($categories as $count => $catrgory)
               <li class="list-group-item clearfix"><a href="{{url('find/'. $catrgory->id)}}">
               <i class="fa fa-angle-right"></i>{{$catrgory->name}}</a></li>
             @endforeach
@@ -459,6 +462,21 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             </ul>
           </div>
           <!-- END SIDEBAR -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           <!-- BEGIN CONTENT -->
           <div class="col-md-9 col-sm-8">
             <h2>Three items</h2>
@@ -557,8 +575,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
         <!-- BEGIN TWO PRODUCTS & PROMO -->
         <div class="row margin-bottom-35 ">
+       
+       
           <!-- BEGIN TWO PRODUCTS -->
-          <div class="col-md-6 two-items-bottom-items">
+          <!-- <div class="col-md-6 two-items-bottom-items">
             <h2>Two items</h2>
             <div class="owl-carousel owl-carousel2">
               <div>
@@ -627,10 +647,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </div>
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                  <div class="pi-price">$29.00</div>
+                  <div class="pi-price">$29.00</div> -->
                   <!-- <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a> -->
 
-                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
+                  <!-- <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
               <div>
@@ -643,20 +663,22 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </div>
                   </div>
                   <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                  <div class="pi-price">$29.00</div>
+                  <div class="pi-price">$29.00</div> -->
                   <!-- <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a> -->
-                  <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
+                  <!-- <a href="{{route('cart.index')}}" class="btn btn-primary" >Add to cart</a>
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- END TWO PRODUCTS -->
+         
+         
           <!-- BEGIN PROMO -->
-          <div class="col-md-6 shop-index-carousel">
+          <!-- <div class="col-md-6 shop-index-carousel">
             <div class="content-slider">
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <div id="myCarousel" class="carousel slide" data-ride="carousel"> -->
                 <!-- Indicators -->
-                <ol class="carousel-indicators">
+                <!-- <ol class="carousel-indicators">
                   <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                   <li data-target="#myCarousel" data-slide-to="1"></li>
                   <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -674,8 +696,11 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- END PROMO -->
+
+
+
         </div>        
         <!-- END TWO PRODUCTS & PROMO -->
       </div>
@@ -748,6 +773,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!--[if lt IE 9]>
     <script src="{{url('/').'/assets/plugins/respond.min.js'}}"></script>  
     <![endif]-->
+
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+
     <script src="{{url('/').'/assets/plugins/jquery.min.js'}}" type="text/javascript"></script>
     <script src="{{url('/').'/assets/plugins/jquery-migrate.min.js'}}" type="text/javascript"></script>
     <script src="{{url('/').'/assets/plugins/bootstrap/js/bootstrap.min.js'}}" type="text/javascript"></script>      

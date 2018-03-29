@@ -4,8 +4,12 @@
     @include('includes.client.dashboard_top')   
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+   
+   
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>                                
+   
+   
     </head>
     <body>
     {!! Toastr::message() !!}
@@ -93,7 +97,7 @@
                              <tr>
                                 <td>{{$count+1}}</td>
                                 <td>Order Number</td>
-                                <td><a href="od/{{$user_order->ref}}" > {{$user_order->store()->first()->name}}</a></td>
+                                <td><a href="orderdetail/{{$user_order->ref}}" > {{$user_order->store()->first()->name}}</a></td>
                               
                               
                                 <td>
