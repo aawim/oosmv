@@ -23,7 +23,65 @@
 
 <style>
 
-  
+  * {
+    box-sizing: border-box;
+}
+
+ 
+
+/* Center website */
+.main {
+    max-width: 1000px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 50px;
+    word-break: break-all;
+}
+
+.row {
+    margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+    padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 25%;
+}
+
+/* Clear floats after rows */ 
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Content */
+.content {
+    background-color: white;
+    padding: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+    .column {
+        width: 50%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
 
 </style>
 
@@ -222,100 +280,72 @@
     </section>
 
 
+
+
+
+
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    <img src="{{url('/').'/imagesx/1.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/2.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/3.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/4.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/5.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/6.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/7.jpg'}}" style="width:100%">
  
- 
-      
-
-
- <section>
-  <h2 style="text-align:center">NEW PRODUCTS</h2>
-<div class="row">
- <div class="container">
-
- 
-  
-<div class="column">
-   <figure class="imghvr-fade"><img src="http://cdn.homedit.com/wp-content/uploads/2011/08/137CLUB2ST.png" alt="example-image">
-            <figcaption>
-                <h3>Hello World</h3>
-                <p>Life is too important to be taken seriously!</p>
-            </figcaption><a href="javascript:;"></a>
-      <!-- <h2>Column 3</h2>
-      <p>Some text..</p> -->
-   </figure>
- </div>
- 
- 
- <div class="column">
-   <figure class="imghvr-fade"><img src="http://cdn.homedit.com/wp-content/uploads/2011/08/137CLUB2ST.png" alt="example-image">
-            <figcaption>
-                <h3>Hello World</h3>
-                <p>Life is too important to be taken seriously!</p>
-            </figcaption><a href="javascript:;"></a>
-      <!-- <h2>Column 3</h2>
-      <p>Some text..</p> -->
-   </figure>
- </div>
-
-
- <div class="column">
-   <figure class="imghvr-fade"><img src="https://images.unsplash.com/photo-1433360405326-e50f909805b3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=359e8e12304ffa04a38627a157fc3362" alt="example-image">
-            <figcaption>
-                <h3>Hello World</h3>
-                <p>Life is too important to be taken seriously!</p>
-           
-             
-            </figcaption><a href="javascript:;"></a>
-      <!-- <h2>Column 3</h2>
-      <p>Some text..</p> -->
-   </figure> 
- </div>
-
-
-
- <div class="column">
-   <figure class="imghvr-fade"><img src="http://cdn.homedit.com/wp-content/uploads/2011/08/137CLUB2ST.png" alt="example-image">
-            <figcaption>
-                <h3>Hello World</h3>
-                <p>Life is too important to be taken seriously!</p>
-            </figcaption><a href="javascript:;"></a>
-      <!-- <h2>Column 3</h2>
-      <p>Some text..</p> -->
-   </figure>
- </div>
-
-
-
- <div class="column">
-   <figure class="imghvr-fade"><img src="http://cdn.homedit.com/wp-content/uploads/2011/08/137CLUB2ST.png" alt="example-image">
-            <figcaption>
-                <h3>Hello World</h3>
-                <p>Life is too important to be taken seriously!</p>
-            </figcaption><a href="javascript:;"></a>
-      <!-- <h2>Column 3</h2>
-      <p>Some text..</p> -->
-   </figure>
- </div>
- 
-  
-
- 
-
-
+  </div>
+  <div class="column">
+  <img src="{{url('/').'/imagesx/8.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/9.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/10.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/12.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/13.jpg'}}" style="width:100%">
+  </div>  
+  <div class="column">
+  <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/10.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/5.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/6.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/7.jpg'}}" style="width:100%">
+  </div>
+  <div class="column">
+  <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/5.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/6.jpg'}}" style="width:100%">
+    <img src="{{url('/').'/imagesx/7.jpg'}}" style="width:100%">
   </div>
 </div>
-
-
- </section>
-
-
-
-
+  
 
 
  
 
 <script>
+
+
+function getRandomSize(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+var allImages = "";
+
+for (var i = 0; i < 25; i++) {
+  var width = getRandomSize(200, 400);
+  var height =  getRandomSize(200, 400);
+  allImages += '<img src="https://placekitten.com/'+width+'/'+height+'" alt="pretty kitty">';
+}
+
+$('#photos').append(allImages);
+
+
+
 
 
 
