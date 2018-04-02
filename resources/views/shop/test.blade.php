@@ -14,7 +14,8 @@
 
 <link href="{{url('/').'/css/style.css'}}" rel="stylesheet">
 
-
+<link href="{{url('/').'/product_hover/css/demo-page.css'}}" rel="stylesheet" media="all">
+    <link href="{{url('/').'/product_hover/css/imagehover.css'}}" rel="stylesheet" media="all">
 
    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link href="{{url('/').'/MDB/css/bootstrap.min.css'}}" rel="stylesheet">
@@ -34,6 +35,7 @@
 
 </head>
 <body>
+
 
 
 
@@ -120,7 +122,7 @@
         @else
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
-                        <li><a href="#">Welcome: <strong> Guest </strong></li> 
+                        <li><a href="#">Welcome: <strong> Guest </strong></a></li> 
 
 
 
@@ -133,7 +135,7 @@
 
             @endauth
           @endif
-
+ 
           </ul>
 
 
@@ -146,7 +148,7 @@
     </nav>
 
 
-
+ 
 
 
 
@@ -220,206 +222,104 @@
     </section>
 
 
+ 
+ 
+      
+
+
+ <section>
+  <h2 style="text-align:center">NEW PRODUCTS</h2>
+<div class="row">
+ <div class="container">
+
+ 
+  
+<div class="column">
+   <figure class="imghvr-fade"><img src="http://cdn.homedit.com/wp-content/uploads/2011/08/137CLUB2ST.png" alt="example-image">
+            <figcaption>
+                <h3>Hello World</h3>
+                <p>Life is too important to be taken seriously!</p>
+            </figcaption><a href="javascript:;"></a>
+      <!-- <h2>Column 3</h2>
+      <p>Some text..</p> -->
+   </figure>
+ </div>
+ 
+ 
+ <div class="column">
+   <figure class="imghvr-fade"><img src="http://cdn.homedit.com/wp-content/uploads/2011/08/137CLUB2ST.png" alt="example-image">
+            <figcaption>
+                <h3>Hello World</h3>
+                <p>Life is too important to be taken seriously!</p>
+            </figcaption><a href="javascript:;"></a>
+      <!-- <h2>Column 3</h2>
+      <p>Some text..</p> -->
+   </figure>
+ </div>
+
+
+ <div class="column">
+   <figure class="imghvr-fade"><img src="https://images.unsplash.com/photo-1433360405326-e50f909805b3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=359e8e12304ffa04a38627a157fc3362" alt="example-image">
+            <figcaption>
+                <h3>Hello World</h3>
+                <p>Life is too important to be taken seriously!</p>
+           
+             
+            </figcaption><a href="javascript:;"></a>
+      <!-- <h2>Column 3</h2>
+      <p>Some text..</p> -->
+   </figure> 
+ </div>
 
 
 
-
-<div class="container">
-	<div class="row">
-        <h2>Ecommerce Products Display Layout</h2>
-        <p>
-            This snippent uses <a href="http://daneden.github.io/animate.css/" target="_blank">Animate.css</a> for the animation of the buttons.
-        </p>
-
-
-
-        
-        <div class="col-sm-3">
-            <article class="col-item">
-            	<div class="photo">
-        			<div class="options-cart-round">
-        				<button class="btn btn-default" title="Add to cart">
-        					<span class="fa fa-shopping-cart"></span>
-        				</button>
-        			</div>
-        			<a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image" /> </a>
-        		</div>
-        		<div class="info">
-        			<div class="row">
-        				<div class="price-details col-md-6">
-        					<p class="details">
-        						Lorem ipsum dolor sit amet, consectetur..
-        					</p>
-        					<h1>Sample Product</h1>
-        					<span class="price-new">$110.00</span>
-        				</div>
-        			</div>
-        		</div>
-        	</article>
-            <p class="text-center">Hover over image</p>
-        </div>
+ <div class="column">
+   <figure class="imghvr-fade"><img src="http://cdn.homedit.com/wp-content/uploads/2011/08/137CLUB2ST.png" alt="example-image">
+            <figcaption>
+                <h3>Hello World</h3>
+                <p>Life is too important to be taken seriously!</p>
+            </figcaption><a href="javascript:;"></a>
+      <!-- <h2>Column 3</h2>
+      <p>Some text..</p> -->
+   </figure>
+ </div>
 
 
 
+ <div class="column">
+   <figure class="imghvr-fade"><img src="http://cdn.homedit.com/wp-content/uploads/2011/08/137CLUB2ST.png" alt="example-image">
+            <figcaption>
+                <h3>Hello World</h3>
+                <p>Life is too important to be taken seriously!</p>
+            </figcaption><a href="javascript:;"></a>
+      <!-- <h2>Column 3</h2>
+      <p>Some text..</p> -->
+   </figure>
+ </div>
+ 
+  
 
-
-        <div class="col-sm-3">
-            <article class="col-item">
-        		<div class="photo">
-        			<div class="options">
-        				<button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top" title="Add to wish list">
-        					<i class="fa fa-heart"></i>
-        				</button>
-        				<button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top" title="Compare">
-        					<i class="fa fa-exchange"></i>
-        				</button>
-        			</div>
-        			<div class="options-cart">
-        				<button class="btn btn-default" title="Add to cart">
-        					<span class="fa fa-shopping-cart"></span>
-        				</button>
-        			</div>
-        			<a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image" /> </a>
-        		</div>
-        		<div class="info">
-        			<div class="row">
-        				<div class="price-details col-md-6">
-        					<p class="details">
-        						Lorem ipsum dolor sit amet, consectetur..
-        					</p>
-        					<h1>Sample Product</h1>
-        					<span class="price-new">$110.00</span>
-        				</div>
-        			</div>
-        		</div>
-        	</article>
-            <p class="text-center">Hover over image</p>
-        </div>
-
-
-
-
-        <div class="col-sm-3">
-        	<article class="col-item">
-        		<div class="options">
-        			<button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top" title="Add to wish list">
-        				<i class="fa fa-heart"></i>
-        			</button>
-        			<button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top" title="Compare">
-        				<i class="fa fa-exchange"></i>
-        			</button>
-        		</div>
-        		<div class="photo">
-        			<a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image" /> </a>
-        		</div>
-        		<div class="info">
-        			<div class="row">
-        				<div class="price-details col-md-6">
-        					<p class="details">
-        						Lorem ipsum dolor sit amet, consectetur..
-        					</p>
-        					<h1>Sample Product</h1>
-        					<span class="price-new">$110.00</span>
-        				</div>
-        			</div>
-        		</div>
-        	</article>
-        </div>
-
-
-
-        <div class="col-sm-3">
-        	<article class="col-item">
-        		<div class="photo">
-        			<a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image" /> </a>
-        		</div>
-        		<div class="info">
-        			<div class="row">
-        				<div class="price-details col-md-6">
-        					<p class="details">
-        						Lorem ipsum dolor sit amet, consectetur..
-        					</p>
-        					<h1>Sample Product</h1>
-        					<span class="price-new">$110.00</span>
-        				</div>
-        			</div>
-        			<div class="separator clear-left">
-        				<p class="btn-add">
-        					<i class="fa fa-shopping-cart"></i><a href="#" class="hidden-sm">Add to cart</a>
-        				</p>
-        				<p class="btn-details">
-        					<a href="#" class="hidden-sm" data-toggle="tooltip" data-placement="top" title="Add to wish list"><i class="fa fa-heart"></i></a>
-        					<a href="#" class="hidden-sm" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fa fa-exchange"></i></a>
-        				</p>
-        			</div>
-        			<div class="clearfix"></div>
-        		</div>
-        	</article>
-        </div>
-
-
-
-
-	</div>
-</div> 
  
 
 
+  </div>
+</div>
+
+
+ </section>
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <!-- <script type="text/javascript" src="{{url('/').'/MDB/js/jquery-3.2.1.min.js'}}"></script> -->
-
-<!-- Tooltips -->
-<!-- <script type="text/javascript" src="{{url('/').'/MDB/js/popper.min.js'}}"></script> -->
-
-<!-- Bootstrap core JavaScript -->
-<!-- <script type="text/javascript" src="{{url('/').'/MDB/js/bootstrap.min.js'}}"></script> -->
-
-<!-- MDB core JavaScript -->
-<!-- <script type="text/javascript" src="{{url('/').'/MDB/js/mdb.min.js'}}"></script> -->
+ 
 
 <script>
 
 
 
-
-
-
-
-
-// $(document).ready(function() {
-//     $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-//     $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
-// });
+ 
 
 
  $(document).ready(function(){
