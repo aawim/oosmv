@@ -5,90 +5,217 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  
-  
+ <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+
+
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+  
 
-<link href="{{url('/').'/css/style.css'}}" rel="stylesheet">
 
-<link href="{{url('/').'/product_hover/css/demo-page.css'}}" rel="stylesheet" media="all">
-    <link href="{{url('/').'/product_hover/css/imagehover.css'}}" rel="stylesheet" media="all">
-
-   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-  <link href="{{url('/').'/MDB/css/bootstrap.min.css'}}" rel="stylesheet">
-<link href="{{url('/').'/MDB/css/mdb.css'}}" rel="stylesheet"> -->
-
-<style>
-
-  * {
-    box-sizing: border-box;
-}
 
  
+ <link href="{{url('/').'/product_hover/css/demo-page.css'}}" rel="stylesheet" media="all">
+<link href="{{url('/').'/product_hover/css/imagehover.css'}}" rel="stylesheet" media="all">
 
-/* Center website */
-.main {
-    max-width: 1000px;
-    margin: auto;
+
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,300);
+body{
+    font-family: 'Quicksand', sans-serif;
 }
 
-h1 {
-    font-size: 50px;
-    word-break: break-all;
+#headings-3{
+    width:100%;
+    height:50px;
+    background-color:#D6DBDF;
+    padding:12px;
+    -webkit-transform: translate3d(0, -100px, 0);
+    transform: translate3d(0, 3px, 0);
 }
 
-.row {
-    margin: 8px -16px;
+.gal-container{
+	padding: 1px;
+}
+.gal-item{
+	overflow: hidden;
+	padding: 3px;
+}
+.gal-item .box{
+	height: 250px;
+	overflow: hidden;
+}
+.box img{
+	height: 100%;
+	width: 100%;
+	object-fit:cover;
+	-o-object-fit:cover;
 }
 
-/* Add padding BETWEEN each column */
-.row,
-.row > .column {
-    padding: 8px;
+
+.box-mostviewd img{
+	height: 100%;
+	width: 100%;
+	object-fit:cover;
+	-o-object-fit:cover;
 }
 
-/* Create four equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 25%;
+
+.gal-item a:after{
+	content:"\e003";
+	font-family: 'Glyphicons Halflings';
+	opacity: 0;
+	background-color: rgba(0, 0, 0, 0.75);
+	position: absolute;
+	right: 3px;
+	left: 3px;
+	top: 3px;
+	bottom: 3px;
+	text-align: center;
+    line-height: 250px;
+    font-size: 30px;
+    color: #fff;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
 }
 
-/* Clear floats after rows */ 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+
+
+
+.gal-item a:focus{
+	outline: none;
 }
 
-/* Content */
-.content {
-    background-color: white;
-    padding: 10px;
+.gal-item a:hover:after{
+	opacity: 1;
+}
+.modal-open .gal-container .modal{
+	background-color: rgba(0,0,0,0.4);
+}
+.modal-open .gal-item .modal-body{
+	padding: 0px;
+}
+.modal-open .gal-item button.close{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #000;
+    opacity: 1;
+    color: #fff;
+    z-index: 999;
+    right: -12px;
+    top: -12px;
+    border-radius: 50%;
+    font-size: 15px;
+    border: 2px solid #fff;
+    line-height: 25px;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0,0,0,0.35);
+	box-shadow: 0 0 1px 1px rgba(0,0,0,0.35);
+}
+.modal-open .gal-item button.close:focus{
+	outline: none;
+}
+.modal-open .gal-item button.close span{
+	position: relative;
+	top: -3px;
+	font-weight: lighter;
+	text-shadow:none;
+}
+.gal-container .modal-dialogue{
+	width: 80%;
+}
+.gal-container .description{
+	position: relative;
+	height: 40px;
+	top: -40px;
+	padding: 10px 25px;
+	background-color: rgba(0,0,0,0.5);
+	color: #fff;
+	text-align: left;
+}
+.gal-container .description h4{
+	margin:0px;
+	font-size: 15px;
+	font-weight: 300;
+	line-height: 20px;
+}
+.gal-container .modal.fade .modal-dialog {
+    -webkit-transform: scale(0.1);
+    -moz-transform: scale(0.1);
+    -ms-transform: scale(0.1);
+    transform: scale(0.1);
+    top: 100px;
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 900px) {
-    .column {
-        width: 50%;
+.gal-container .modal.fade.in .modal-dialog {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform: translate3d(0, -100px, 0);
+    transform: translate3d(0, -100px, 0);
+    opacity: 1;
+}
+@media (min-width: 768px) {
+.gal-container .modal-dialog {
+    width: 55%;
+    margin: 50 auto;
+}
+}
+@media (max-width: 768px) {
+    .gal-container .modal-content{
+        height:250px;
     }
+}  
+
+
+
+/* Footer Style */
+  i.red{
+    color:#BC0213;
+}
+.gal-container{
+    padding-top :2px;
+    padding-bottom:2px;
+    margin-top:-12px;
+}
+footer{
+    font-family: 'Quicksand', sans-serif;
+}
+footer a,footer a:hover{
+    color: #88C425;
 }
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </style>
 
 
-
  
- 
+ <link href="{{url('/').'/css/style.css'}}" rel="stylesheet"> 
 
 
 </head>
@@ -280,49 +407,233 @@ h1 {
     </section>
 
 
-
-
-
-
-<!-- Photo Grid -->
-<div class="row"> 
-  <div class="column">
-    <img src="{{url('/').'/imagesx/1.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/2.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/3.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/4.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/5.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/6.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/7.jpg'}}" style="width:100%">
- 
-  </div>
-  <div class="column">
-  <img src="{{url('/').'/imagesx/8.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/9.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/10.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/12.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/13.jpg'}}" style="width:100%">
-  </div>  
-  <div class="column">
-  <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/10.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/5.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/6.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/7.jpg'}}" style="width:100%">
-  </div>
-  <div class="column">
-  <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/11.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/5.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/6.jpg'}}" style="width:100%">
-    <img src="{{url('/').'/imagesx/7.jpg'}}" style="width:100%">
-  </div>
-</div>
   
+
+
+<section>
+<h3 id="headings-3">New Products</h3>
+  <div class="container gal-container">
+      
+
+    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+      <div class="box">
+        <a href="#" data-toggle="modal" data-target="#14">
+          <img src="http://nabeel.co.in/files/bootsnipp/gallery/14.jpg">
+        </a>
+        <div class="modal fade" id="14" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <div class="modal-body">
+                <img src="http://nabeel.co.in/files/bootsnipp/gallery/14.jpg">
+              </div>
+                <div class="col-md-12 description">
+                  <h4>This is the 14th one on my Gallery</h4>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+      <div class="box">
+        <a href="#" data-toggle="modal" data-target="#15">
+          <img src="http://nabeel.co.in/files/bootsnipp/gallery/15.jpg">
+        </a>
+        <div class="modal fade" id="15" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <div class="modal-body">
+                <img src="http://nabeel.co.in/files/bootsnipp/gallery/15.jpg">
+              </div>
+                <div class="col-md-12 description">
+                  <h4>This is the 15th one on my Gallery</h4>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+      <div class="box">
+        <a href="#" data-toggle="modal" data-target="#16">
+          <img src="http://nabeel.co.in/files/bootsnipp/gallery/16.jpg">
+        </a>
+        <div class="modal fade" id="16" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <div class="modal-body">
+                <img src="http://nabeel.co.in/files/bootsnipp/gallery/16.jpg">
+              </div>
+                <div class="col-md-12 description">
+                  <h4>This is the 16th one on my Gallery</h4>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ 
+ 
+ <section>
+<h3 id="headings-3">Most Viewed Products</h3>
+  <div class="container gal-container">
+      
+
+    <div class="col-md-2 col-sm-6 co-xs-12 gal-item">
+      <div class="box-mostviewd">
+        <a href="#" data-toggle="modal" data-target="#14">
+          <img src="http://nabeel.co.in/files/bootsnipp/gallery/14.jpg">
+        </a>
+        <div class="modal fade" id="14" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <div class="modal-body">
+                <img src="http://nabeel.co.in/files/bootsnipp/gallery/14.jpg">
+              </div>
+                <div class="col-md-12 description">
+                  <h4>This is the 14th one on my Gallery</h4>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="col-md-2 col-sm-6 co-xs-12 gal-item">
+      <div class="box-mostviewd">
+        <a href="#" data-toggle="modal" data-target="#15">
+          <img src="http://nabeel.co.in/files/bootsnipp/gallery/15.jpg">
+        </a>
+        <div class="modal fade" id="15" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <div class="modal-body">
+                <img src="http://nabeel.co.in/files/bootsnipp/gallery/15.jpg">
+              </div>
+                <div class="col-md-12 description">
+                  <h4>This is the 15th one on my Gallery</h4>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 col-sm-6 co-xs-12 gal-item">
+      <div class="box-mostviewd">
+        <a href="#" data-toggle="modal" data-target="#14">
+          <img src="http://nabeel.co.in/files/bootsnipp/gallery/14.jpg">
+        </a>
+        <div class="modal fade" id="14" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <div class="modal-body">
+                <img src="http://nabeel.co.in/files/bootsnipp/gallery/14.jpg">
+              </div>
+                <div class="col-md-12 description">
+                  <h4>This is the 14th one on my Gallery</h4>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 col-sm-6 co-xs-12 gal-item">
+      <div class="box-mostviewd">
+        <a href="#" data-toggle="modal" data-target="#16">
+          <img src="http://nabeel.co.in/files/bootsnipp/gallery/16.jpg">
+        </a>
+        <div class="modal fade" id="16" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <div class="modal-body">
+                <img src="http://nabeel.co.in/files/bootsnipp/gallery/16.jpg">
+              </div>
+                <div class="col-md-12 description">
+                  <h4>This is the 16th one on my Gallery</h4>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 col-sm-6 co-xs-12 gal-item">
+      <div class="box-mostviewd">
+        <a href="#" data-toggle="modal" data-target="#16">
+          <img src="http://nabeel.co.in/files/bootsnipp/gallery/16.jpg">
+        </a>
+        <div class="modal fade" id="16" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <div class="modal-body">
+                <img src="http://nabeel.co.in/files/bootsnipp/gallery/16.jpg">
+              </div>
+                <div class="col-md-12 description">
+                  <h4>This is the 16th one on my Gallery</h4>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 col-sm-6 co-xs-12 gal-item">
+      <div class="box-mostviewd">
+        <a href="#" data-toggle="modal" data-target="#16">
+          <img src="http://nabeel.co.in/files/bootsnipp/gallery/16.jpg">
+        </a>
+        <div class="modal fade" id="16" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <div class="modal-body">
+                <img src="http://nabeel.co.in/files/bootsnipp/gallery/16.jpg">
+              </div>
+                <div class="col-md-12 description">
+                  <h4>This is the 16th one on my Gallery</h4>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</section>
+
+ 
 
 
  
@@ -330,23 +641,7 @@ h1 {
 <script>
 
 
-function getRandomSize(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
-}
-
-var allImages = "";
-
-for (var i = 0; i < 25; i++) {
-  var width = getRandomSize(200, 400);
-  var height =  getRandomSize(200, 400);
-  allImages += '<img src="https://placekitten.com/'+width+'/'+height+'" alt="pretty kitty">';
-}
-
-$('#photos').append(allImages);
-
-
-
-
+ 
 
 
  
@@ -444,7 +739,7 @@ $(function(){
 
 </script>
 
- 
+  
 
 </body>
 </html>
